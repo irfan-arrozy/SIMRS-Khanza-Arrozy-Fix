@@ -60,7 +60,7 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Kode Booking","Tanggal","Kode Poli","RM","Kode Dokter","Jam Praktek","Status","NIK","Noka","No. HP","Jenis Kunjungan","No. Ref","Sumber Data","Peserta","No. Antrean","Estimasi Dilayani","Created Time"
+                "Kode Booking","Tanggal","Kode Poli","Kode Dokter","Jam Praktek","NIK","Noka","No. HP","RM","Jenis Kunjungan","No. Ref","Sumber Data","Peserta","No. Antrean","Estimasi Dilayani","Created Time","Status"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -571,8 +571,8 @@ public final class BPJSAntreanPerTanggal extends javax.swing.JDialog {
                             if(response.isArray()){
                                 for(JsonNode list:response){
                                     tabMode.addRow(new Object[]{
-                                        list.path("kodebooking").asText(),list.path("tanggal").asText(),list.path("kodepoli").asText(),list.path("norekammedis").asText(),
-                                        list.path("kodedokter").asText(),list.path("jampraktek").asText(),list.path("status").asText(),list.path("nik").asText(),list.path("nokapst").asText(),list.path("nohp").asText(),list.path("jeniskunjungan").asText(),list.path("nomorreferensi").asText(),list.path("sumberdata").asText(),list.path("ispeserta").asText().equals("true")?"Ya":"Tidak",list.path("noantrean").asText(),list.path("estimasidilayani").asText(),list.path("createdtime").asText()
+                                        list.path("kodebooking").asText(),list.path("tanggal").asText(),list.path("kodepoli").asText(),
+                                        list.path("kodedokter").asText(),list.path("jampraktek").asText(),list.path("nik").asText(),list.path("nokapst").asText(),list.path("nohp").asText(),list.path("norekammedis").asText(),list.path("jeniskunjungan").asText(),list.path("nomorreferensi").asText(),list.path("sumberdata").asText(),list.path("ispeserta").asText().equals("true")?"Ya":"Tidak",list.path("noantrean").asText(),list.path("estimasidilayani").asText(),list.path("createdtime").asText(),list.path("status").asText()
                                     });
                                     if (list.path("status").asText().equals("Belum dilayani")) {
                                         tot_belum += 1;

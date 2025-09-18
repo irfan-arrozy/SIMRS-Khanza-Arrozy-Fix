@@ -39,7 +39,7 @@ import kepegawaian.DlgCariPetugas;
  *
  * @author perpustakaan
  */
-    public final class RMDataCatatanKeperawatanRalan extends javax.swing.JDialog {
+public final class RMDataCatatanKeperawatanRalan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -1067,7 +1067,7 @@ import kepegawaian.DlgCariPetugas;
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            if(TCari.getText().toString().trim().equals("")){
+            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_keperawatan_ralan.tanggal,catatan_keperawatan_ralan.jam,catatan_keperawatan_ralan.uraian,"+
@@ -1087,7 +1087,7 @@ import kepegawaian.DlgCariPetugas;
             }
                 
             try {
-                if(TCari.getText().toString().trim().equals("")){
+                if(TCari.getText().trim().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                     ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 }else{
@@ -1102,9 +1102,9 @@ import kepegawaian.DlgCariPetugas;
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("jam"),rs.getString("uraian"),rs.getString("nip"),
                         rs.getString("nama")
                     });
@@ -1148,18 +1148,8 @@ import kepegawaian.DlgCariPetugas;
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select "
-                            + "reg_periksa.no_rkm_medis,"
-                            + "pasien.nm_pasien,"
-                            + "pasien.jk,"
-                            + "pasien.tgl_lahir,"
-                            + "reg_periksa.tgl_registrasi,"
-                            + "reg_periksa.umurdaftar,"
-                            + "reg_periksa.sttsumur,"
-                            + "reg_periksa.jam_reg "
-                            + "from reg_periksa inner join pasien on "
-                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                            + "where reg_periksa.no_rawat=?");
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -1325,24 +1315,11 @@ import kepegawaian.DlgCariPetugas;
 
     private void simpan() {
         if(Sequel.menyimpantf("catatan_keperawatan_ralan","?,?,?,?,?","Data",5,new String[]{
-            Valid.SetTgl(Tanggal.getSelectedItem()+""),
-            Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            TNoRw.getText(),
-            Uraian.getText(),
-            NIP.getText()
+            Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),TNoRw.getText(),Uraian.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
-                TNoRw.getText(),
-                TNoRM.getText(),
-                TPasien.getText(),
-                Umur.getText(),
-                JK.getText(),
-                TglLahir.getText(),
-                Valid.SetTgl(Tanggal.getSelectedItem()+""),
-                Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Uraian.getText(),
-                NIP.getText(),
-                NamaPetugas.getText()
+            tabMode.addRow(new Object[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Uraian.getText(),NIP.getText(),NamaPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

@@ -1789,7 +1789,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiSDQ25.setBounds(749, 810, 40, 23);
 
         jLabel272.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel272.setText("F. Penilaian Skor Kesulitan ");
+        jLabel272.setText("F. Pengkajian Skor Kesulitan ");
         jLabel272.setName("jLabel272"); // NOI18N
         FormInput.add(jLabel272);
         jLabel272.setBounds(44, 1040, 160, 23);
@@ -1890,7 +1890,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiKesimpulanKesulitan.setBounds(749, 1040, 40, 23);
 
         jLabel288.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel288.setText("A. Penilaian Gejala Emosional (E)");
+        jLabel288.setText("A. Pengkajian Gejala Emosional (E)");
         jLabel288.setName("jLabel288"); // NOI18N
         FormInput.add(jLabel288);
         jLabel288.setBounds(44, 890, 170, 23);
@@ -1908,7 +1908,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel59.setBounds(11, 873, 550, 23);
 
         jLabel291.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel291.setText("B. Penilaian Masalah Perilaku (C)");
+        jLabel291.setText("B. Pengkajian Masalah Perilaku (C)");
         jLabel291.setName("jLabel291"); // NOI18N
         FormInput.add(jLabel291);
         jLabel291.setBounds(44, 920, 170, 23);
@@ -1920,7 +1920,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         KesimpulanSkorC.setBounds(210, 920, 240, 23);
 
         jLabel293.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel293.setText("C. Penilaian Hiperaktivitas (H)");
+        jLabel293.setText("C. Pengkajian Hiperaktivitas (H)");
         jLabel293.setName("jLabel293"); // NOI18N
         FormInput.add(jLabel293);
         jLabel293.setBounds(44, 950, 170, 23);
@@ -1944,7 +1944,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         KesimpulanSkorP.setBounds(210, 980, 240, 23);
 
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel297.setText("E. Penilaian Skor Kekuatan (Pr)");
+        jLabel297.setText("E. Pengkajian Skor Kekuatan (Pr)");
         jLabel297.setName("jLabel297"); // NOI18N
         FormInput.add(jLabel297);
         jLabel297.setBounds(44, 1010, 170, 23);
@@ -3452,8 +3452,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("pernyataansdq1"),rs.getString("nilai_sdq1"),rs.getString("pernyataansdq2"),rs.getString("nilai_sdq2"),rs.getString("pernyataansdq3"),rs.getString("nilai_sdq3"),rs.getString("pernyataansdq4"),
                         rs.getString("nilai_sdq4"),rs.getString("pernyataansdq5"),rs.getString("nilai_sdq5"),rs.getString("pernyataansdq6"),rs.getString("nilai_sdq6"),rs.getString("pernyataansdq7"),rs.getString("nilai_sdq7"),
                         rs.getString("pernyataansdq8"),rs.getString("nilai_sdq8"),rs.getString("pernyataansdq9"),rs.getString("nilai_sdq9"),rs.getString("pernyataansdq10"),rs.getString("nilai_sdq10"),rs.getString("pernyataansdq11"),
@@ -3675,7 +3675,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -4008,7 +4008,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
             NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
                 SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 

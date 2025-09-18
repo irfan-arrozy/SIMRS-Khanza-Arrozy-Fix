@@ -159,11 +159,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         BBPerTB.setDocument(new batasInput((byte)5).getKata(BBPerTB));
         LiLAPerU.setDocument(new batasInput((byte)5).getKata(LiLAPerU));
         Biokimia.setDocument(new batasInput((int)1000).getKata(Biokimia));
-        FisikKlinis.setDocument(new batasInput((int)1000).getKata(FisikKlinis));
-        RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
-        PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)1000).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)1000).getKata(IntervensiGizi));
+        FisikKlinis.setDocument(new batasInput((int)2000).getKata(FisikKlinis));
+        RiwayatPersonal.setDocument(new batasInput((int)1000).getKata(RiwayatPersonal));
+        PolaMakan.setDocument(new batasInput((int)2000).getKata(PolaMakan));
+        DiagnosisGizi.setDocument(new batasInput((int)2000).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput((int)2000).getKata(IntervensiGizi));
         Monitoring.setDocument(new batasInput((int)1000).getKata(Monitoring));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -1426,7 +1426,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                     alergi_ikan, alergi_hazelnut, PolaMakan.getText(),RiwayatPersonal.getText(),DiagnosisGizi.getText(),IntervensiGizi.getText(),
                     Monitoring.getText(),KdPetugas.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText().substring(0,1),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+""),
                         BB.getText(),TB.getText(),IMT.getText(),LiLA.getText(),TL.getText(),ULNA.getText(),BBIdeal.getText(),BBPerU.getText(),TBPerU.getText(),BBPerTB.getText(),
                         LiLAPerU.getText(),Biokimia.getText(),FisikKlinis.getText(),alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, 
@@ -2016,8 +2016,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("antropometri_bb"),rs.getString("antropometri_tb"),rs.getString("antropometri_imt"),
                         rs.getString("antropometri_lla"),rs.getString("antropometri_tl"),rs.getString("antropometri_ulna"),rs.getString("antropometri_bbideal"),
                         rs.getString("antropometri_bbperu"),rs.getString("antropometri_tbperu"),rs.getString("antropometri_bbpertb"),rs.getString("antropometri_llaperu"),
@@ -2155,6 +2155,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     umur=rs.getInt("umurdaftar");
                     sttsumur=rs.getString("sttsumur");
+                    DiagnosaMasukRanap.setText(Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.no_rawat='"+TNoRw.getText()+"' order by kamar_inap.tgl_masuk asc,kamar_inap.jam_masuk asc limit 1"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

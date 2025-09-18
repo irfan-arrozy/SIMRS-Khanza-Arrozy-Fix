@@ -24,6 +24,7 @@
                       <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
                     </LineBorder>
                   </Border>
+                  <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
                   <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
                 </TitledBorder>
               </Border>
@@ -140,7 +141,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="30-12-2024 15:48:47"/>
+                    <StringItem index="0" value="29-04-2025 04:09:58"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -287,6 +288,7 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
+              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -629,7 +631,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-12-2024"/>
+                        <StringItem index="0" value="29-04-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -657,7 +659,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-12-2024"/>
+                        <StringItem index="0" value="29-04-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -847,7 +849,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-12-2024 15:48:46"/>
+                        <StringItem index="0" value="29-04-2025 04:09:57"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -877,13 +879,12 @@
                 <Component class="widget.ComboBox" name="Permintaan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
-                        <StringItem index="0" value="Rujuk Internal"/>
-                        <StringItem index="1" value="Konsultasi"/>
-                        <StringItem index="2" value="Evaluasi"/>
-                        <StringItem index="3" value="Rawat Bersama"/>
-                        <StringItem index="4" value="Alih Rawat"/>
-                        <StringItem index="5" value="Pre/Post Operasi"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Konsultasi"/>
+                        <StringItem index="1" value="Evaluasi"/>
+                        <StringItem index="2" value="Rawat Bersama"/>
+                        <StringItem index="3" value="Alih Rawat"/>
+                        <StringItem index="4" value="Pre/Post Operasi"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Permintaan" noResource="true"/>

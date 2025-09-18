@@ -1517,9 +1517,9 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("materi_edukasi"),
                         rs.getString("keterangan"),rs.getString("lama_edukasi"),rs.getString("status"),rs.getString("diberikan_pada"),
                         rs.getString("keterangan_diberikan_pada"),rs.getString("metode_edukasi"),rs.getString("hasil_verifikasi")
@@ -1635,14 +1635,10 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(true);
-        //BtnSimpan.setEnabled(akses.getpelaksanaan_informasi_edukasi());
-       // BtnHapus.setEnabled(akses.getpelaksanaan_informasi_edukasi());
-       // BtnEdit.setEnabled(akses.getpelaksanaan_informasi_edukasi());
-       // BtnPrint.setEnabled(akses.getpelaksanaan_informasi_edukasi()); 
-       BtnHapus.setEnabled(true);
-       BtnEdit.setEnabled(true);
-               BtnEdit.setEnabled(true);
+        BtnSimpan.setEnabled(akses.getpelaksanaan_informasi_edukasi());
+        BtnHapus.setEnabled(akses.getpelaksanaan_informasi_edukasi());
+        BtnEdit.setEnabled(akses.getpelaksanaan_informasi_edukasi());
+        BtnPrint.setEnabled(akses.getpelaksanaan_informasi_edukasi()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1759,7 +1755,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
                 NIP.getText(),Materi.getText(),Keterangan.getText(),Kepada.getSelectedItem().toString(),KeteranganKepada.getText(),Lama.getText(),
                 Metode.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Status.getSelectedItem().toString()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 NIP.getText(),NamaPetugas.getText(),Materi.getText(),Keterangan.getText(),Lama.getText(),Status.getSelectedItem().toString(),

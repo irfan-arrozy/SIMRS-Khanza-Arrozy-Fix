@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Kontribusi Agus Budiyono Puskesmas Kerjo
  */
 
 
@@ -98,48 +97,50 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==10){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(40);
             }else if(i==11){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==12){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(90);
             }else if(i==13){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==14){
-                column.setPreferredWidth(140);
-            }else if(i==15){
-                column.setPreferredWidth(130);
-            }else if(i==16){
-                column.setPreferredWidth(200);
-            }else if(i==17){
-                column.setPreferredWidth(45);
-            }else if(i==18){
-                column.setPreferredWidth(250);
-            }else if(i==19){
-                column.setPreferredWidth(45);
-            }else if(i==20){
-                column.setPreferredWidth(190);
-            }else if(i==21){
-                column.setPreferredWidth(45);
-            }else if(i==22){
-                column.setPreferredWidth(250);
-            }else if(i==23){
-                column.setPreferredWidth(45);
-            }else if(i==24){
                 column.setPreferredWidth(65);
+            }else if(i==15){
+                column.setPreferredWidth(85);
+            }else if(i==16){
+                column.setPreferredWidth(85);
+            }else if(i==17){
+                column.setPreferredWidth(35);
+            }else if(i==18){
+                column.setPreferredWidth(100);
+            }else if(i==19){
+                column.setPreferredWidth(35);
+            }else if(i==20){
+                column.setPreferredWidth(70);
+            }else if(i==21){
+                column.setPreferredWidth(35);
+            }else if(i==22){
+                column.setPreferredWidth(70);
+            }else if(i==23){
+                column.setPreferredWidth(35);
+            }else if(i==24){
+                column.setPreferredWidth(56);
             }else if(i==25){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
+        JumlahRokok.setDocument(new batasInput((byte)3).getKata(JumlahRokok));
+        LamaMerokok.setDocument(new batasInput((byte)3).getKata(LamaMerokok));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -229,8 +230,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningRisikoKankerPayudara = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        MnSkriningPuma = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -278,13 +278,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         JK = new widget.ComboBox();
         jLabel92 = new widget.Label();
-        umur = new widget.ComboBox();
+        Usia = new widget.ComboBox();
         jLabel69 = new widget.Label();
         jLabel73 = new widget.Label();
         TotalHasil = new widget.TextBox();
         skorJk = new widget.TextBox();
-        skorUmur = new widget.TextBox();
-        jLabel148 = new widget.Label();
+        skorUsia = new widget.TextBox();
         Tindakan = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
@@ -293,7 +292,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel149 = new widget.Label();
         jLabel95 = new widget.Label();
         jLabel96 = new widget.Label();
         PernahMerokok = new widget.ComboBox();
@@ -331,22 +329,25 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel137 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new widget.Label();
+        jLabel101 = new widget.Label();
+        jLabel150 = new widget.Label();
+        jLabel149 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningRisikoKankerPayudara.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningRisikoKankerPayudara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningRisikoKankerPayudara.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningRisikoKankerPayudara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningRisikoKankerPayudara.setText("Formulir Skrining Risiko Kanker Payudara");
-        MnSkriningRisikoKankerPayudara.setName("MnSkriningRisikoKankerPayudara"); // NOI18N
-        MnSkriningRisikoKankerPayudara.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnSkriningRisikoKankerPayudara.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningPuma.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningPuma.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningPuma.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningPuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningPuma.setText("Formulir Skrining PUMA");
+        MnSkriningPuma.setName("MnSkriningPuma"); // NOI18N
+        MnSkriningPuma.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnSkriningPuma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningRisikoKankerPayudaraActionPerformed(evt);
+                MnSkriningPumaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningRisikoKankerPayudara);
+        jPopupMenu1.add(MnSkriningPuma);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -529,7 +530,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -543,7 +544,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -604,7 +605,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 425));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 435));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -634,7 +635,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 400));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 410));
         FormInput.setLayout(null);
 
         jLabel4.setText(":");
@@ -664,7 +665,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -790,20 +791,20 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(jLabel92);
         jLabel92.setBounds(690, 90, 50, 23);
 
-        umur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40-49", "50-59", ">60" }));
-        umur.setName("umur"); // NOI18N
-        umur.addItemListener(new java.awt.event.ItemListener() {
+        Usia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40-49", "50-59", ">60" }));
+        Usia.setName("Usia"); // NOI18N
+        Usia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                umurItemStateChanged(evt);
+                UsiaItemStateChanged(evt);
             }
         });
-        umur.addKeyListener(new java.awt.event.KeyAdapter() {
+        Usia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                umurKeyPressed(evt);
+                UsiaKeyPressed(evt);
             }
         });
-        FormInput.add(umur);
-        umur.setBounds(605, 120, 90, 23);
+        FormInput.add(Usia);
+        Usia.setBounds(605, 120, 90, 23);
 
         jLabel69.setText("Skor :");
         jLabel69.setName("jLabel69"); // NOI18N
@@ -813,14 +814,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 370, 70, 23);
+        jLabel73.setBounds(670, 380, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 370, 45, 23);
+        TotalHasil.setBounds(744, 380, 45, 23);
 
         skorJk.setEditable(false);
         skorJk.setText("0");
@@ -829,20 +830,13 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(skorJk);
         skorJk.setBounds(744, 90, 45, 23);
 
-        skorUmur.setEditable(false);
-        skorUmur.setText("0");
-        skorUmur.setFocusTraversalPolicyProvider(true);
-        skorUmur.setName("skorUmur"); // NOI18N
-        FormInput.add(skorUmur);
-        skorUmur.setBounds(744, 120, 45, 23);
+        skorUsia.setEditable(false);
+        skorUsia.setText("0");
+        skorUsia.setFocusTraversalPolicyProvider(true);
+        skorUsia.setName("skorUsia"); // NOI18N
+        FormInput.add(skorUsia);
+        skorUsia.setBounds(744, 120, 45, 23);
 
-        jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel148.setText("Tindakan");
-        jLabel148.setName("jLabel148"); // NOI18N
-        FormInput.add(jLabel148);
-        jLabel148.setBounds(11, 370, 90, 23);
-
-        Tindakan.setEditable(false);
         Tindakan.setFocusTraversalPolicyProvider(true);
         Tindakan.setName("Tindakan"); // NOI18N
         Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -851,7 +845,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(67, 370, 580, 23);
+        Tindakan.setBounds(111, 380, 480, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -861,7 +855,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("Skrining PUMA :");
+        jLabel99.setText("I. ANAMNESIS");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 200, 23);
@@ -896,11 +890,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
         jSeparator3.setBounds(0, 1240, 807, 1);
-
-        jLabel149.setText(":");
-        jLabel149.setName("jLabel149"); // NOI18N
-        FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 370, 63, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("Apakah Anda pernah merokok ?");
@@ -942,36 +931,42 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         skorPernahMerokok.setBounds(744, 150, 45, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel98.setText("- Jika pernah, berapa rata-rata jumlah rokok/hari?");
+        jLabel98.setText("- Jika pernah, berapa rata-rata jumlah rokok/hari ?");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
-        jLabel98.setBounds(72, 180, 360, 23);
+        jLabel98.setBounds(62, 180, 360, 23);
 
-        JumlahRokok.setEditable(false);
-        JumlahRokok.setText("0");
         JumlahRokok.setFocusTraversalPolicyProvider(true);
         JumlahRokok.setName("JumlahRokok"); // NOI18N
+        JumlahRokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JumlahRokokKeyPressed(evt);
+            }
+        });
         FormInput.add(JumlahRokok);
-        JumlahRokok.setBounds(605, 180, 50, 23);
+        JumlahRokok.setBounds(615, 180, 50, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("- Sudah berapa lama merokok ?");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(72, 210, 340, 23);
+        jLabel104.setBounds(62, 210, 340, 23);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel106.setText("Tahun");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(658, 210, 50, 23);
+        jLabel106.setBounds(668, 210, 50, 23);
 
-        LamaMerokok.setEditable(false);
-        LamaMerokok.setText("0");
         LamaMerokok.setFocusTraversalPolicyProvider(true);
         LamaMerokok.setName("LamaMerokok"); // NOI18N
+        LamaMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LamaMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(LamaMerokok);
-        LamaMerokok.setBounds(605, 210, 50, 23);
+        LamaMerokok.setBounds(615, 210, 50, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("4.");
@@ -1152,7 +1147,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel136.setText("Batang");
         jLabel136.setName("jLabel136"); // NOI18N
         FormInput.add(jLabel136);
-        jLabel136.setBounds(658, 180, 80, 23);
+        jLabel136.setBounds(668, 180, 80, 23);
 
         jLabel137.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel137.setText("atau pada jalan yang sedikit menanjak ?");
@@ -1172,6 +1167,23 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
         jLabel5.setBounds(11, 10, 65, 23);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("II. INTERPRETASI");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(10, 360, 200, 23);
+
+        jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel150.setText("Keterangan");
+        jLabel150.setName("jLabel150"); // NOI18N
+        FormInput.add(jLabel150);
+        jLabel150.setBounds(44, 380, 90, 23);
+
+        jLabel149.setText(":");
+        jLabel149.setName("jLabel149"); // NOI18N
+        FormInput.add(jLabel149);
+        jLabel149.setBounds(0, 380, 107, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1201,6 +1213,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&JumlahRokok.getText().trim().equals("")){
+            Valid.textKosong(JumlahRokok,"Jumlah Merokok");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&LamaMerokok.getText().trim().equals("")){
+            Valid.textKosong(LamaMerokok,"Lama Merokok");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1266,6 +1282,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&JumlahRokok.getText().trim().equals("")){
+            Valid.textKosong(JumlahRokok,"Jumlah Merokok");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&LamaMerokok.getText().trim().equals("")){
+            Valid.textKosong(LamaMerokok,"Lama Merokok");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1327,81 +1347,24 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 14</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.14</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kelamin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.U</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.M</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nafas Pendek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.N.P</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Keluar Dahak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.D</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Biasa Batuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.B.B</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Spirometri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.S</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan SADANIS</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindak Lanjut Sadanis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1433,68 +1396,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,59).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,61).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,63).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,65).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,67).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,72).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,73).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,74).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,75).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,76).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,77).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,78).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,79).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,80).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,81).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,82).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='6000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1519,7 +1425,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='6000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1632,7 +1538,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         Valid.pindah(evt,TCari,JK);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningRisikoKankerPayudaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerPayudaraActionPerformed
+    private void MnSkriningPumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningPumaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1644,7 +1550,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningRisikoKankerPayudara.jasper","report","::[ Formulir Skrining Risiko Kanker Payudara ]::",
+            Valid.MyReportqry("rptFormulirSkriningPUMA.jasper","report","::[ Formulir Skrining PUMA ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_puma.nip,"+
                     "petugas.nama,skrining_puma.tanggal,skrining_puma.jk,skrining_puma.nilai_jk,"+
                     "skrining_puma.usia,skrining_puma.nilai_usia,skrining_puma.pernah_merokok,"+
@@ -1652,30 +1558,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     "skrining_puma.napas_pendek,skrining_puma.nilai_napas_pendek,skrining_puma.punya_dahak,"+
                     "skrining_puma.nilai_punya_dahak,skrining_puma.biasa_batuk,skrining_puma.nilai_biasa_batuk,"+
                     "skrining_puma.spirometri,skrining_puma.nilai_spirometri,skrining_puma.nilai_total,"+
-                    "skrining_puma.keterangan_hasil_skrining,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
-                    "skrining_puma.faktor_risiko_awal11,skrining_puma.nilai_risiko_awal11,skrining_puma.faktor_risiko_awal12,"+
-                    "skrining_puma.nilai_risiko_awal12,skrining_puma.faktor_risiko_awal13,skrining_puma.nilai_risiko_awal13,"+
-                    "skrining_puma.faktor_risiko_awal14,skrining_puma.nilai_risiko_awal14,skrining_puma.faktor_risiko_tinggi1,"+
-                    "skrining_puma.nilai_risiko_tinggi1,skrining_puma.faktor_risiko_tinggi2,skrining_puma.nilai_risiko_tinggi2,"+
-                    "skrining_puma.faktor_risiko_tinggi3,skrining_puma.nilai_risiko_tinggi3,skrining_puma.faktor_risiko_tinggi4,"+
-                    "skrining_puma.nilai_risiko_tinggi4,skrining_puma.faktor_risiko_tinggi5,skrining_puma.nilai_risiko_tinggi5,"+
-                    "skrining_puma.faktor_risiko_tinggi6,skrining_puma.nilai_risiko_tinggi6,skrining_puma.faktor_risiko_tinggi7,"+
-                    "skrining_puma.nilai_risiko_tinggi7,skrining_puma.faktor_risiko_tinggi8,skrining_puma.nilai_risiko_tinggi8,"+
-                    "skrining_puma.faktor_risiko_tinggi9,skrining_puma.nilai_risiko_tinggi9,skrining_puma.faktor_risiko_tinggi10,"+
-                    "skrining_puma.nilai_risiko_tinggi10,skrining_puma.faktor_risiko_tinggi11,skrining_puma.nilai_risiko_tinggi11,"+
-                    "skrining_puma.faktor_risiko_tinggi12,skrining_puma.nilai_risiko_tinggi12,skrining_puma.faktor_risiko_tinggi13,"+
-                    "skrining_puma.nilai_risiko_tinggi13,skrining_puma.faktor_kecurigaan_ganas1,skrining_puma.nilai_kecurigaan_ganas1,"+
-                    "skrining_puma.faktor_kecurigaan_ganas2,skrining_puma.nilai_kecurigaan_ganas2,skrining_puma.faktor_kecurigaan_ganas3,"+
-                    "skrining_puma.nilai_kecurigaan_ganas3,skrining_puma.faktor_kecurigaan_ganas4,skrining_puma.nilai_kecurigaan_ganas4,"+
-                    "skrining_puma.faktor_kecurigaan_ganas5,skrining_puma.nilai_kecurigaan_ganas5,skrining_puma.faktor_kecurigaan_ganas6,"+
-                    "skrining_puma.nilai_kecurigaan_ganas6,skrining_puma.faktor_kecurigaan_ganas7,skrining_puma.nilai_kecurigaan_ganas7,"+
-                    "skrining_puma.faktor_kecurigaan_ganas8,skrining_puma.nilai_kecurigaan_ganas8,skrining_puma.total_skor,"+
-                    "skrining_puma.hasil_sadanis,skrining_puma.tindak_lanjut_sadanis,skrining_puma.hasil_skrining,"+
-                    "skrining_puma.keterangan from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_puma.keterangan_hasil_skrining from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_puma.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningRisikoKankerPayudaraActionPerformed
+    }//GEN-LAST:event_MnSkriningPumaActionPerformed
 
     private void JKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JKItemStateChanged
         if(JK.getSelectedIndex()==1){
@@ -1687,23 +1574,23 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_JKItemStateChanged
 
     private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
-        Valid.pindah(evt,TCari,umur);
+        Valid.pindah(evt,TCari,Usia);
     }//GEN-LAST:event_JKKeyPressed
 
-    private void umurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_umurItemStateChanged
-        if(umur.getSelectedItem().toString().equals("40-49")){
-            skorUmur.setText("0");
-        }else if(umur.getSelectedItem().toString().equals("50-59")){
-            skorUmur.setText("1");
-        }else if(umur.getSelectedItem().toString().equals(">60")){
-            skorUmur.setText("2");
+    private void UsiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UsiaItemStateChanged
+        if(Usia.getSelectedItem().toString().equals("40-49")){
+            skorUsia.setText("0");
+        }else if(Usia.getSelectedItem().toString().equals("50-59")){
+            skorUsia.setText("1");
+        }else if(Usia.getSelectedItem().toString().equals(">60")){
+            skorUsia.setText("2");
         }
         isTotal();
-    }//GEN-LAST:event_umurItemStateChanged
+    }//GEN-LAST:event_UsiaItemStateChanged
 
-    private void umurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_umurKeyPressed
+    private void UsiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaKeyPressed
         Valid.pindah(evt,JK,PernahMerokok);
-    }//GEN-LAST:event_umurKeyPressed
+    }//GEN-LAST:event_UsiaKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1723,7 +1610,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_PernahMerokokItemStateChanged
 
     private void PernahMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahMerokokKeyPressed
-        Valid.pindah(evt,umur,NafasPendek);
+        if(PernahMerokok.getSelectedIndex()==0){
+            Valid.pindah(evt,Usia,NafasPendek);
+        }else if(PernahMerokok.getSelectedIndex()==1){
+            Valid.pindah(evt,Usia,JumlahRokok);
+        }
+            
     }//GEN-LAST:event_PernahMerokokKeyPressed
 
     private void NafasPendekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NafasPendekItemStateChanged
@@ -1778,6 +1670,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         Valid.pindah(evt,Batuk,BtnSimpan);
     }//GEN-LAST:event_SpirometriKeyPressed
 
+    private void JumlahRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahRokokKeyPressed
+        Valid.pindah(evt,PernahMerokok,LamaMerokok);
+    }//GEN-LAST:event_JumlahRokokKeyPressed
+
+    private void LamaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaMerokokKeyPressed
+        Valid.pindah(evt,JumlahRokok,NafasPendek);
+    }//GEN-LAST:event_LamaMerokokKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1819,7 +1719,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox LamaMerokok;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningRisikoKankerPayudara;
+    private javax.swing.JMenuItem MnSkriningPuma;
     private widget.ComboBox NafasPendek;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
@@ -1836,9 +1736,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox Tindakan;
     private widget.TextBox TotalHasil;
     private widget.TextBox Umur;
+    private widget.ComboBox Usia;
     private widget.Button btnPetugas;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel101;
     private widget.Label jLabel104;
     private widget.Label jLabel106;
     private widget.Label jLabel107;
@@ -1857,8 +1758,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.Label jLabel121;
     private widget.Label jLabel136;
     private widget.Label jLabel137;
-    private widget.Label jLabel148;
     private widget.Label jLabel149;
+    private widget.Label jLabel150;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1894,10 +1795,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox skorNafas;
     private widget.TextBox skorPernahMerokok;
     private widget.TextBox skorSpirometri;
-    private widget.TextBox skorUmur;
+    private widget.TextBox skorUsia;
     private widget.TextBox skordahak;
     private widget.Table tbObat;
-    private widget.ComboBox umur;
     // End of variables declaration//GEN-END:variables
     
     public void tampil() {
@@ -1947,8 +1847,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jk"),rs.getString("nilai_jk"),rs.getString("usia"),
                         rs.getString("nilai_usia"),rs.getString("pernah_merokok"),rs.getString("nilai_pernah_merokok"),rs.getString("jumlah_rokok_perhari"),rs.getString("lama_merokok"),
                         rs.getString("napas_pendek"),rs.getString("nilai_napas_pendek"),rs.getString("punya_dahak"),rs.getString("nilai_punya_dahak"),rs.getString("biasa_batuk"),
@@ -1974,23 +1874,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     public void emptTeks() {
         Tanggal.setDate(new Date());
         JK.setSelectedIndex(0);
-        skorJk.setText("0");
-        umur.setSelectedIndex(0);
-        skorUmur.setText("0");
+        Usia.setSelectedIndex(0);
         PernahMerokok.setSelectedIndex(0);
-        skorPernahMerokok.setText("0");
-        JumlahRokok.setText("0");
-        LamaMerokok.setText("0");
+        JumlahRokok.setText("");
+        LamaMerokok.setText("");
         NafasPendek.setSelectedIndex(0);
-        skorNafas.setText("0");
         Dahak.setSelectedIndex(0);
-        skordahak.setText("0");
         Batuk.setSelectedIndex(0);
-        skorBatuk.setText("0");
         Spirometri.setSelectedIndex(0);
-        skorSpirometri.setText("0");
-        TotalHasil.setText("0");
-        Tindakan.setText("Edukasi Bahaya Rokok");
         JK.requestFocus();
     } 
 
@@ -2006,8 +1897,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
             JK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             skorJk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            umur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            skorUmur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Usia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            skorUsia.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             PernahMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             skorPernahMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             JumlahRokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
@@ -2048,6 +1939,15 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     }else{
                         JK.setSelectedItem("Perempuan");
                     }
+                    if(rs.getString("sttsumur").equals("Th")){
+                        if((rs.getInt("umurdaftar")>=40)&&(rs.getInt("umurdaftar")<=49)){
+                            Usia.setSelectedIndex(0);
+                        }else if((rs.getInt("umurdaftar")>=50)&&(rs.getInt("umurdaftar")<=59)){
+                            Usia.setSelectedIndex(1);
+                        }else if(rs.getInt("umurdaftar")>60){
+                            Usia.setSelectedIndex(2);
+                        }
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -2075,14 +1975,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>568){
+            if(internalFrame1.getHeight()>578){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,425));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,435));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }
@@ -2176,22 +2076,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,jk=?,nilai_jk=?,usia=?,nilai_usia=?,pernah_merokok=?,"+
-                "nilai_pernah_merokok=?,jumlah_rokok_perhari=?,lama_merokok=?,napas_pendek=?,nilai_napas_pendek=?,punya_dahak=?,nilai_punya_dahak=?,biasa_batuk=?,nilai_biasa_batuk=?,"+
-                "spirometri=?,nilai_spirometri=?,nilai_total=?,keterangan_hasil_skrining=?,faktor_risiko_awal10=?,nilai_risiko_awal10=?,faktor_risiko_awal11=?,nilai_risiko_awal11=?,faktor_risiko_awal12=?,"+
-                "nilai_risiko_awal12=?,faktor_risiko_awal13=?,nilai_risiko_awal13=?,faktor_risiko_awal14=?,nilai_risiko_awal14=?,faktor_risiko_tinggi1=?,nilai_risiko_tinggi1=?,faktor_risiko_tinggi2=?,nilai_risiko_tinggi2=?,"+
-                "faktor_risiko_tinggi3=?,nilai_risiko_tinggi3=?,faktor_risiko_tinggi4=?,nilai_risiko_tinggi4=?,faktor_risiko_tinggi5=?,nilai_risiko_tinggi5=?,faktor_risiko_tinggi6=?,nilai_risiko_tinggi6=?,"+
-                "faktor_risiko_tinggi7=?,nilai_risiko_tinggi7=?,faktor_risiko_tinggi8=?,nilai_risiko_tinggi8=?,faktor_risiko_tinggi9=?,nilai_risiko_tinggi9=?,faktor_risiko_tinggi10=?,nilai_risiko_tinggi10=?,"+
-                "faktor_risiko_tinggi11=?,nilai_risiko_tinggi11=?,faktor_risiko_tinggi12=?,nilai_risiko_tinggi12=?,faktor_risiko_tinggi13=?,nilai_risiko_tinggi13=?,faktor_kecurigaan_ganas1=?,nilai_kecurigaan_ganas1=?,"+
-                "faktor_kecurigaan_ganas2=?,nilai_kecurigaan_ganas2=?,faktor_kecurigaan_ganas3=?,nilai_kecurigaan_ganas3=?,faktor_kecurigaan_ganas4=?,nilai_kecurigaan_ganas4=?,faktor_kecurigaan_ganas5=?,nilai_kecurigaan_ganas5=?,"+
-                "faktor_kecurigaan_ganas6=?,nilai_kecurigaan_ganas6=?,faktor_kecurigaan_ganas7=?,nilai_kecurigaan_ganas7=?,faktor_kecurigaan_ganas8=?,nilai_kecurigaan_ganas8=?,total_skor=?,hasil_sadanis=?,tindak_lanjut_sadanis=?,"+
-                "hasil_skrining=?,keterangan=?,nip=?",79,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-                JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-                Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-                TotalHasil.getText(),Tindakan.getText(),
-                KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,jk=?,nilai_jk=?,usia=?,nilai_usia=?,pernah_merokok=?,nilai_pernah_merokok=?,jumlah_rokok_perhari=?,lama_merokok=?,napas_pendek=?,nilai_napas_pendek=?,punya_dahak=?,nilai_punya_dahak=?,biasa_batuk=?,nilai_biasa_batuk=?,"+
+                "spirometri=?,nilai_spirometri=?,nilai_total=?,keterangan_hasil_skrining=?,nip=?",22,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),
+                skorPernahMerokok.getText(),JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),
+                skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2203,8 +2092,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
                tbObat.setValueAt(JK.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
                tbObat.setValueAt(skorJk.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(umur.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(skorUmur.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(Usia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(skorUsia.getText(),tbObat.getSelectedRow(),11);
                tbObat.setValueAt(PernahMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
                tbObat.setValueAt(skorPernahMerokok.getText(),tbObat.getSelectedRow(),13);
                tbObat.setValueAt(JumlahRokok.getText(),tbObat.getSelectedRow(),14);
@@ -2238,7 +2127,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private void isTotal() {
         try {
             TotalHasil.setText(""+(
-                    Integer.parseInt(skorJk.getText())+Integer.parseInt(skorUmur.getText())+
+                    Integer.parseInt(skorJk.getText())+Integer.parseInt(skorUsia.getText())+
                     Integer.parseInt(skorPernahMerokok.getText())+
                     Integer.parseInt(skorNafas.getText())+
                     Integer.parseInt(skordahak.getText())+Integer.parseInt(skorBatuk.getText())+
@@ -2256,19 +2145,16 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
       
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_puma","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",78,new String[]{
+        if(Sequel.menyimpantf("skrining_puma","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-            JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-            Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-            TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText()
+            JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
+            JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),
+            Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-                JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-                Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-                TotalHasil.getText(),Tindakan.getText()
+                JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),
+                skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

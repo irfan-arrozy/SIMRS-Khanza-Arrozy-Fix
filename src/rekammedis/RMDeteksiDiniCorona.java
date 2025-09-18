@@ -474,7 +474,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -487,7 +487,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -698,7 +698,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(644, 70, 80, 23);
 
-        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglGejala.setDisplayFormat("dd-MM-yyyy");
         TglGejala.setName("TglGejala"); // NOI18N
         TglGejala.setOpaque(false);
@@ -758,7 +758,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(A3);
         A3.setBounds(733, 180, 85, 23);
 
-        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglSkrining.setDisplayFormat("dd-MM-yyyy");
         TglSkrining.setName("TglSkrining"); // NOI18N
         TglSkrining.setOpaque(false);
@@ -889,7 +889,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(310, 360, 10, 23);
 
-        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2023" }));
+        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglKedatangan.setDisplayFormat("dd-MM-yyyy");
         TglKedatangan.setName("TglKedatangan"); // NOI18N
         TglKedatangan.setOpaque(false);
@@ -1156,7 +1156,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
 
         scrollInput.setViewportView(FormInput);
 
-        PanelInput.add(scrollInput, java.awt.BorderLayout.LINE_END);
+        PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
@@ -1696,9 +1696,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){    
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("asal"),rs.getString("no_ktp"),rs.getString("no_tlp"),
-                        rs.getString("pekerjaan"),rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("nip"),rs.getString("nama"),rs.getString("gejala_demam"),
+                        rs.getString("pekerjaan"),rs.getDate("tgl_lahir"),rs.getString("tanggal"),rs.getString("nip"),rs.getString("nama"),rs.getString("gejala_demam"),
                         rs.getString("gejala_batuk"),rs.getString("gejala_sesak"),rs.getString("gejala_tanggal_pertama"),rs.getString("gejala_riwayat_sakit"),rs.getString("gejala_riwayat_periksa"),
                         rs.getString("faktor_riwayat_perjalanan"),rs.getString("faktor_asal_daerah"),rs.getString("faktor_tanggal_kedatangan"),rs.getString("faktor_paparan_kontakpositif"),
                         rs.getString("faktor_paparan_kontakpdp"),rs.getString("faktor_paparan_faskespositif"),rs.getString("faktor_paparan_perjalananln"),rs.getString("faktor_paparan_pasarhewan"),
