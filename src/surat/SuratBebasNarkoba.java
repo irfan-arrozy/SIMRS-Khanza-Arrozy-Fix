@@ -109,7 +109,7 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
         
         NoSurat.setDocument(new batasInput((byte)20).getKata(NoSurat));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));  
-        Keperluan.setDocument(new batasInput((byte)50).getKata(Keperluan));         
+        Keperluan.setDocument(new batasInput((byte)300).getKata(Keperluan));         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));           
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1489,7 +1489,8 @@ public final class SuratBebasNarkoba extends javax.swing.JDialog {
     }
        
     private void autoSKBN() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_skbn.no_surat,3),signed)),0) from surat_skbn where surat_skbn.tanggalsurat='"+Valid.SetTgl(TanggalSurat.getSelectedItem()+"")+"' ", "", 3, NoSurat);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_skbn.no_surat,3),signed)),0) from surat_skbn where surat_skbn.tanggalsurat='"+Valid.SetTgl(TanggalSurat.getSelectedItem()+"")+"' ",
+                "SKBN"+TanggalSurat.getSelectedItem().toString().substring(6,10)+TanggalSurat.getSelectedItem().toString().substring(3,5)+TanggalSurat.getSelectedItem().toString().substring(0,2),3,NoSurat); 
     }
     
     public void isCek(){

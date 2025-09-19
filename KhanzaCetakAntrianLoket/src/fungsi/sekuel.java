@@ -834,8 +834,7 @@ public final class sekuel {
         }    
     }
     
-    public void mengedit2(String table,String acuan_field,String update,int i, String[] a, String[] whereParams) {
-               
+    public void mengedit2(String table,String acuan_field,String update,int i,String[] a){
         try {
             ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
             try{
