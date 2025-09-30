@@ -225,6 +225,7 @@ import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMTriaseIGD;
 import rekammedis.RMUjiFungsiKFR;
+import rekammedis.RMDataCatatanPoli;
 import surat.SuratBebasNarkoba;
 import surat.SuratBebasTato;
 import surat.SuratButaWarna;
@@ -667,6 +668,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnCatatanPoli = new javax.swing.JMenuItem();
         MnDataRM = new javax.swing.JMenu();
         MnRMIGD = new javax.swing.JMenu();
         MnDataTriaseIGD = new javax.swing.JMenuItem();
@@ -770,6 +772,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPermintaanRadiologi = new javax.swing.JMenuItem();
         MnPermintaanRanap = new javax.swing.JMenuItem();
         MnPermintaanInformasiObat = new javax.swing.JMenuItem();
+        MnCatatanPoli = new javax.swing.JMenuItem();
         ppMasukPoli = new javax.swing.JMenuItem();
         MnKamarInap = new javax.swing.JMenuItem();
         MnTindakanRalan = new javax.swing.JMenu();
@@ -1088,6 +1091,25 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         jPopupMenu1.setForeground(new java.awt.Color(50, 50, 50));
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        jPopupMenu1.add(MnCatatanPoli);
+                MnCatatanPoli.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanPoli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanPoli.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanPoli.setText("Catatan Petugas");
+        MnCatatanPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanPoli.setName("MnCatatanPoli"); // NOI18N
+        MnCatatanPoli.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnCatatanPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCatatanPoliActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCatatanPoli);
+        
+        jPopupMenu1.add(ppMasukPoli);
 
         MnDataRM.setBackground(new java.awt.Color(255, 255, 254));
         MnDataRM.setForeground(new java.awt.Color(50, 50, 50));
@@ -7829,7 +7851,28 @@ private void MnSudahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             
         }
 }//GEN-LAST:event_MnSudahActionPerformed
-
+      private void MnCatatanPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRiwayatBtnPrintActionPerformed
+       if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasienCari.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+               this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+               RMDataCatatanPoli form1=new RMDataCatatanPoli(null,false);
+               form1.isCek();
+                form1.emptTeks();
+                form1.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form1.setLocationRelativeTo(internalFrame1);
+                form1.setNoRm(TNoRMCari.getText(),TPasienCari.getText());
+                form1.tampil();
+                form1.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }   
+        }
+       }//GEN-LAST:event_MnSudahActionPerformed 
 private void MnBelumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBelumActionPerformed
        if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
@@ -15367,6 +15410,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox Kd2;
     private widget.Label LCount;
     private widget.Label LabelCatatan;
+    private javax.swing.JMenuItem MnCatatanPoli;
     private javax.swing.JMenu MenuInputData;
     private javax.swing.JMenu MenuInputData1;
     private javax.swing.JMenu MnAwalKeperawatan;

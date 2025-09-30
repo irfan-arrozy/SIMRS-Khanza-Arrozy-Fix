@@ -243,6 +243,7 @@ import rekammedis.RMSkriningTalasemia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMUjiFungsiKFR;
+import rekammedis.RMDataCatatanPoli;
 import surat.SuratBebasNarkoba;
 import surat.SuratBebasTato;
 import surat.SuratButaWarna;
@@ -1414,6 +1415,23 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel31 = new widget.Label();
         NoKa = new widget.TextBox();
         btnCekBridging = new widget.Button();
+                        jSeparatorStatus = new javax.swing.JSeparator();
+               prb = new widget.Label();
+        iter = new widget.Label();
+        prmrj = new widget.Label();
+        cat = new widget.Label();
+        cat1 = new widget.Label();
+        CatStatusPRB = new widget.TextBox();
+        CatStatusIter = new widget.TextBox();
+        CatStatusPRMRJ = new widget.TextBox();
+       // CatPembuatStatus = new widget.TextBox();
+        tb = new widget.Label();
+        CatStatusTB = new widget.TextBox();
+        tgldibuat = new widget.Label();
+        CatTglStatus = new widget.TextBox();
+        //pembuat = new widget.Label();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CatStatus = new javax.swing.JTextArea(); 
         ChkInput = new widget.CekBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -6913,6 +6931,123 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         FormInput.add(btnCekBridging);
         btnCekBridging.setBounds(852, 102, 28, 23);
+        
+                
+                prb.setText("Status PRB :");
+        prb.setName("prb"); // NOI18N
+        FormInput.add(prb);
+        prb.setBounds(910, 40, 100, 23);
+
+        iter.setText("Status Iter :");
+        iter.setName("iter"); // NOI18N
+        FormInput.add(iter);
+        iter.setBounds(860, 70, 150, 23);
+
+        cat1.setText("Catatan :");
+        cat1.setName("cat1"); // NOI18N
+        FormInput.add(cat1);
+        cat1.setBounds(1140, 40, 90, 23);
+        
+                cat.setText("Catatan Petugas");
+        cat.setName("cat"); // NOI18N
+        FormInput.add(cat);
+        cat.setBounds(910, 10, 90, 23);
+
+        CatStatusPRB.setHighlighter(null);
+        CatStatusPRB.setName("CatStatusPRB"); // NOI18N
+        CatStatusPRB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+              //  CatStatusPRBKeyPressed(evt);
+            }
+        });
+        FormInput.add(CatStatusPRB);
+        CatStatusPRB.setBounds(1020, 40, 90, 23);
+
+        CatStatusIter.setHighlighter(null);
+        CatStatusIter.setName("CatStatusIter"); // NOI18N
+        CatStatusIter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                //CatStatusIterKeyPressed(evt);
+            }
+        });
+        FormInput.add(CatStatusIter);
+        CatStatusIter.setBounds(1020, 70, 90, 23);
+
+    //    CatPembuatStatus.setHighlighter(null);
+    //    CatPembuatStatus.setName("CatPembuatStatus"); // NOI18N
+    //    CatPembuatStatus.addKeyListener(new java.awt.event.KeyAdapter() {
+     //       public void keyPressed(java.awt.event.KeyEvent evt) {
+     //           //CatPembuatStatusKeyPressed(evt);
+      //      }
+      //  });
+      //  FormInput.add(CatPembuatStatus);
+      //  CatPembuatStatus.setBounds(1010, 130, 120, 23);
+
+        tb.setText("Status TB :");
+        tb.setName("tb"); // NOI18N
+        FormInput.add(tb);
+        tb.setBounds(920, 100, 90, 23);
+
+        CatStatusTB.setHighlighter(null);
+        CatStatusTB.setName("CatStatusTB"); // NOI18N
+        CatStatusTB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                //CatStatusTBKeyPressed(evt);
+            }
+        });
+        FormInput.add(CatStatusTB);
+        CatStatusTB.setBounds(1020, 100, 90, 23);
+
+         prmrj.setText("Status PRMRJ :");
+        prmrj.setName("prmrj"); // NOI18N
+        FormInput.add(prmrj);
+        prmrj.setBounds(920, 130, 90, 23);
+
+        CatStatusPRMRJ.setHighlighter(null);
+        CatStatusPRMRJ.setName("CatStatusPRMRJ"); // NOI18N
+        CatStatusPRMRJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                //CatStatusPRMRJKeyPressed(evt);
+            }
+        });
+        FormInput.add(CatStatusPRMRJ);
+        CatStatusPRMRJ.setBounds(1020, 130, 90, 23);
+        
+        
+        tgldibuat.setText("Tgl. Catatan Dibuat :");
+        tgldibuat.setName("tgldibuat"); // NOI18N
+        FormInput.add(tgldibuat);
+        tgldibuat.setBounds(1120, 100, 110, 23);
+
+        CatTglStatus.setHighlighter(null);
+        CatTglStatus.setName("CatTglStatus"); // NOI18N
+        CatTglStatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                //CatTglStatusKeyPressed(evt);
+            }
+        });
+        FormInput.add(CatTglStatus);
+        CatTglStatus.setBounds(1120, 130, 120, 23);
+
+       // pembuat.setText("Pembuat Status :");
+       // pembuat.setName("pembuat"); // NOI18N
+       // FormInput.add(pembuat);
+       // pembuat.setBounds(910, 130, 90, 23);
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        CatStatus.setColumns(20);
+        CatStatus.setRows(5);
+        CatStatus.setName("CatStatus"); // NOI18N
+        jScrollPane1.setViewportView(CatStatus);
+
+        FormInput.add(jScrollPane1);
+        jScrollPane1.setBounds(1250, 40, 290, 110);
+
+        jSeparatorStatus.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparatorStatus.setName("jSeparatorStatus"); // NOI18N
+        FormInput.add(jSeparatorStatus);
+        jSeparatorStatus.setBounds(900, 10, 10, 150);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -16133,6 +16268,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Button BtnSeek5;
     private widget.Button BtnSimpan;
     private widget.Button BtnUnit;
+        private widget.TextBox CatPembuatStatus;
+    private javax.swing.JTextArea CatStatus;
+    private widget.TextBox CatStatusIter;
+    private widget.TextBox CatStatusPRMRJ;
+    private widget.TextBox CatStatusPRB;
+    private widget.TextBox CatStatusTB;
+    private widget.TextBox CatTglStatus;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkJln;
     private widget.CekBox ChkTracker;
@@ -16469,6 +16611,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
+    private widget.Label iter;
+private widget.Label cat;
+private widget.Label cat1;
+private widget.Label tgldibuat;
+private javax.swing.JScrollPane jScrollPane1;
+private javax.swing.JSeparator jSeparatorStatus;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -16528,6 +16676,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppSuratPRI;
     private widget.Table tbPetugas;
     private widget.Table tbPetugas2;
+            private widget.Label prb;
+    private widget.Label prmrj;    
+    private widget.Label tb;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianRisikoJatuhDewasa,MnPenilaianRisikoJatuhAnak,MnPenilaianRisikoJatuhLansia,MnPenilaianRisikoJatuhNeonatus,MnPenilaianRisikoJatuhGeriatri,MnPenilaianRisikoJatuhPsikiatri,MnPenilaianLanjutanSkriningFungsional,
             MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,
@@ -16749,6 +16900,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             TStatus.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),17).toString());  
             kdpoli.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),21).toString()); 
             kdpnj.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),22).toString()); 
+            CatStatusPRB.setText(Sequel.cariIsi("select catatan_poli.status_prb from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                            CatStatusIter.setText(Sequel.cariIsi("select catatan_poli.status_iter from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                            CatStatusTB.setText(Sequel.cariIsi("select catatan_poli.status_tb from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                            CatStatusPRMRJ.setText(Sequel.cariIsi("select catatan_poli.status_prmrj from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                            CatTglStatus.setText(Sequel.cariIsi("select catatan_poli.tanggal from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                           // CatPembuatStatus.setText(Sequel.cariIsi("select catatan_poli.nip from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
+                           CatStatus.setText(Sequel.cariIsi("select catatan_poli.uraian from catatan_poli where catatan_poli.no_rkm_medis=?",TNoRM.getText()));
             Sequel.cariIsi("select rujuk_masuk.perujuk from rujuk_masuk where rujuk_masuk.no_rawat=?", AsalRujukan,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             TNoRw.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             TNoReg.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),1).toString());    
