@@ -7,6 +7,11 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import inventory.DlgCariAturanPakai;
+import inventory.DlgCariMetodeRacik;
+import inventory.DlgCariPenjualan;
+import inventory.DlgCekStok;
+import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1982,6 +1987,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 }//GEN-LAST:event_BtnGudangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Bayar.setText("0");
+        Ongkir.setText("0");
         tampil();
         try {
             if(Valid.daysOld("./cache/akunbayar.iyem")<8){

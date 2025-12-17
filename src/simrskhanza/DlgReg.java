@@ -87,7 +87,6 @@ import bridging.ICareRiwayatPerawatanFKTP;
 import bridging.INACBGPerawatanCorona;
 import bridging.PilihanBridgingAsuransi;
 import inventory.DlgCopyResep;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
@@ -217,12 +216,14 @@ import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
 import rekammedis.RMSkriningAnemia;
+import rekammedis.RMSkriningCURB65;
 import rekammedis.RMSkriningDiabetesMelitus;
 import rekammedis.RMSkriningFrailtySyndrome;
 import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenACRS;
 import rekammedis.RMSkriningInstrumenAMT;
+import rekammedis.RMSkriningInstrumenESAT;
 import rekammedis.RMSkriningInstrumenMentalEmosional;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
@@ -270,6 +271,7 @@ import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
 import surat.SuratTidakHamil;
+import java.util.List;
 /**
  *
  * @author dosen
@@ -439,7 +441,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabMode2=new DefaultTableModel(null,new Object[]{
-            "P","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Rujukan","Nomer RM",
+            "P","No.Rawat","Tanggal","Jam","Kode Dokter","Dokter Rujukan","Nomer RM",
             "Pasien","J.K.","Umur","Poliklinik Rujukan","Jenis Bayar","Penanggung Jawab",
             "Alamat P.J.","Hubungan P.J.","Status","No.Telp","Stts Rawat","Kode Poli","Kode PJ"
             }){
@@ -16349,6 +16351,52 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnSkriningInstrumenESATActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMSkriningInstrumenESAT form=new RMSkriningInstrumenESAT(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());  
+            }                
+        }
+    }
+    
+    private void MnSkriningCURB65ActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMSkriningCURB65 form=new RMSkriningCURB65(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());  
+            }                
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16805,14 +16853,15 @@ private javax.swing.JSeparator jSeparatorStatus;
             MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnSkriningDiabetesMelitus,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi,MnLayananKedokteranFisikRehabilitasi,MnSkriningKesehatanGigiMulutBalita,
             MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
             MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
-            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik;
-    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen;
+            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi,MnHasilPemeriksaanTreadmill,MnHasilPemeriksaanECHOPediatrik,
+            MnSkriningInstrumenESAT,MnSkriningCURB65;
+    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen,MnSkriningParu;
     
-    private synchronized void tampil() {
+    private void tampil() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode); 
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try {
@@ -16872,7 +16921,7 @@ private javax.swing.JSeparator jSeparatorStatus;
                                     rs.getString("kd_poli"),rs.getString("kd_pj"),rs.getString("status_bayar")
                                 };  
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }   
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16892,6 +16941,13 @@ private javax.swing.JSeparator jSeparatorStatus;
                 }
 
                 @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
+                
+                @Override
                 protected void done() {
                     LCount.setText(""+i);
                     ceksukses = false;
@@ -16900,11 +16956,11 @@ private javax.swing.JSeparator jSeparatorStatus;
         }
     }
 
-    private synchronized void tampil2() {
+    private void tampil2() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode2); 
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() {
                     try {
@@ -16939,7 +16995,7 @@ private javax.swing.JSeparator jSeparatorStatus;
                             i=0;
                             while(rs.next()){
                                 Object[] row = new Object[]{
-                                    rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
+                                    false,rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
                                     rs.getString("jam_reg"),rs.getString("kd_dokter"),
                                     rs.getString("nm_dokter"),rs.getString("no_rkm_medis"),
                                     rs.getString("nm_pasien"),rs.getString("jk"),
@@ -16950,7 +17006,7 @@ private javax.swing.JSeparator jSeparatorStatus;
                                     rs.getString("stts"),rs.getString("kd_poli"),rs.getString("kd_pj")
                                 };
                                 i++;
-                                SwingUtilities.invokeLater(() -> tabMode2.addRow(row));
+                                publish(row);
                             }                    
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -16967,6 +17023,13 @@ private javax.swing.JSeparator jSeparatorStatus;
                         System.out.println("Notifikasi : "+e);
                     } 
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode2.addRow(row);
+                    }
                 }
 
                 @Override
@@ -17450,7 +17513,9 @@ private javax.swing.JSeparator jSeparatorStatus;
         MnSkriningInstrumenACRS.setEnabled(akses.getskrining_instrumen_acrs());
         MnSkriningInstrumenMentalEmosional.setEnabled(akses.getskrining_instrumen_mental_emosional());
         MnSkriningInstrumenAMT.setEnabled(akses.getskrining_instrumen_amt());
+        MnSkriningInstrumenESAT.setEnabled(akses.getskrining_instrumen_esat());
         MnSkriningPneumoniaSeverityIndex.setEnabled(akses.getskrining_pneumonia_severity_index());
+        MnSkriningCURB65.setEnabled(akses.getskrining_curb65());
         MnSkriningKankerKolorektal.setEnabled(akses.getskrining_kanker_kolorektal());
         MnSkriningDiabetesMelitus.setEnabled(akses.getskrining_diabetes_melitus());
         MnLaporanTindakan.setEnabled(akses.getlaporan_tindakan());
@@ -18482,6 +18547,18 @@ private javax.swing.JSeparator jSeparatorStatus;
         MnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(200, 26));
         MnSkriningInstrumenAMT.addActionListener(this::MnSkriningInstrumenAMTActionPerformed);
         
+        MnSkriningInstrumenESAT = new javax.swing.JMenuItem();
+        MnSkriningInstrumenESAT.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningInstrumenESAT.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnSkriningInstrumenESAT.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningInstrumenESAT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSkriningInstrumenESAT.setText("ESAT");
+        MnSkriningInstrumenESAT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkriningInstrumenESAT.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkriningInstrumenESAT.setName("MnSkriningInstrumenESAT");
+        MnSkriningInstrumenESAT.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningInstrumenESAT.addActionListener(this::MnSkriningInstrumenESATActionPerformed);
+        
         MnSkriningPneumoniaSeverityIndex = new javax.swing.JMenuItem();
         MnSkriningPneumoniaSeverityIndex.setBackground(new java.awt.Color(255, 255, 254));
         MnSkriningPneumoniaSeverityIndex.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -18493,6 +18570,18 @@ private javax.swing.JSeparator jSeparatorStatus;
         MnSkriningPneumoniaSeverityIndex.setName("MnSkriningPneumoniaSeverityIndex");
         MnSkriningPneumoniaSeverityIndex.setPreferredSize(new java.awt.Dimension(200, 26));
         MnSkriningPneumoniaSeverityIndex.addActionListener(this::MnSkriningPneumoniaSeverityIndexActionPerformed);
+        
+        MnSkriningCURB65 = new javax.swing.JMenuItem();
+        MnSkriningCURB65.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningCURB65.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnSkriningCURB65.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningCURB65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSkriningCURB65.setText("Skrining CURB-65");
+        MnSkriningCURB65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkriningCURB65.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkriningCURB65.setName("MnSkriningCURB65");
+        MnSkriningCURB65.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningCURB65.addActionListener(this::MnSkriningCURB65ActionPerformed);
         
         MnSkriningKankerKolorektal = new javax.swing.JMenuItem();
         MnSkriningKankerKolorektal.setBackground(new java.awt.Color(255, 255, 254));
@@ -18797,6 +18886,17 @@ private javax.swing.JSeparator jSeparatorStatus;
         MnSkriningInstrumen.setName("MnSkriningInstrumen"); 
         MnSkriningInstrumen.setPreferredSize(new java.awt.Dimension(200, 26));
         
+        MnSkriningParu = new javax.swing.JMenu();
+        MnSkriningParu.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningParu.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningParu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnSkriningParu.setText("Skrining Paru");
+        MnSkriningParu.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnSkriningParu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSkriningParu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSkriningParu.setName("MnSkriningParu"); 
+        MnSkriningParu.setPreferredSize(new java.awt.Dimension(200, 26));
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
 	MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -18919,23 +19019,28 @@ private javax.swing.JSeparator jSeparatorStatus;
         MnRMSkrining.add(MnSkriningObesitas);
         MnRMSkrining.add(MnRMSkriningRisikoKanker);
         MnRMSkrining.add(MnRMSkriningKesehatanGigiMulut);
-        MnRMSkrining.add(MnSkriningTBC);
-        MnRMSkrining.add(MnSkriningPUMA);
-        MnRMSkrining.add(MnSkriningPneumoniaSeverityIndex);
+        MnRMSkrining.add(MnSkriningParu);
         MnRMSkrining.add(MnSkriningAdiksiNikotin);
         MnRMSkrining.add(MnSkriningThalassemia);
         MnRMSkrining.add(MnSkriningInstrumen);
-        MnSkriningInstrumen.add(MnSkriningInstrumenSDQ);
-        MnSkriningInstrumen.add(MnSkriningInstrumenSRQ);
-        MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
-        MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
-        MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
         MnRMSkrining.add(MnSkriningDiabetesMelitus);
         MnRMSkrining.add(MnSkriningAnemia);
         MnRMSkrining.add(MnSkriningHipertensi);
         MnRMSkrining.add(MnSkriningKesehatanPenglihatan);
         MnRMSkrining.add(MnSkriningIndraPendengaran);
         MnRMSkrining.add(MnSkriningFrailtySyndrome);
+        
+        MnSkriningParu.add(MnSkriningTBC);
+        MnSkriningParu.add(MnSkriningPUMA);
+        MnSkriningParu.add(MnSkriningPneumoniaSeverityIndex);
+        MnSkriningParu.add(MnSkriningCURB65);
+        
+        MnSkriningInstrumen.add(MnSkriningInstrumenSDQ);
+        MnSkriningInstrumen.add(MnSkriningInstrumenSRQ);
+        MnSkriningInstrumen.add(MnSkriningInstrumenACRS);
+        MnSkriningInstrumen.add(MnSkriningInstrumenMentalEmosional);
+        MnSkriningInstrumen.add(MnSkriningInstrumenAMT);
+        MnSkriningInstrumen.add(MnSkriningInstrumenESAT);
         
         MnRMSkriningKesehatanGigiMulut.add(MnSkriningKesehatanGigiMulutRemaja);
         MnRMSkriningKesehatanGigiMulut.add(MnSkriningKesehatanGigiMulutBalita);

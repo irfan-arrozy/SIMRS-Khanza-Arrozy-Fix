@@ -29,8 +29,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import java.util.List;
 
 /**
  *
@@ -47,7 +47,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
     private String koderekening="",notagihan="",nomorpemasukan="",carabayar="";
     private Jurnal jur=new Jurnal();
     private String status="",Diskon_Piutang="",Piutang_Tidak_Terbayar="",Lebih_Bayar_Piutang="";
-    private double total=0,lebihbayar=0;
+    private double total=0,lebihbayar=0,piutangdivalidasi=0;
     private boolean sukses=false,ceksukses=false;
     private File file;
     private FileWriter fileWriter;
@@ -1041,11 +1041,16 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             Sequel.AutoComitTrue();
             
             if(sukses==true){
-                tampilperakun();
                 if(!notagihan.equals("")){
-                    Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",notagihan);
+                    if(piutangdivalidasi==total){
+                        Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",notagihan);
+                    }else{
+                        Sequel.queryu("update penagihan_piutang set status='Belum Lunas' where no_tagihan=?",notagihan);
+                    }
+                    piutangdivalidasi=0;
                 }
                 notagihan="";
+                tampilperakun();
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1366,11 +1371,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    private synchronized void tampil(){
+    private void tampil(){
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -1399,7 +1404,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     cicilan,(rs.getDouble(7)-cicilan),rs.getString(8),rs.getString(9),(rs.getDouble(7)-cicilan),0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble(7)-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -1416,6 +1421,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }
                     return null;
                 }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
+                }
 
                 @Override
                 protected void done() {
@@ -1426,11 +1438,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 
-    private synchronized void tampilperakun() {
+    private void tampilperakun() {
         if(ceksukses==false){
             ceksukses=true;
             Valid.tabelKosong(tabMode);
-            new SwingWorker<Void, Void>() {
+            new SwingWorker<Void, Object[]>() {
                 @Override
                 protected Void doInBackground() throws Exception {
                     try{
@@ -1458,7 +1470,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                     cicilan,rs.getDouble(7),rs.getString(8),rs.getString(9),rs.getDouble(7),0,0
                                 };
                                 sisapiutang=sisapiutang+rs.getDouble(7)-cicilan;
-                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                publish(row);
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -1474,6 +1486,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         System.out.println("Notifikasi : "+e);
                     }
                     return null;
+                }
+                
+                @Override
+                protected void process(List<Object[]> data) {
+                    for (Object[] row : data) {
+                        tabMode.addRow(row);
+                    }
                 }
 
                 @Override
@@ -1542,7 +1561,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     ps.close();
                 }
             }
-            
+            piutangdivalidasi=sisapiutang;
             LCount.setText(Valid.SetAngka(sisapiutang));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
