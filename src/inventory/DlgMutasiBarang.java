@@ -12,8 +12,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -22,9 +22,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -38,13 +40,12 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private PreparedStatement ps,psstok;
     private ResultSet rs,rsstok;
-    private int jml=0,i=0,row=0,index=0,pilihan=0;
+    private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,jumlah,satuan,nobatch,nofaktur,kadaluarsa;
     private double[] harga,total,stokasal,stoktujuan; 
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    private DlgCariBangsal lokasidepo;
     private double stok_asal,stok_tujuan;
     private WarnaTable2 warna=new WarnaTable2();
-    public boolean tampilkanpermintaan=false;
     private boolean sukses=false;
     private String aktifkanbatch="no",DEPOAKTIFOBAT="",hppfarmasi="",nomorpermintaan="";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -140,42 +141,6 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
                 }
             });
         }
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgMutasiBarang")){
-                    if(bangsal.getTable().getSelectedRow()!= -1){   
-                        if(pilihan==2){
-                            kdke.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                            nmke.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                            kdke.requestFocus();
-                        }else if(pilihan==1){
-                            kddari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                            nmdari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                            kddari.requestFocus();
-                        }                    
-                        tampil();
-                        tampil2();
-                        if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
-                            runBackground(() ->isCekStok());
-                        }
-                    }                
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -278,11 +243,6 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -720,21 +680,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-        if(tampilkanpermintaan==true){
-            runBackground(() ->tampil2());
-        }        
-    }//GEN-LAST:event_formWindowOpened
-
     private void kddariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmdari.setText(bangsal.tampil3(kddari.getText()));  
+            nmdari.setText(Sequel.CariBangsal(kddari.getText()));  
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmdari.setText(bangsal.tampil3(kddari.getText())); 
+            nmdari.setText(Sequel.CariBangsal(kddari.getText())); 
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            nmdari.setText(bangsal.tampil3(kddari.getText())); 
+            nmdari.setText(Sequel.CariBangsal(kddari.getText())); 
             kdke.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDariActionPerformed(null);
@@ -742,25 +695,77 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_kddariKeyPressed
 
     private void btnDariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDariActionPerformed
-        pilihan=1;
-        akses.setform("DlgMutasiBarang");
-        bangsal.emptTeks();
-        bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
-        bangsal.setVisible(true);
+        if (lokasidepo == null || !lokasidepo.isDisplayable()) {
+            lokasidepo=new DlgCariBangsal(null,false);
+            lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            lokasidepo.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(lokasidepo.getTable().getSelectedRow()!= -1){                   
+                        kddari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
+                        nmdari.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
+                        kddari.requestFocus();
+                        if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
+                            runBackground(() ->loadTabelStok());
+                        }else{
+                            runBackground(() ->loadTabel());
+                        }
+                    } 
+                    lokasidepo=null;
+                }
+            }); 
+
+            lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            lokasidepo.setLocationRelativeTo(internalFrame1);
+        }
+        if (lokasidepo == null) return;
+        if (!lokasidepo.isVisible()) {
+            lokasidepo.isCek();    
+            lokasidepo.emptTeks();
+        }
+
+        if (lokasidepo.isVisible()) {
+            lokasidepo.toFront();
+            return;
+        }
+        lokasidepo.setVisible(true);
     }//GEN-LAST:event_btnDariActionPerformed
 
     private void btnKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeActionPerformed
-        akses.setform("DlgMutasiBarang");
-        pilihan=2;
-        bangsal.emptTeks();
-        bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
-        bangsal.setVisible(true);
+        if (lokasidepo == null || !lokasidepo.isDisplayable()) {
+            lokasidepo=new DlgCariBangsal(null,false);
+            lokasidepo.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            lokasidepo.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(lokasidepo.getTable().getSelectedRow()!= -1){                   
+                        kdke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),0).toString());
+                        nmke.setText(lokasidepo.getTable().getValueAt(lokasidepo.getTable().getSelectedRow(),1).toString());
+                        kdke.requestFocus();
+                        if((!kdke.getText().equals(""))&&(!kddari.getText().equals(""))){
+                            runBackground(() ->loadTabelStok());
+                        }else{
+                            runBackground(() ->loadTabel());
+                        }
+                    } 
+                    lokasidepo=null;
+                }
+            }); 
+
+            lokasidepo.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            lokasidepo.setLocationRelativeTo(internalFrame1);
+        }
+        if (lokasidepo == null) return;
+        if (!lokasidepo.isVisible()) {
+            lokasidepo.isCek();    
+            lokasidepo.emptTeks();
+        }
+
+        if (lokasidepo.isVisible()) {
+            lokasidepo.toFront();
+            return;
+        }
+        lokasidepo.setVisible(true);
     }//GEN-LAST:event_btnKeActionPerformed
 
     private void kdkeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkeKeyPressed
@@ -1054,8 +1059,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
-        runBackground(() ->tampil2());
+        runBackground(() ->loadTabel());
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1114,6 +1118,17 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
+    private void loadTabel(){
+        tampil();
+        tampil2();
+    }
+    
+    private void loadTabelStok(){
+        tampil();
+        tampil2();
+        isCekStok();
+    }
+    
     private void tampil() {
         if(!kddari.getText().equals("")){
             try{
@@ -1368,7 +1383,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(!akses.getkode().equals("Admin Utama")){
             if(!DEPOAKTIFOBAT.equals("")){
                 kddari.setText(DEPOAKTIFOBAT);
-                nmdari.setText(bangsal.tampil3(DEPOAKTIFOBAT));
+                nmdari.setText(Sequel.CariBangsal(DEPOAKTIFOBAT));
                 btnDari.setEnabled(false);
             }
         }
@@ -1678,19 +1693,33 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void runBackground(Runnable task) {
         if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
         ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        executor.submit(() -> {
-            try {
-                task.run();
-            } finally {
-                ceksukses = false;
-                SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
-                });
-            }
-        });
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

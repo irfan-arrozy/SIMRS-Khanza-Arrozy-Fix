@@ -29,6 +29,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
@@ -47,7 +48,6 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    public String Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="",akun="",kontraakun="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -272,7 +272,32 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampilAkunBankMandiri();
+        try{     
+            ps=koneksi.prepareStatement(
+                    "select set_akun_mandiri.kd_rek,set_akun_mandiri.kd_rek_biaya,set_akun_mandiri.kode_mcm,set_akun_mandiri.no_rekening from set_akun_mandiri");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    file=new File("./cache/akunbankmandiri.iyem");
+                    file.createNewFile();
+                    fileWriter = new FileWriter(file);
+                    fileWriter.write("{\"akunbankmandiri\":\""+rs.getString("kd_rek")+"\",\"kodemcm\":\""+rs.getString("kode_mcm")+"\",\"akunbiayabankmandiri\":\""+rs.getString("kd_rek_biaya")+"\",\"norekening\":\""+rs.getString("no_rekening")+"\"}");
+                    fileWriter.flush();
+                    fileWriter.close();
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Nota : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+             System.out.println("Notif Nota : "+e);
+        }
         runBackground(() ->tampil());
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -303,11 +328,6 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
-                tampilAkunBankMandiri2();
-            }else{
-                tampilAkunBankMandiri();
-            }
             if(Valid.daysOld("./cache/kategoripengeluaran.iyem")<30){
                 runBackground(() ->tampil2());
             }else{
@@ -430,86 +450,39 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
         return tbKamar;
     }
     
-    public void tampilAkunBankMandiri() { 
-        try{     
-            ps=koneksi.prepareStatement(
-                    "select set_akun_mandiri.kd_rek,set_akun_mandiri.kd_rek_biaya,set_akun_mandiri.kode_mcm,set_akun_mandiri.no_rekening from set_akun_mandiri");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    file=new File("./cache/akunbankmandiri.iyem");
-                    file.createNewFile();
-                    fileWriter = new FileWriter(file);
-                    Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
-                    Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
-                    kodemcm=rs.getString("kode_mcm");
-                    norekening=rs.getString("no_rekening");
-                    fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
-                    fileWriter.flush();
-                    fileWriter.close();
-                }
-            } catch (Exception e) {
-                Host_to_Host_Bank_Mandiri="";
-                Akun_Biaya_Mandiri="";
-                kodemcm="";
-                norekening="";
-                System.out.println("Notif Nota : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-             Host_to_Host_Bank_Mandiri="";
-             Akun_Biaya_Mandiri="";
-             kodemcm="";
-             norekening="";
-        }
-    }
-    
-    public void tampilAkunBankMandiri2() { 
-        try{      
-             myObj = new FileReader("./cache/akunbankmandiri.iyem");
-             root = mapper.readTree(myObj);
-             response = root.path("akunbankmandiri");
-             Host_to_Host_Bank_Mandiri=response.asText();
-             response = root.path("akunbiayabankmandiri");
-             Akun_Biaya_Mandiri=response.asText();
-             response = root.path("kodemcm");
-             kodemcm=response.asText();
-             response = root.path("norekening");
-             norekening=response.asText();
-             myObj.close();
-        } catch (Exception e) {
-             Host_to_Host_Bank_Mandiri="";
-             Akun_Biaya_Mandiri="";
-             kodemcm="";
-             norekening="";
-        }
-    }
-    
     public void isCek(){
         BtnTambah.setEnabled(akses.getkategori_pengeluaran_harian());     
     }
     
     private void runBackground(Runnable task) {
         if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
         ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        executor.submit(() -> {
-            try {
-                task.run();
-            } finally {
-                ceksukses = false;
-                SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
-                });
-            }
-        });
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

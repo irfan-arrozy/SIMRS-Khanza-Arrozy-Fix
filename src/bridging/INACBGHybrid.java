@@ -22,6 +22,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -53,6 +55,8 @@ import keuangan.DlgBilingRalan;
 import keuangan.DlgBilingRanap;
 import laporan.DlgDiagnosaPenyakit;
 import rekammedis.RMRiwayatPerawatan;
+import java.util.concurrent.RejectedExecutionException;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -72,6 +76,8 @@ public class INACBGHybrid extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private String URL="";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
                                     
     
     public INACBGHybrid(java.awt.Frame parent, boolean modal) {
@@ -82,7 +88,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
     
     private void initComponents2() {           
         txtURL.addActionListener((ActionEvent e) -> {
-            loadURL(txtURL.getText());
+            runBackground(() ->loadURL(txtURL.getText()));
         });
   
         progressBar.setPreferredSize(new Dimension(150, 18));
@@ -179,7 +185,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -194,7 +200,6 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                             diagnosa.setLocationRelativeTo(internalFrame1);
                                             diagnosa.isCek();
                                             diagnosa.setNoRm(rs.getString("no_rawat"),rs.getDate("tgl_registrasi"),rs.getDate("tgl_registrasi"),rs.getString("status_lanjut"));
-                                            diagnosa.panelDiagnosa1.tampil();
                                             diagnosa.setVisible(true); 
                                         }
                                     } catch (Exception e) {
@@ -223,7 +228,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -267,7 +272,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                 public void windowClosing(WindowEvent e) {}
                                                 @Override
                                                 public void windowClosed(WindowEvent e) {
-                                                    loadURL(URL);
+                                                    runBackground(() ->loadURL(URL));
                                                 }
                                                 @Override
                                                 public void windowIconified(WindowEvent e) {}
@@ -309,7 +314,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                     public void windowClosing(WindowEvent e) {}
                                                     @Override
                                                     public void windowClosed(WindowEvent e) {
-                                                        loadURL(URL);
+                                                        runBackground(() ->loadURL(URL));
                                                     }
                                                     @Override
                                                     public void windowIconified(WindowEvent e) {}
@@ -335,7 +340,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                                     public void windowClosing(WindowEvent e) {}
                                                     @Override
                                                     public void windowClosed(WindowEvent e) {
-                                                        loadURL(URL);
+                                                        runBackground(() ->loadURL(URL));
                                                     }
                                                     @Override
                                                     public void windowIconified(WindowEvent e) {}
@@ -376,7 +381,7 @@ public class INACBGHybrid extends javax.swing.JDialog {
             }
         });
     }
- 
+     
     public void loadURL(String url) {  
         try {
             createScene();
@@ -479,5 +484,37 @@ public class INACBGHybrid extends javax.swing.JDialog {
 
     public void setJudul(String Judul){
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), Judul, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }

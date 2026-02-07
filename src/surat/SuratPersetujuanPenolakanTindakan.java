@@ -15,8 +15,8 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,6 +39,7 @@ import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.WindowConstants;
 
 
 /**
@@ -55,7 +56,9 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private int i=0;
     private StringBuilder htmlContent;
     private String pilihan="";
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariDokter dokter;
+    private DlgCariPetugas petugas;
+    private MasterCariTemplatePersetujuanPenolakanTindakan template;
     private String finger="",finger2="",lokasifile="",lokasifile2="";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
@@ -239,29 +242,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 }
             });
         }
-        
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    KdDokter.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML2.setEditable(true);
@@ -557,11 +537,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -712,7 +687,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         HubunganDenganPasien.setBounds(179, 490, 140, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2026" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -1044,7 +1019,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         jLabel39.setBounds(460, 490, 90, 23);
 
         TglLahirPenerima.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        TglLahirPenerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2026" }));
         TglLahirPenerima.setDisplayFormat("dd-MM-yyyy");
         TglLahirPenerima.setName("TglLahirPenerima"); // NOI18N
         TglLahirPenerima.setOpaque(false);
@@ -1218,7 +1193,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1232,7 +1207,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1944,12 +1919,6 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            runBackground(() ->tampil());
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
-
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
@@ -1959,10 +1928,33 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_TNoRwKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
+        if (dokter == null || !dokter.isDisplayable()) {
+            dokter=new DlgCariDokter(null,false);
+            dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            dokter.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(dokter.getTable().getSelectedRow()!= -1){
+                        KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        KdDokter.requestFocus();
+                    }  
+                    dokter=null;
+                }
+            });
+            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (dokter == null) return;
+        if (!dokter.isVisible()) {
+            dokter.isCek();    
+            dokter.emptTeks();
+        }  
+        if (dokter.isVisible()) {
+            dokter.toFront();
+            return;
+        }    
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterActionPerformed
 
@@ -2027,33 +2019,34 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_JKPenerimaKeyPressed
 
     private void BtnPerawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPerawatActionPerformed
-        DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-        petugas.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){
-                    KdPerawat.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPerawat.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    KdPerawat.requestFocus();
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        KdPerawat.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPerawat.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        KdPerawat.requestFocus();
+                    } 
+                    petugas=null;
                 }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setAlwaysOnTop(false);
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }  
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }    
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnPerawatActionPerformed
 
@@ -2094,47 +2087,49 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_SaksiKeluargaKeyPressed
 
     private void HubunganDenganPasienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HubunganDenganPasienItemStateChanged
-        if(HubunganDenganPasien.getSelectedIndex()==0){
-            try {
-                ps=koneksi.prepareStatement("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
-                            "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,pasien.tgl_lahir,pasien.no_tlp,pasien.umur "+
-                            "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                            "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
-                            "where pasien.no_rkm_medis=?");
-                try {            
-                    ps.setString(1,TNoRM.getText());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        PenerimaInformasi.setText(TPasien.getText());
-                        AlamatPenerima.setText(rs.getString("asal"));
-                        TglLahirPenerima.setDate(rs.getDate("tgl_lahir"));
-                        NoHPPenerima.setText(rs.getString("no_tlp"));
-                        JKPenerima.setSelectedItem(Jk.getText());
-                        UmurPenerima.setText(rs.getString("umur"));
-                    }
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                }finally{
-                    if(rs != null ){
-                        rs.close();
-                    }
+        if(this.isActive()==true){
+            if(HubunganDenganPasien.getSelectedIndex()==0){
+                try {
+                    ps=koneksi.prepareStatement("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
+                                "TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,pasien.tgl_lahir,pasien.no_tlp,pasien.umur "+
+                                "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                                "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                                "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
+                                "where pasien.no_rkm_medis=?");
+                    try {            
+                        ps.setString(1,TNoRM.getText());
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                            PenerimaInformasi.setText(TPasien.getText());
+                            AlamatPenerima.setText(rs.getString("asal"));
+                            TglLahirPenerima.setDate(rs.getDate("tgl_lahir"));
+                            NoHPPenerima.setText(rs.getString("no_tlp"));
+                            JKPenerima.setSelectedItem(Jk.getText());
+                            UmurPenerima.setText(rs.getString("umur"));
+                        }
+                    } catch (Exception ex) {
+                        System.out.println(ex);
+                    }finally{
+                        if(rs != null ){
+                            rs.close();
+                        }
 
-                    if(ps != null ){
-                        ps.close();
+                        if(ps != null ){
+                            ps.close();
+                        }
                     }
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
-            } catch (Exception e) {
-                System.out.println(e);
+            }else{
+                PenerimaInformasi.setText("");
+                AlamatPenerima.setText("");
+                TglLahirPenerima.setDate(new Date());
+                NoHPPenerima.setText("");
+                JKPenerima.setSelectedIndex(0);
+                UmurPenerima.setText("");
             }
-        }else{
-            PenerimaInformasi.setText("");
-            AlamatPenerima.setText("");
-            TglLahirPenerima.setDate(new Date());
-            NoHPPenerima.setText("");
-            JKPenerima.setSelectedIndex(0);
-            UmurPenerima.setText("");
         }
     }//GEN-LAST:event_HubunganDenganPasienItemStateChanged
 
@@ -2177,42 +2172,43 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
     private void BtnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTemplateActionPerformed
-        MasterCariTemplatePersetujuanPenolakanTindakan template=new MasterCariTemplatePersetujuanPenolakanTindakan(null,false);
-        template.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(template.getTable().getSelectedRow()!= -1){                   
-                    Diagnosa.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),1).toString());
-                    TindakanKedokteran.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
-                    IndikasiTindakan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
-                    TataCara.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
-                    Tujuan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
-                    Risiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
-                    Komplikasi.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),7).toString());
-                    Prognosis.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),8).toString());
-                    AlternatifResiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),9).toString());
-                    LainLain.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),10).toString());
-                    Biaya.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),11).toString());
-                } 
-                LainLain.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        template.isCek();
-        template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        template.setLocationRelativeTo(internalFrame1);
-        template.setAlwaysOnTop(false);
+        if (template == null || !template.isDisplayable()) {
+            template=new MasterCariTemplatePersetujuanPenolakanTindakan(null,false);
+            template.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            template.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(template.getTable().getSelectedRow()!= -1){                   
+                        Diagnosa.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),1).toString());
+                        TindakanKedokteran.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
+                        IndikasiTindakan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
+                        TataCara.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
+                        Tujuan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
+                        Risiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
+                        Komplikasi.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),7).toString());
+                        Prognosis.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),8).toString());
+                        AlternatifResiko.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),9).toString());
+                        LainLain.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),10).toString());
+                        Biaya.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),11).toString());
+                    } 
+                    LainLain.requestFocus();
+                    template=null;
+                }
+            });
+
+            template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            template.setLocationRelativeTo(internalFrame1);
+        }
+            
+        if (template == null) return;
+        if (!template.isVisible()) {
+            template.isCek();    
+            template.emptTeks();
+        }  
+        if (template.isVisible()) {
+            template.toFront();
+            return;
+        }    
         template.setVisible(true);
     }//GEN-LAST:event_BtnTemplateActionPerformed
 
@@ -2400,7 +2396,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -2605,6 +2601,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         TCari.setText(norwt);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
+        runBackground(() ->tampil());
     }
     
     public void isCek(){
@@ -2616,7 +2613,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
-            NmDokter.setText(dokter.tampil3(KdDokter.getText()));
+            NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
             if(NmDokter.getText().equals("")){
                 KdDokter.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan Dokter...!!");

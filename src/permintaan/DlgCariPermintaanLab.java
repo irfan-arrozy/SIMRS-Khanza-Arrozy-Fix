@@ -54,6 +54,7 @@ import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPeriksaLaboratorium;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 
 public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
@@ -1725,7 +1726,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }else{
                             Sequel.meghapus("permintaan_lab","noorder",NoPermintaan);
                             TeksKosong();
-                            tampil();
+                            runBackground(() -> tampil());
                         } 
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, Sudah dilakukan pengambilan sampel...!!!!");
@@ -1753,7 +1754,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }else{
                             Sequel.meghapus("permintaan_lab","noorder",NoPermintaan);
                             TeksKosong();
-                            tampil3();
+                            runBackground(() -> tampil3());
                         } 
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, Sudah dilakukan pengambilan sampel...!!!!");
@@ -4734,9 +4735,16 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
+                    if(formalarm.contains("ralan")){
+                        runBackground(() -> tampil());
+                    }
+                }else if(detik.equals("15")){
+                    if(formalarm.contains("ranap")){
+                        runBackground(() -> tampil3());
+                    }
+                }else if(detik.equals("25")){
                     permintaanbaru=0;
                     if(formalarm.contains("ralan")){
-                        tampil();
                         for(i=0;i<tbLabRalan.getRowCount();i++){
                             if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
                                 permintaanbaru++;
@@ -4745,7 +4753,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }
 
                     if(formalarm.contains("ranap")){
-                        tampil3();
                         for(i=0;i<tbLabRanap.getRowCount();i++){
                             if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
                                 permintaanbaru++;
@@ -4881,19 +4888,33 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     private void runBackground(Runnable task) {
         if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
         ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        executor.submit(() -> {
-            try {
-                task.run();
-            } finally {
-                ceksukses = false;
-                SwingUtilities.invokeLater(() -> {
-                    this.setCursor(Cursor.getDefaultCursor());
-                });
-            }
-        });
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
