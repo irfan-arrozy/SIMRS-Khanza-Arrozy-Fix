@@ -1,5 +1,7 @@
 package bridging;
 
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -86,7 +88,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
                 "Nyeri Dada 3 Bulan","Sesak Napas Aktivitas","Nyeri Dada Aktivitas","Terkontrol","Gejala 2x Minggu",
                 "Bangun Malam","Keterbatasan Fisik","Fungsi Paru","Skor MMRC","Eksaserbasi 1 Tahun","Mampu Aktivitas",
                 "Epileptik 6 Bulan","Efek Samping OAB","Hamil Menyusui","Remisi","Terapi Rumatan","Usia","Asam Urat",
-                "Remisi SLE","Hamil"
+                "Remisi SLE","Hamil","No.HP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -288,6 +290,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSurat = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         NoKartu = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -450,6 +453,15 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnSurat);
+
+        jMenuItem1.setText("Kirim WA");
+        jMenuItem1.setName("MnWA"); // NOI18N
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         NoKartu.setEditable(false);
         NoKartu.setHighlighter(null);
@@ -682,7 +694,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(115, 23));
         panelCari.add(R1);
 
-        DTPTanggalSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026" }));
+        DTPTanggalSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026" }));
         DTPTanggalSurat1.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalSurat1.setName("DTPTanggalSurat1"); // NOI18N
         DTPTanggalSurat1.setOpaque(false);
@@ -705,7 +717,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPTanggalSurat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026" }));
+        DTPTanggalSurat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026" }));
         DTPTanggalSurat2.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalSurat2.setName("DTPTanggalSurat2"); // NOI18N
         DTPTanggalSurat2.setOpaque(false);
@@ -731,7 +743,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(120, 23));
         panelCari.add(R2);
 
-        DTPTanggalKontrol1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026" }));
+        DTPTanggalKontrol1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026" }));
         DTPTanggalKontrol1.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalKontrol1.setName("DTPTanggalKontrol1"); // NOI18N
         DTPTanggalKontrol1.setOpaque(false);
@@ -754,7 +766,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPTanggalKontrol2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026" }));
+        DTPTanggalKontrol2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026" }));
         DTPTanggalKontrol2.setDisplayFormat("dd-MM-yyyy");
         DTPTanggalKontrol2.setName("DTPTanggalKontrol2"); // NOI18N
         DTPTanggalKontrol2.setOpaque(false);
@@ -837,7 +849,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         NoSEP.setBounds(286, 10, 150, 23);
 
         TanggalSurat.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026" }));
+        TanggalSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026" }));
         TanggalSurat.setDisplayFormat("dd-MM-yyyy");
         TanggalSurat.setName("TanggalSurat"); // NOI18N
         TanggalSurat.setOpaque(false);
@@ -917,7 +929,7 @@ public class BPJSSuratKontrol extends javax.swing.JDialog {
         jLabel14.setBounds(491, 70, 100, 23);
 
         TanggalKontrol.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2026 17:10:41" }));
+        TanggalKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2026 15:18:13" }));
         TanggalKontrol.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKontrol.setName("TanggalKontrol"); // NOI18N
         TanggalKontrol.setOpaque(false);
@@ -2049,6 +2061,62 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         R1.setSelected(true);
     }//GEN-LAST:event_DTPTanggalSurat2KeyPressed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+  try {
+            int row = tbObat.getSelectedRow();
+
+            if(row == -1){
+                JOptionPane.showMessageDialog(null,"Silakan pilih 1 data terlebih dahulu!");
+                return;
+            }
+
+            String nohp="";
+            String hp = tabMode.getValueAt(row,52).toString();
+
+            if(hp.startsWith("0")){
+                nohp="62"+hp.substring(1);
+            }else{
+                nohp=hp;
+            }
+
+            // MENGGUNAKAN \n UNTUK ENTER, BUKAN HTML <br>
+            String waContent = 
+                ""+ nohp + "\n\n" +
+                "Salam Sehat ! Kami RSUD Ar Rozy\n" +
+                "mengingatkan kepada Bapak/Ibu/Sdr\n" +
+                "Nama : *" + tabMode.getValueAt(row,4) + "*\n" +
+                "No.RM : *" + tabMode.getValueAt(row,3) + "*\n" +
+                "untuk kontrol kembali ke *Klinik " + tabMode.getValueAt(row,14) + "*\n" +
+                "pada tanggal *" + tabMode.getValueAt(row,10) + "*\n" +
+                "_(Apabila Anda ingin menunda kontrol, segera hubungi nomor ini pada jam kerja 08:00-14:00 WIB.)_\n" +
+                "Salam Sehat Insani " + akses.getnamars();
+
+            // MENGGUNAKAN JTextArea AGAR ENTER (\n) TERBACA SEMPURNA SAAT DI-COPY
+            javax.swing.JTextArea textArea = new javax.swing.JTextArea(waContent);
+            textArea.setEditable(false);
+            textArea.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 14));
+            textArea.setMargin(new java.awt.Insets(10, 10, 10, 10)); // Memberi jarak tepi
+
+            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(textArea);
+            scrollPane.setPreferredSize(new java.awt.Dimension(500, 350));
+
+            // FITUR TAMBAHAN: OTOMATIS COPY KE CLIPBOARD OS
+            java.awt.datatransfer.StringSelection stringSelection = new java.awt.datatransfer.StringSelection(waContent);
+            java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+            // TAMPILKAN PREVIEW DENGAN INFORMASI SUDAH DI-COPY
+            JOptionPane.showMessageDialog(null, scrollPane,
+                    "Preview Pesan (Otomatis Di-copy ke Clipboard!)",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Terjadi kesalahan : "+e);
+        }                
+    
+  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2206,6 +2274,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel66;
     private widget.Label jLabel7;
     private widget.Label jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelCari;
@@ -2234,7 +2303,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "bridging_surat_kontrol_bpjs.SkorMMRC,bridging_surat_kontrol_bpjs.Eksaserbasi1Tahun,bridging_surat_kontrol_bpjs.MampuAktivitas,"+
                     "bridging_surat_kontrol_bpjs.Epileptik6Bulan,bridging_surat_kontrol_bpjs.EfekSampingOAB,bridging_surat_kontrol_bpjs.HamilMenyusui,"+
                     "bridging_surat_kontrol_bpjs.Remisi,bridging_surat_kontrol_bpjs.TerapiRumatan,bridging_surat_kontrol_bpjs.Usia,bridging_surat_kontrol_bpjs.AsamUrat,"+
-                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil from bridging_sep inner join bridging_surat_kontrol_bpjs "+
+                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil,bridging_sep.notelep from bridging_sep inner join bridging_surat_kontrol_bpjs "+
                     "on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep where bridging_surat_kontrol_bpjs.tgl_surat between ? and ? "+
                     (TCari.getText().trim().equals("")?"":"and (bridging_sep.no_rawat like ? or bridging_sep.no_sep like ? or bridging_sep.no_kartu like ? or "+
                     "bridging_sep.nomr like ? or bridging_sep.nama_pasien like ? or bridging_surat_kontrol_bpjs.no_surat like ? or "+
@@ -2266,7 +2335,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             rs.getString("SesakNapasAktivitas"),rs.getString("NyeriDadaAktivitas"),rs.getString("Terkontrol"),rs.getString("Gejala2xMinggu"),rs.getString("BangunMalam"),
                             rs.getString("KeterbatasanFisik"),rs.getString("FungsiParu"),rs.getString("SkorMMRC"),rs.getString("Eksaserbasi1Tahun"),rs.getString("MampuAktivitas"),
                             rs.getString("Epileptik6Bulan"),rs.getString("EfekSampingOAB"),rs.getString("HamilMenyusui"),rs.getString("Remisi"),rs.getString("TerapiRumatan"),
-                            rs.getString("Usia"),rs.getString("AsamUrat"),rs.getString("RemisiSLE"),rs.getString("Hamil")
+                            rs.getString("Usia"),rs.getString("AsamUrat"),rs.getString("RemisiSLE"),rs.getString("Hamil"),rs.getString("notelep")
                         });                    
                     }
                 } catch (Exception e) {
@@ -2295,7 +2364,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "bridging_surat_kontrol_bpjs.SkorMMRC,bridging_surat_kontrol_bpjs.Eksaserbasi1Tahun,bridging_surat_kontrol_bpjs.MampuAktivitas,"+
                     "bridging_surat_kontrol_bpjs.Epileptik6Bulan,bridging_surat_kontrol_bpjs.EfekSampingOAB,bridging_surat_kontrol_bpjs.HamilMenyusui,"+
                     "bridging_surat_kontrol_bpjs.Remisi,bridging_surat_kontrol_bpjs.TerapiRumatan,bridging_surat_kontrol_bpjs.Usia,bridging_surat_kontrol_bpjs.AsamUrat,"+
-                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil from bridging_sep inner join bridging_surat_kontrol_bpjs "+
+                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil,bridging_sep.notelep, from bridging_sep inner join bridging_surat_kontrol_bpjs "+
                     "on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep where bridging_surat_kontrol_bpjs.tgl_rencana between ? and ? "+
                     (TCari.getText().trim().equals("")?"":"and (bridging_sep.no_rawat like ? or bridging_sep.no_sep like ? or bridging_sep.no_kartu like ? or "+
                     "bridging_sep.nomr like ? or bridging_sep.nama_pasien like ? or bridging_surat_kontrol_bpjs.no_surat like ? or "+
@@ -2319,7 +2388,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("no_kartu"),rs.getString("nomr"),rs.getString("nama_pasien"),
-                            rs.getString("tanggal_lahir"),rs.getString("jkel"),rs.getString("diagawal")+" "+rs.getString("nmdiagnosaawal"),rs.getString("tgl_surat"),rs.getString("no_surat"),
+                            rs.getString("tanggal_lahir"),rs.getString("notelep"),rs.getString("jkel"),rs.getString("diagawal")+" "+rs.getString("nmdiagnosaawal"),rs.getString("tgl_surat"),rs.getString("no_surat"),
                             rs.getString("tgl_rencana"),rs.getString("kd_dokter_bpjs"),rs.getString("nm_dokter_bpjs"),rs.getString("kd_poli_bpjs"),rs.getString("nm_poli_bpjs"),
                             rs.getString("status_prb"),rs.getString("HBA1C"),rs.getString("GDP"),rs.getString("GD2JPP"),rs.getString("eGFR"),rs.getString("TD_Sistolik"),rs.getString("TD_Diastolik"),rs.getString("LDL"),
                             rs.getString("Rata_TD_Sistolik"),rs.getString("Rata_TD_Diastolik"),rs.getString("JantungKoroner"),rs.getString("Stroke"),rs.getString("VaskularPerifer"),

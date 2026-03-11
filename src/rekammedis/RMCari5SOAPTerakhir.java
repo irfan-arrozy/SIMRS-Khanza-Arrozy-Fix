@@ -240,6 +240,7 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        internalFrame1.getAccessibleContext().setAccessibleName("::[ Riwayat SOAPIE Terakhir ]:: Klik komponen yang Anda pilih kemudian tekan spasi");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -343,7 +344,7 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
                         "from pemeriksaan_ralan inner join reg_periksa on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat where "+
                         "reg_periksa.no_rkm_medis=? and pemeriksaan_ralan.nip=? and "+
                         "(pemeriksaan_ralan.keluhan like ? or pemeriksaan_ralan.pemeriksaan like ?) "+
-                        "order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 5");
+                        "order by pemeriksaan_ralan.tgl_perawatan desc,pemeriksaan_ralan.jam_rawat desc limit 10");
                 try{
                     ps.setString(1,norm);
                     ps.setString(2,nip);
@@ -377,7 +378,7 @@ public final class RMCari5SOAPTerakhir extends javax.swing.JDialog {
                         "from pemeriksaan_ranap inner join reg_periksa on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat where "+
                         "reg_periksa.no_rkm_medis=? and pemeriksaan_ranap.nip=? and "+
                         "(pemeriksaan_ranap.keluhan like ? or pemeriksaan_ranap.pemeriksaan like ?) "+
-                        "order by pemeriksaan_ranap.tgl_perawatan desc,pemeriksaan_ranap.jam_rawat desc limit 5");
+                        "order by pemeriksaan_ranap.tgl_perawatan desc,pemeriksaan_ranap.jam_rawat desc limit 10");
                 try{
                     ps.setString(1,norm);
                     ps.setString(2,nip);

@@ -2308,7 +2308,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2333,7 +2332,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel3.setText("No.Rekam Medis :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(4, 12, 95, 23);
+        jLabel3.setBounds(190, 10, 95, 23);
 
         jLabel4.setText("Nama Pasien :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -2414,7 +2413,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel18.setText("Agama :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(402, 12, 90, 23);
+        jLabel18.setBounds(440, 10, 50, 23);
 
         cmbAgama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISLAM", "KRISTEN", "KATOLIK", "HINDU", "BUDHA", "KONG HU CHU", "-" }));
         cmbAgama.setLightWeightPopupEnabled(false);
@@ -2509,12 +2508,12 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNo);
-        TNo.setBounds(102, 12, 160, 23);
+        TNo.setBounds(290, 10, 100, 23);
 
-        jLabel15.setText("No.KTP/SIM :");
+        jLabel15.setText("NIK :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(659, 132, 80, 23);
+        jLabel15.setBounds(10, 10, 30, 23);
 
         TKtp.setComponentPopupMenu(jPopupMenu2);
         TKtp.setName("TKtp"); // NOI18N
@@ -2524,7 +2523,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKtp);
-        TKtp.setBounds(743, 132, 130, 23);
+        TKtp.setBounds(50, 10, 140, 23);
 
         DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2026" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
@@ -2909,7 +2908,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(ChkRM);
-        ChkRM.setBounds(266, 12, 23, 23);
+        ChkRM.setBounds(390, 10, 23, 23);
 
         TUmurTh.setName("TUmurTh"); // NOI18N
         TUmurTh.addKeyListener(new java.awt.event.KeyAdapter() {

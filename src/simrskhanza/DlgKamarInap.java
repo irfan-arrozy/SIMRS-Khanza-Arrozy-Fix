@@ -240,7 +240,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","Nomer RM","Nama Pasien","Alamat Pasien","Penanggung Jawab","Hubungan P.J.","Jenis Bayar","Kamar","Tarif Kamar",
             "Diagnosa Awal","Diagnosa Akhir","Tgl.Masuk","Jam Masuk","Tgl.Keluar","Jam Keluar",
-            "Ttl.Biaya","Stts.Pulang","Lama","Dokter P.J.","Kamar","Status Bayar","Agama"
+            "Ttl.Biaya","Stts.Pulang","Lama","Dokter P.J.","Kamar","Status Bayar","Agama","No. HP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -295,7 +295,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }else if(i==21){
                 column.setPreferredWidth(60);
+            }else if(i==22){
+                column.setPreferredWidth(60);    
             }
+            
         }
         tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
 
@@ -658,6 +661,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnUrutKamarAsc = new javax.swing.JMenuItem();
         MnUrutTanggalMasukAsc = new javax.swing.JMenuItem();
         MnUrutTanggalMasukDesc = new javax.swing.JMenuItem();
+        MnUrutTanggalMasukDesc = new javax.swing.JMenuItem();
+        MnWA = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         JamMasuk = new widget.TextBox();
         WindowPindahKamar = new javax.swing.JDialog();
@@ -4379,6 +4384,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnUrut);
 
+        MnWA.setBackground(new java.awt.Color(255, 255, 254));
+        MnWA.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnWA.setForeground(new java.awt.Color(50, 50, 50));
+        MnWA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnWA.setText("Kirim WA");
+        MnWA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnWA.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnWA.setName("MnWA"); // NOI18N
+        MnWA.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnWA.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnWAActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnWA);
+        
         JamMasuk.setEditable(false);
         JamMasuk.setForeground(new java.awt.Color(255, 255, 255));
         JamMasuk.setHighlighter(null);
@@ -10939,6 +10960,63 @@ public class DlgKamarInap extends javax.swing.JDialog {
         resep.setLocationRelativeTo(internalFrame1);
         resep.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnPerkiraanBiayaActionPerformed
+    
+        private void MnWAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPerkiraanBiayaActionPerformed
+ try {
+            int row = tbKamIn.getSelectedRow();
+
+            if(row == -1){
+                JOptionPane.showMessageDialog(null,"Silakan pilih 1 data terlebih dahulu!");
+                return;
+            }
+
+            String nohp="";
+            String hp = tabMode.getValueAt(row,22).toString();
+
+            if(hp.startsWith("0")){
+                nohp="62"+hp.substring(1);
+            }else{
+                nohp=hp;
+            }
+
+            // MENGGUNAKAN \n UNTUK ENTER, BUKAN HTML <br>
+            String waContent = 
+                ""+ nohp + "\n\n" +
+                "Salam Sehat !\n" +
+                "Selamat Datang kepada Bapak/Ibu/Sdr\n" +
+                "Nama : *" + tabMode.getValueAt(row,2) + "*\n" +
+                "No.RM : *" + tabMode.getValueAt(row,1) + "*\n" +
+                "Kami ucapkan terima kasih karena telah memberikan kepercayaan kepada RSUD Ar Rozy untuk memberikan perawatan kesehatan untuk Anda atau Keluarga Anda.\n" +
+                "Saat ini Anda dirawat di Kamar *" + tabMode.getValueAt(row,7) + "*\n" +
+                "Anda mulai dirawat pada tanggal *" + tabMode.getValueAt(row,11) + "*\n" +
+                "Selama dalam masa perawatan Anda berhak menggunakan fasilitas rawat inap Kami.\n" +
+                "Hubungi petugas Kami jika Anda memerlukan bantuan dan informasi perawatan.\n" +        
+                "Jika ada pengaduan/keluhan/kritik/saran silahkan hubungi nomor WA Pengaduan 08312323232.\n" + 
+                "Semoga lekas sembuh !\n" +         
+                "Salam Sehat Insani " + akses.getnamars();
+
+            // MENGGUNAKAN JTextArea AGAR ENTER (\n) TERBACA SEMPURNA SAAT DI-COPY
+            javax.swing.JTextArea textArea = new javax.swing.JTextArea(waContent);
+            textArea.setEditable(false);
+            textArea.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 14));
+            textArea.setMargin(new java.awt.Insets(10, 10, 10, 10)); // Memberi jarak tepi
+
+            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(textArea);
+            scrollPane.setPreferredSize(new java.awt.Dimension(500, 350));
+
+            // FITUR TAMBAHAN: OTOMATIS COPY KE CLIPBOARD OS
+            java.awt.datatransfer.StringSelection stringSelection = new java.awt.datatransfer.StringSelection(waContent);
+            java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+            // TAMPILKAN PREVIEW DENGAN INFORMASI SUDAH DI-COPY
+            JOptionPane.showMessageDialog(null, scrollPane,
+                    "Preview Pesan (Otomatis Di-copy ke Clipboard!)",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Terjadi kesalahan : "+e);
+        }             
     }//GEN-LAST:event_MnPerkiraanBiayaActionPerformed
 
     private void ppResumeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppResumeBtnPrintActionPerformed
@@ -18793,6 +18871,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnPeriksaLabPA;
     private javax.swing.JMenuItem MnPeriksaRadiologi;
     private javax.swing.JMenuItem MnPerkiraanBiaya;
+    private javax.swing.JMenuItem MnWA;
     private javax.swing.JMenu MnPermintaan;
     private javax.swing.JMenuItem MnPermintaanInformasiObat;
     private javax.swing.JMenuItem MnPermintaanLab;
@@ -19053,7 +19132,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                            "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
                            "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"+
                            "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar, "+
-                           "pasien.agama from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "pasien.agama,pasien.no_tlp from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
@@ -19068,7 +19147,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
                                     rs.getString("diagnosa_akhir"),rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
                                     rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")),rs.getString("stts_pulang"),
-                                    rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar"),rs.getString("agama")
+                                    rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar"),rs.getString("agama"), rs.getString("no_tlp")
                                 };  
                                 i++;
                                 publish(row);
@@ -19449,6 +19528,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnUpdateHari.setEnabled(akses.getkamar_inap());
         MnPermintaanStokObatPasien.setEnabled(akses.getpermintaan_stok_obat_pasien());
         MnPerkiraanBiaya.setEnabled(akses.getkamar_inap());
+        
         MnDiagnosa.setEnabled(akses.getdiagnosa_pasien());
         MnDPJP.setEnabled(akses.getdpjp_ranap()); 
         ppRiwayat.setEnabled(akses.getresume_pasien()); 

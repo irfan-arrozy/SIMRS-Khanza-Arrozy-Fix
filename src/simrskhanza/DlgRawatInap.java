@@ -4355,7 +4355,26 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
-        }else{    
+        }else{
+           
+            String tglInput = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
+            boolean sudahInput = Sequel.cariInteger("select count(*) from rawat_inap_dr "+
+                    "where no_rawat=? and kd_jenis_prw=? and tgl_perawatan=?",
+                    TNoRw.getText(), 
+                    TKdPrw.getText(),
+                    tglInput
+            ) > 0;
+            if(sudahInput){
+            int jawab = JOptionPane.showConfirmDialog(null,
+            "Tindakan ini sudah ada untuk pasien tersebut hari ini.\nApakah tetap ingin menyimpan?",
+            "Konfirmasi",
+            JOptionPane.YES_NO_OPTION);
+
+            if(jawab == JOptionPane.NO_OPTION){
+            return;
+                }
+               }
+            
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
             }else{
