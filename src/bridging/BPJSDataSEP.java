@@ -390,50 +390,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         PenanggungJawab.setDocument(new batasInput((byte)100).getKata(PenanggungJawab));
         Catatan1.setDocument(new batasInput((byte)50).getKata(Catatan1));
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-            
-            TCariInternal.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCariInternal.getText().length()>2){
-                        runBackground(() ->tampilInternal());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCariInternal.getText().length()>2){
-                        runBackground(() ->tampilInternal());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCariInternal.getText().length()>2){
-                        runBackground(() ->tampilInternal());
-                    }
-                }
-            });
-        }  
-        
         try{
             KdPPK.setText(akses.getkodeppkbpjs());
             NmPPK.setText(akses.getnamars());            
@@ -3495,6 +3451,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             Kelas.setSelectedIndex(2);
                         }
                         NoTelp.setText(cekViaBPJSKartu.mrnoTelepon);
+                        if(NoTelp.getText().equals("")||NoTelp.getText().equals("null")){
+                            NoTelp.setText(Sequel.cariIsi("select pasien.no_tlp from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
+                        }
                         prb=cekViaBPJSKartu.informasiprolanisPRB.replaceAll("null","");
                         NoRujukan.requestFocus();                                               
                     }else{
@@ -3505,6 +3464,50 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     dispose();
                 }                    
             } 
+        }
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+            
+            TCariInternal.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariInternal.getText().length()>2){
+                        runBackground(() ->tampilInternal());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariInternal.getText().length()>2){
+                        runBackground(() ->tampilInternal());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariInternal.getText().length()>2){
+                        runBackground(() ->tampilInternal());
+                    }
+                }
+            });
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -6188,7 +6191,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.Table tbDataSEPInternal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {        
+    private void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -6517,6 +6520,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl1);
         TabRawat.setSelectedIndex(1);
+        runBackground(() ->tampil());
     }
     
     public void isCek(){

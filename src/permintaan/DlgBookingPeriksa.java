@@ -133,28 +133,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         BalasanPesan.setDocument(new batasInput((int)200).getKata(BalasanPesan));
         DataBalasan.setDocument(new batasInput((int)200).getKata(DataBalasan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        } 
         
         try {
             aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
@@ -169,74 +147,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         } catch (Exception e) {
             alarm="no";
         }
-        
-        try {
-            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
-                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));                    
-                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));                    
-                    Propinsi.setEditable(rs.getBoolean("propinsi"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    kelurahan=rs.getString("kelurahan");
-                    p_kelurahan=rs.getInt("p_kelurahan");
-                    kecamatan=rs.getString("kecamatan");
-                    p_kecamatan=rs.getInt("p_kecamatan");
-                    kabupaten=rs.getString("kabupaten");
-                    p_kabupaten=rs.getInt("p_kabupaten");
-                    propinsi=rs.getString("propinsi");
-                    p_propinsi=rs.getInt("p_propinsi");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-            
-            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    pengurutan=rs.getString("urutan");
-                    tahun=rs.getString("tahun");
-                    bulan=rs.getString("bulan");
-                    posisitahun=rs.getString("posisi_tahun_bulan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        } 
         
         if(alarm.equals("yes")){
             jam();
@@ -1043,7 +953,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         });
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2021" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1064,7 +974,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2021" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1088,7 +998,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         });
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2021" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setOpaque(false);
         DTPCari3.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1109,7 +1019,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2021" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-02-2026" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setOpaque(false);
         DTPCari4.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1142,7 +1052,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         PanelAccor.setPreferredSize(new java.awt.Dimension(240, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -1342,7 +1252,97 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         aktif=true;
-        tampil();
+        runBackground(() ->tampil());
+        try {
+            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
+                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));                    
+                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));                    
+                    Propinsi.setEditable(rs.getBoolean("propinsi"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    kelurahan=rs.getString("kelurahan");
+                    p_kelurahan=rs.getInt("p_kelurahan");
+                    kecamatan=rs.getString("kecamatan");
+                    p_kecamatan=rs.getInt("p_kecamatan");
+                    kabupaten=rs.getString("kabupaten");
+                    p_kabupaten=rs.getInt("p_kabupaten");
+                    propinsi=rs.getString("propinsi");
+                    p_propinsi=rs.getInt("p_propinsi");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+        
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnJawabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabActionPerformed
