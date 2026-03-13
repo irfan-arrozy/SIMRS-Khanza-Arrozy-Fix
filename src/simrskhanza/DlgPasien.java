@@ -5386,6 +5386,8 @@ private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -5414,6 +5416,8 @@ private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -5442,6 +5446,8 @@ private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         if (kab == null) return;
         if (!kab.isVisible()) {
@@ -5543,6 +5549,8 @@ private void BtnSeek8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -5574,6 +5582,8 @@ private void BtnSeek9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -5605,6 +5615,8 @@ private void BtnSeek10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         
         if (kab == null) return;
@@ -5966,6 +5978,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kec=null;
                 }
             });
+            kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kec.setLocationRelativeTo(internalFrame1);
         }
         
         if (kec == null) return;
@@ -6067,6 +6081,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kab=null;
                 }
             });
+            kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kab.setLocationRelativeTo(internalFrame1);
         }
         
         if (kab == null) return;
@@ -6094,6 +6110,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     kel=null;
                 }
             });
+            kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kel.setLocationRelativeTo(internalFrame1);
         }
         
         if (kel == null) return;
@@ -7848,6 +7866,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -8004,6 +8024,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -8093,6 +8115,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     prop=null;
                 }
             });
+            prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            prop.setLocationRelativeTo(internalFrame1);
         }
         
         if (prop == null) return;
@@ -9099,7 +9123,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             rs=ps.executeQuery();
                             z=0;
                             while(rs.next()){
-                                Object[] row = new Object[]{
+                                z++;
+                                publish(new Object[]{
                                     false,rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("jk"),rs.getString("tmp_lahir"),rs.getDate("tgl_lahir"),rs.getString("nm_ibu"),
                                     rs.getString("alamat")+", "+rs.getString("nm_kel")+", "+rs.getString("nm_kec")+", "+rs.getString("nm_kab")+", "+rs.getString("nm_prop"),rs.getString("gol_darah"),rs.getString("pekerjaan"),
                                     rs.getString("stts_nikah"),rs.getString("agama"),rs.getString("tgl_daftar"),rs.getString("no_tlp"),rs.getString("umur"),rs.getString("pnd"),rs.getString("keluarga"),
@@ -9110,9 +9135,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("nama_cacat"),rs.getString("kd_pj"),rs.getString("alamat"),rs.getString("nm_kel"),rs.getString("nm_kec"),
                                     rs.getString("nm_kab"),rs.getString("nm_prop"),rs.getString("alamatpj"),rs.getString("kelurahanpj"),
                                     rs.getString("kecamatanpj"),rs.getString("kabupatenpj"),rs.getString("propinsipj")
-                                }; 
-                                z++;
-                                publish(row);
+                                });
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -9310,7 +9333,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             rs=ps.executeQuery();
                             z=0;
                             while(rs.next()){
-                                Object[] row = new Object[]{
+                                z++;
+                                publish(new Object[]{
                                     false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                                     rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
                                     rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),
@@ -9322,9 +9346,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("nama_satuan"),rs.getString("pangkat_tni"),rs.getString("nama_pangkat"),
                                     rs.getString("jabatan_tni"),rs.getString("nama_jabatan"),
                                     rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
-                                };
-                                z++;
-                                publish(row);
+                                });
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
@@ -9525,8 +9547,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             }
                             rs=ps.executeQuery();
                             z=0;
-                            while(rs.next()){
-                                Object[] row = new Object[]{
+                            while(rs.next()){  
+                                z++;
+                                publish(new Object[]{
                                     false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                                     rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),
                                     rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),
@@ -9538,9 +9561,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                                     rs.getString("nama_satuan"),rs.getString("pangkat_polri"),rs.getString("nama_pangkat"),
                                     rs.getString("jabatan_polri"),rs.getString("nama_jabatan"),
                                     rs.getString("nip"),rs.getString("email"),rs.getString("cacat_fisik"),rs.getString("nama_cacat")
-                                };  
-                                z++;
-                                publish(row);
+                                });
                             }         
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
