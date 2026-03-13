@@ -70,8 +70,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","F Sistolik LV","F Diastolic LV",
-                "Kontraktilitas RV","Dimensi Ruang Jantung","Katup-katup","Analisa Segmental","eRAP","Lain-lain","Kesimpulan"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Comment","Conclusion",
+                
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -80,7 +80,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -100,20 +100,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(150);
-            }else if(i==9){
-                column.setPreferredWidth(130);
-            }else if(i==10){
-                column.setPreferredWidth(150);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(180);
-            }else if(i==15){
-                column.setPreferredWidth(250);
             }
         }
         
@@ -140,15 +126,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         tbListDicom.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Sistolik.setDocument(new batasInput((int)30).getKata(Sistolik));
-        Diastolik.setDocument(new batasInput((int)30).getKata(Diastolik));
-        Kontraktilitas.setDocument(new batasInput((int)30).getKata(Kontraktilitas));
-        Dimensi.setDocument(new batasInput((int)50).getKata(Dimensi));
-        Katup.setDocument(new batasInput((int)50).getKata(Katup));
-        AnalisaSegmental.setDocument(new batasInput((int)100).getKata(AnalisaSegmental));
-        Erap.setDocument(new batasInput((int)15).getKata(Erap));
-        LainLain.setDocument(new batasInput((int)100).getKata(LainLain));
-        Kesimpulan.setDocument(new batasInput((int)200).getKata(Kesimpulan));
+        Comment.setDocument(new batasInput((int)1000).getKata(Comment));
+        Conclusion.setDocument(new batasInput((int)1000).getKata(Conclusion));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -255,25 +234,12 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         label11 = new widget.Label();
         Tanggal = new widget.Tanggal();
-        jLabel31 = new widget.Label();
-        Sistolik = new widget.TextBox();
-        Katup = new widget.TextBox();
-        jLabel35 = new widget.Label();
-        jLabel40 = new widget.Label();
-        Diastolik = new widget.TextBox();
-        jLabel41 = new widget.Label();
-        AnalisaSegmental = new widget.TextBox();
-        Dimensi = new widget.TextBox();
-        jLabel43 = new widget.Label();
         jLabel44 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
-        Kesimpulan = new widget.TextArea();
+        Conclusion = new widget.TextArea();
+        scrollPane18 = new widget.ScrollPane();
+        Comment = new widget.TextArea();
         jLabel45 = new widget.Label();
-        Erap = new widget.TextBox();
-        jLabel42 = new widget.Label();
-        Kontraktilitas = new widget.TextBox();
-        jLabel46 = new widget.Label();
-        LainLain = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -468,7 +434,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.setPreferredSize(new java.awt.Dimension(457, 480));
 
@@ -574,7 +539,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2025 22:23:41" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-01-2026 20:36:29" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -586,150 +551,49 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(594, 40, 130, 23);
 
-        jLabel31.setText("Fungsi Sistolik LV :");
-        jLabel31.setName("jLabel31"); // NOI18N
-        FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 80, 135, 23);
-
-        Sistolik.setFocusTraversalPolicyProvider(true);
-        Sistolik.setName("Sistolik"); // NOI18N
-        Sistolik.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistolikKeyPressed(evt);
-            }
-        });
-        FormInput.add(Sistolik);
-        Sistolik.setBounds(139, 80, 585, 23);
-
-        Katup.setFocusTraversalPolicyProvider(true);
-        Katup.setName("Katup"); // NOI18N
-        Katup.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KatupKeyPressed(evt);
-            }
-        });
-        FormInput.add(Katup);
-        Katup.setBounds(139, 200, 585, 23);
-
-        jLabel35.setText("Katup-katup :");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(0, 200, 135, 23);
-
-        jLabel40.setText("Fungsi Diastolik LV :");
-        jLabel40.setName("jLabel40"); // NOI18N
-        FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 110, 135, 23);
-
-        Diastolik.setFocusTraversalPolicyProvider(true);
-        Diastolik.setName("Diastolik"); // NOI18N
-        Diastolik.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiastolikKeyPressed(evt);
-            }
-        });
-        FormInput.add(Diastolik);
-        Diastolik.setBounds(139, 110, 585, 23);
-
-        jLabel41.setText("Analisa Segmental :");
-        jLabel41.setName("jLabel41"); // NOI18N
-        jLabel41.setPreferredSize(new java.awt.Dimension(68, 14));
-        FormInput.add(jLabel41);
-        jLabel41.setBounds(0, 230, 135, 23);
-
-        AnalisaSegmental.setFocusTraversalPolicyProvider(true);
-        AnalisaSegmental.setName("AnalisaSegmental"); // NOI18N
-        AnalisaSegmental.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AnalisaSegmentalKeyPressed(evt);
-            }
-        });
-        FormInput.add(AnalisaSegmental);
-        AnalisaSegmental.setBounds(139, 230, 585, 23);
-
-        Dimensi.setFocusTraversalPolicyProvider(true);
-        Dimensi.setName("Dimensi"); // NOI18N
-        Dimensi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DimensiKeyPressed(evt);
-            }
-        });
-        FormInput.add(Dimensi);
-        Dimensi.setBounds(139, 170, 585, 23);
-
-        jLabel43.setText("Dimensi Ruang Jantung :");
-        jLabel43.setName("jLabel43"); // NOI18N
-        FormInput.add(jLabel43);
-        jLabel43.setBounds(0, 170, 135, 23);
-
-        jLabel44.setText("Kesimpulan :");
+        jLabel44.setText("Conclusion :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(0, 320, 135, 23);
+        jLabel44.setBounds(0, 240, 80, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
 
-        Kesimpulan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Kesimpulan.setColumns(20);
-        Kesimpulan.setRows(5);
-        Kesimpulan.setName("Kesimpulan"); // NOI18N
-        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
+        Conclusion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Conclusion.setColumns(20);
+        Conclusion.setRows(5);
+        Conclusion.setName("Conclusion"); // NOI18N
+        Conclusion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KesimpulanKeyPressed(evt);
+                ConclusionKeyPressed(evt);
             }
         });
-        scrollPane17.setViewportView(Kesimpulan);
+        scrollPane17.setViewportView(Conclusion);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(139, 320, 585, 73);
+        scrollPane17.setBounds(90, 240, 640, 140);
 
-        jLabel45.setText("eRAP :");
+        scrollPane18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane18.setName("scrollPane18"); // NOI18N
+
+        Comment.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Comment.setColumns(20);
+        Comment.setRows(5);
+        Comment.setName("Comment"); // NOI18N
+        Comment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommentKeyPressed(evt);
+            }
+        });
+        scrollPane18.setViewportView(Comment);
+
+        FormInput.add(scrollPane18);
+        scrollPane18.setBounds(95, 100, 640, 130);
+
+        jLabel45.setText("Comment :");
         jLabel45.setName("jLabel45"); // NOI18N
-        jLabel45.setPreferredSize(new java.awt.Dimension(68, 14));
         FormInput.add(jLabel45);
-        jLabel45.setBounds(0, 260, 135, 23);
-
-        Erap.setFocusTraversalPolicyProvider(true);
-        Erap.setName("Erap"); // NOI18N
-        Erap.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ErapKeyPressed(evt);
-            }
-        });
-        FormInput.add(Erap);
-        Erap.setBounds(139, 260, 585, 23);
-
-        jLabel42.setText("Kontaktilitas RV :");
-        jLabel42.setName("jLabel42"); // NOI18N
-        FormInput.add(jLabel42);
-        jLabel42.setBounds(0, 140, 135, 23);
-
-        Kontraktilitas.setFocusTraversalPolicyProvider(true);
-        Kontraktilitas.setName("Kontraktilitas"); // NOI18N
-        Kontraktilitas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KontraktilitasKeyPressed(evt);
-            }
-        });
-        FormInput.add(Kontraktilitas);
-        Kontraktilitas.setBounds(139, 140, 585, 23);
-
-        jLabel46.setText("Lain-lain :");
-        jLabel46.setName("jLabel46"); // NOI18N
-        jLabel46.setPreferredSize(new java.awt.Dimension(68, 14));
-        FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 290, 135, 23);
-
-        LainLain.setFocusTraversalPolicyProvider(true);
-        LainLain.setName("LainLain"); // NOI18N
-        LainLain.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LainLainKeyPressed(evt);
-            }
-        });
-        FormInput.add(LainLain);
-        LainLain.setBounds(139, 290, 585, 23);
+        jLabel45.setBounds(0, 100, 80, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -772,7 +636,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-01-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -786,7 +650,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-01-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -862,7 +726,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
 
         TabData.setBackground(new java.awt.Color(254, 255, 254));
         TabData.setForeground(new java.awt.Color(50, 50, 50));
-        TabData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabData.setName("TabData"); // NOI18N
         TabData.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -985,10 +848,10 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Sistolik.getText().trim().equals("")){
-            Valid.textKosong(Sistolik,"Sitolik");
-        }else if(Kesimpulan.getText().trim().equals("")){
-            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Comment.getText().trim().equals("")){
+            Valid.textKosong(Comment,"Comment");
+                    }else if(Conclusion.getText().trim().equals("")){
+            Valid.textKosong(Conclusion,"Conclusion");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1008,7 +871,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kesimpulan,BtnBatal);
+            Valid.pindah(evt,Conclusion,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1053,10 +916,10 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Sistolik.getText().trim().equals("")){
-            Valid.textKosong(Sistolik,"Sistolik");
-        }else if(Kesimpulan.getText().trim().equals("")){
-            Valid.textKosong(Kesimpulan,"Kesimpulan");
+        }else if(Comment.getText().trim().equals("")){
+            Valid.textKosong(Comment,"Comment.");
+        }else if(Conclusion.getText().trim().equals("")){
+            Valid.textKosong(Conclusion,"Conclusion");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1116,15 +979,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Sistolik LV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Diastolik LV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kontraktilitas RV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dimensi Ruang Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Katup-katup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Analisa Segmental</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>eRAP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lain-lain</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
+                       "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Comment</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Conclusion</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1304,7 +1160,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah2(evt,BtnDokter,Sistolik);
+        Valid.pindah2(evt,BtnDokter,Comment);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
@@ -1323,37 +1179,16 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
             Valid.MyReportqry("rptCetakHasilPemeriksaanECHO.jasper","report","::[ Formulir Hasil Pemeriksaan ECHOCARDIOGRAFI ]::",
                             "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
                             "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "hasil_pemeriksaan_echo.comment,hasil_pemeriksaan_echo.conclusion "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
                             "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_echo.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
-    private void SistolikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistolikKeyPressed
-        Valid.pindah(evt,Tanggal,Diastolik);
-    }//GEN-LAST:event_SistolikKeyPressed
-
-    private void KatupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KatupKeyPressed
-        Valid.pindah(evt,Dimensi,AnalisaSegmental);
-    }//GEN-LAST:event_KatupKeyPressed
-
-    private void DiastolikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiastolikKeyPressed
-        Valid.pindah(evt,Sistolik,Kontraktilitas);
-    }//GEN-LAST:event_DiastolikKeyPressed
-
-    private void AnalisaSegmentalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnalisaSegmentalKeyPressed
-        Valid.pindah(evt,Katup,Erap);
-    }//GEN-LAST:event_AnalisaSegmentalKeyPressed
-
-    private void DimensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DimensiKeyPressed
-        Valid.pindah(evt,Kontraktilitas,Katup);
-    }//GEN-LAST:event_DimensiKeyPressed
-
-    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah2(evt,LainLain,BtnSimpan);
-    }//GEN-LAST:event_KesimpulanKeyPressed
+    private void ConclusionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ConclusionKeyPressed
+        Valid.pindah2(evt,Comment,BtnSimpan);
+    }//GEN-LAST:event_ConclusionKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
@@ -1364,18 +1199,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pernyataan..!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
-
-    private void ErapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ErapKeyPressed
-        Valid.pindah(evt,AnalisaSegmental,LainLain);
-    }//GEN-LAST:event_ErapKeyPressed
-
-    private void KontraktilitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraktilitasKeyPressed
-        Valid.pindah(evt,Diastolik,Dimensi);
-    }//GEN-LAST:event_KontraktilitasKeyPressed
-
-    private void LainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainKeyPressed
-        Valid.pindah(evt,Erap,Kesimpulan);
-    }//GEN-LAST:event_LainLainKeyPressed
 
     private void btnAmbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilActionPerformed
         if(tabMode.getRowCount()==0){
@@ -1428,6 +1251,10 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         tampilOrthanc();
     }//GEN-LAST:event_TabDataMouseClicked
 
+    private void CommentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommentKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CommentKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1445,7 +1272,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox AnalisaSegmental;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1457,21 +1283,16 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     private widget.Button BtnRefreshPhoto1;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkAccor;
+    private widget.TextArea Comment;
+    private widget.TextArea Conclusion;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.TextBox Diastolik;
-    private widget.TextBox Dimensi;
-    private widget.TextBox Erap;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
-    private widget.TextBox Katup;
     private widget.TextBox KdDokter;
-    private widget.TextArea Kesimpulan;
-    private widget.TextBox Kontraktilitas;
     private widget.Label LCount;
-    private widget.TextBox LainLain;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private javax.swing.JMenuItem MnPenilaianMedis;
@@ -1480,7 +1301,6 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
     private widget.ScrollPane Scroll6;
-    private widget.TextBox Sistolik;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1498,15 +1318,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     private widget.Label jLabel10;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
-    private widget.Label jLabel31;
-    private widget.Label jLabel35;
-    private widget.Label jLabel40;
-    private widget.Label jLabel41;
-    private widget.Label jLabel42;
-    private widget.Label jLabel43;
     private widget.Label jLabel44;
     private widget.Label jLabel45;
-    private widget.Label jLabel46;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -1519,6 +1332,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane17;
+    private widget.ScrollPane scrollPane18;
     private widget.Table tbListDicom;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
@@ -1530,9 +1344,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                             "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
                             "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "hasil_pemeriksaan_echo.comment,hasil_pemeriksaan_echo.conclusion "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
                             "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where "+
                             "hasil_pemeriksaan_echo.tanggal between ? and ? order by hasil_pemeriksaan_echo.tanggal");
@@ -1540,9 +1353,8 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                             "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
                             "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "hasil_pemeriksaan_echo.comment,hasil_pemeriksaan_echo.conclusion "+
+                            "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
                             "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where "+
                             "hasil_pemeriksaan_echo.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
@@ -1566,10 +1378,9 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("sistolik"),rs.getString("diastolic"),rs.getString("kontraktilitas"),rs.getString("dimensi_ruang"),rs.getString("katup"),rs.getString("analisa_segmental"),
-                        rs.getString("erap"),rs.getString("lain_lain"),rs.getString("kesimpulan")
-                    });
-                }
+                        rs.getString("comment"),rs.getString("conclusion")
+                });
+            }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -1588,18 +1399,12 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Sistolik.setText("");
-        Diastolik.setText("");
-        Kontraktilitas.setText("");
-        Dimensi.setText("");
-        Katup.setText("");
-        AnalisaSegmental.setText("");
-        Erap.setText("");
-        LainLain.setText("");
-        Kesimpulan.setText("");
+
+        Comment.setText("");
+        Conclusion.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
-        Sistolik.requestFocus();
+        Comment.requestFocus();
     } 
 
     private void getData() {
@@ -1608,16 +1413,9 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Sistolik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Diastolik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Kontraktilitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Dimensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Katup.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            AnalisaSegmental.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Erap.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            LainLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Comment.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Conclusion.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
         }
     }
 
@@ -1663,7 +1461,7 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_echo());
         BtnHapus.setEnabled(akses.gethasil_pemeriksaan_echo());
         BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo());
+      
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -1699,33 +1497,37 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         }
     }
 
-    private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_echo","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,sistolik=?,diastolic=?,kontraktilitas=?,dimensi_ruang=?,katup=?,"+
-                "analisa_segmental=?,erap=?,lain_lain=?,kesimpulan=?",13,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),
-                Erap.getText(),LainLain.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-            })==true){
-               tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
-                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
-                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
-                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
-                tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
-                tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
-                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
-                tbObat.setValueAt(Sistolik.getText(),tbObat.getSelectedRow(),7);
-                tbObat.setValueAt(Diastolik.getText(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(Kontraktilitas.getText(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(Dimensi.getText(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(Katup.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(AnalisaSegmental.getText(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(Erap.getText(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(LainLain.getText(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),15);
-                emptTeks();
-                TabRawat.setSelectedIndex(1);
+private void ganti() {
+    if(Sequel.queryu2tf(
+        "update hasil_pemeriksaan_echo set tanggal=?, kd_dokter=?, comment=?, conclusion=? where no_rawat=?",
+        5,
+        new String[]{
+            Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+            KdDokter.getText(),
+            Comment.getText(),
+            Conclusion.getText(),
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         }
+    )==true){
+
+        tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
+        tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
+        tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
+        tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
+        tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
+        tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
+        tbObat.setValueAt(
+            Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+
+            Tanggal.getSelectedItem().toString().substring(11,19),
+            tbObat.getSelectedRow(),6
+        );
+        tbObat.setValueAt(Comment.getText(),tbObat.getSelectedRow(),7);
+        tbObat.setValueAt(Conclusion.getText(),tbObat.getSelectedRow(),8);
+
+        emptTeks();
+        TabRawat.setSelectedIndex(1);
     }
+}
     
     private void isPhoto(){
         if(ChkAccor.isSelected()==true){
@@ -1773,20 +1575,31 @@ public final class RMHasilPemeriksaanEcho extends javax.swing.JDialog {
         }
     }
 
-    private void simpan() {
-        if(Sequel.menyimpantf("hasil_pemeriksaan_echo","?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",12,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),
-                Erap.getText(),LainLain.getText(),Kesimpulan.getText()
-            })==true){
-                tabMode.addRow(new Object[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),Erap.getText(),LainLain.getText(),Kesimpulan.getText()
-                });
-                emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
-        }
+   private void simpan() {
+    if(Sequel.menyimpantf("hasil_pemeriksaan_echo","?,?,?,?,?","No.Rawat",5,new String[]{
+        TNoRw.getText(),
+        Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+        KdDokter.getText(),
+        Comment.getText(),
+        Conclusion.getText()
+    })==true){
+
+        tabMode.addRow(new Object[]{
+            TNoRw.getText(),
+            TNoRM.getText(),
+            TPasien.getText(),
+            TglLahir.getText(),
+            KdDokter.getText(),
+            NmDokter.getText(),
+            Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+            Comment.getText(),
+            Conclusion.getText()
+        });
+
+        emptTeks();
+        LCount.setText(""+tabMode.getRowCount());
     }
+}
     
     private void tampilOrthanc() {
         if(TabData.isVisible()==true){

@@ -4359,7 +4359,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
            
             String tglInput = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
             boolean sudahInput = Sequel.cariInteger("select count(*) from rawat_inap_dr "+
-                    "where no_rawat=? and kd_jenis_prw=? and tgl_perawatan=?",
+                    "where no_rawat=? and kd_jenis_prw=? and tgl_perawatan=? and kd_dokter",
                     TNoRw.getText(), 
                     TKdPrw.getText(),
                     tglInput
