@@ -1049,7 +1049,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {        
+    public void tampil() {        
         try{     
             jml=0;
             for(i=0;i<tbDokter.getRowCount();i++){

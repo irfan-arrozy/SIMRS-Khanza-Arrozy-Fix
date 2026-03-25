@@ -745,7 +745,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppTampilkanLama;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil(){        
+    public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
             jmllama=0;jmlbaru=0;jmllaki=0;jmlper=0;

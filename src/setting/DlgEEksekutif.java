@@ -442,7 +442,7 @@ public class DlgEEksekutif extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {
+    public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select AES_DECRYPT(usere,'nur'),AES_DECRYPT(passworde,'windi') from e_eksekutif");

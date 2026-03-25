@@ -1052,6 +1052,10 @@ public class frmPengaduan extends javax.swing.JFrame {
         new Timer(1000, taskPerformer).start();
     }
 
+    public void isCek() {
+        
+    }
+    
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;

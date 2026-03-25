@@ -1318,7 +1318,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private widget.Tanggal tgl_pengadaan;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {
+    public void tampil() {
         try {
             Valid.tabelKosong(tabMode);
             if(TCari.getText().equals("")&&nm_ruangcari.getText().equals("")){

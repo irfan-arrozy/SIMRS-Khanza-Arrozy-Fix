@@ -601,7 +601,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {
+    public void tampil() {
         Valid.tabelKosong(tabMode);
         try{   
             ps=koneksi.prepareStatement("select * from set_jam_minimal ");
