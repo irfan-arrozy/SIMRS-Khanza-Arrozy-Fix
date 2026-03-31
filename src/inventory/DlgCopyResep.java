@@ -63,11 +63,9 @@ public class DlgCopyResep extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(300);
             }else if(i==6){
-                column.setMinWidth(150);
-                column.setMaxWidth(150);
+            column.setPreferredWidth(170);
             }else if(i==7){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+             column.setPreferredWidth(170);
             }else if(i==8){
                 column.setPreferredWidth(85);
 
@@ -521,7 +519,7 @@ private void tampil() {
                 rs.getString("no_rkm_medis"),
                 rs.getString("nm_pasien"),
                 rs.getString("nm_dokter"),
-                "",
+                rs.getString("kd_dokter"),
                 rs.getString("status")
             });
 
@@ -691,13 +689,12 @@ private void panggilform(){
         resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         resep.setLocationRelativeTo(internalFrame1);
 
-        resep.setNoRm(
-            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
-            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
-            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString(),
+        resep.setNoRm(norawat,
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString(),
+            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),6).toString(),
             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
-            kode_pj,status
-        );
+            kode_pj,status);
+       
 
         resep.isCek();
         resep.tampilobat4(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -713,8 +710,8 @@ private void panggilform2(){
 
         resep.setNoRm(
             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
-            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString(),
+            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),6).toString(),
             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
             kode_pj,status
         );

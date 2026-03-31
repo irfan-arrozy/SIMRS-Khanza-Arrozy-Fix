@@ -2364,7 +2364,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "bridging_surat_kontrol_bpjs.SkorMMRC,bridging_surat_kontrol_bpjs.Eksaserbasi1Tahun,bridging_surat_kontrol_bpjs.MampuAktivitas,"+
                     "bridging_surat_kontrol_bpjs.Epileptik6Bulan,bridging_surat_kontrol_bpjs.EfekSampingOAB,bridging_surat_kontrol_bpjs.HamilMenyusui,"+
                     "bridging_surat_kontrol_bpjs.Remisi,bridging_surat_kontrol_bpjs.TerapiRumatan,bridging_surat_kontrol_bpjs.Usia,bridging_surat_kontrol_bpjs.AsamUrat,"+
-                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil,bridging_sep.notelep, from bridging_sep inner join bridging_surat_kontrol_bpjs "+
+                    "bridging_surat_kontrol_bpjs.RemisiSLE,bridging_surat_kontrol_bpjs.Hamil,bridging_sep.notelep from bridging_sep inner join bridging_surat_kontrol_bpjs "+
                     "on bridging_surat_kontrol_bpjs.no_sep=bridging_sep.no_sep where bridging_surat_kontrol_bpjs.tgl_rencana between ? and ? "+
                     (TCari.getText().trim().equals("")?"":"and (bridging_sep.no_rawat like ? or bridging_sep.no_sep like ? or bridging_sep.no_kartu like ? or "+
                     "bridging_sep.nomr like ? or bridging_sep.nama_pasien like ? or bridging_surat_kontrol_bpjs.no_surat like ? or "+
@@ -2388,7 +2388,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("no_kartu"),rs.getString("nomr"),rs.getString("nama_pasien"),
-                            rs.getString("tanggal_lahir"),rs.getString("notelep"),rs.getString("jkel"),rs.getString("diagawal")+" "+rs.getString("nmdiagnosaawal"),rs.getString("tgl_surat"),rs.getString("no_surat"),
+                            rs.getString("tanggal_lahir"),rs.getString("jkel"),rs.getString("diagawal")+" "+rs.getString("nmdiagnosaawal"),rs.getString("tgl_surat"),rs.getString("no_surat"),
                             rs.getString("tgl_rencana"),rs.getString("kd_dokter_bpjs"),rs.getString("nm_dokter_bpjs"),rs.getString("kd_poli_bpjs"),rs.getString("nm_poli_bpjs"),
                             rs.getString("status_prb"),rs.getString("HBA1C"),rs.getString("GDP"),rs.getString("GD2JPP"),rs.getString("eGFR"),rs.getString("TD_Sistolik"),rs.getString("TD_Diastolik"),rs.getString("LDL"),
                             rs.getString("Rata_TD_Sistolik"),rs.getString("Rata_TD_Diastolik"),rs.getString("JantungKoroner"),rs.getString("Stroke"),rs.getString("VaskularPerifer"),
@@ -2396,7 +2396,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             rs.getString("SesakNapasAktivitas"),rs.getString("NyeriDadaAktivitas"),rs.getString("Terkontrol"),rs.getString("Gejala2xMinggu"),rs.getString("BangunMalam"),
                             rs.getString("KeterbatasanFisik"),rs.getString("FungsiParu"),rs.getString("SkorMMRC"),rs.getString("Eksaserbasi1Tahun"),rs.getString("MampuAktivitas"),
                             rs.getString("Epileptik6Bulan"),rs.getString("EfekSampingOAB"),rs.getString("HamilMenyusui"),rs.getString("Remisi"),rs.getString("TerapiRumatan"),
-                            rs.getString("Usia"),rs.getString("AsamUrat"),rs.getString("RemisiSLE"),rs.getString("Hamil")
+                            rs.getString("Usia"),rs.getString("AsamUrat"),rs.getString("RemisiSLE"),rs.getString("Hamil"),rs.getString("notelep")
                         });                    
                     }
                 } catch (Exception e) {
