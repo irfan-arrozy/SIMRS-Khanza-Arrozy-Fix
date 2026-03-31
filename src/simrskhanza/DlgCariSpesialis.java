@@ -372,7 +372,7 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select * from spesialis order by spesialis.nm_sps ");
+            ps=koneksi.prepareStatement("select * from spesialis");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -434,6 +434,10 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
         LCount.setText(""+tabMode.getRowCount());
     }
