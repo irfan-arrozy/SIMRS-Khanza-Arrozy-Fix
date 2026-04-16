@@ -524,7 +524,7 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select * from penjab where penjab.status='1' order by penjab.png_jawab");
+            ps=koneksi.prepareStatement("select * from penjab where penjab.status='1'");
             try{           
                 rs=ps.executeQuery();
                 i=1;
@@ -601,6 +601,10 @@ public final class DlgCariCaraBayar extends javax.swing.JDialog {
             myObj.close();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
         LCount.setText(""+tabMode.getRowCount());
     } 
