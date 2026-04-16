@@ -323,7 +323,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-01-2025"/>
+                        <StringItem index="0" value="14-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -351,7 +351,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-01-2025"/>
+                        <StringItem index="0" value="14-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -570,7 +570,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="09-01-2025"/>
+                        <StringItem index="0" value="14-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1049,7 +1049,7 @@
                 <Component class="javax.swing.JComboBox" name="TAsal">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="26">
+                      <StringArray count="29">
                         <StringItem index="0" value="AL AQSHA (Bedah)"/>
                         <StringItem index="1" value="AROFAH (Dalam)"/>
                         <StringItem index="2" value="ICU"/>
@@ -1076,6 +1076,9 @@
                         <StringItem index="23" value="Klinik Paru"/>
                         <StringItem index="24" value="Klinik Penyakit Dalam"/>
                         <StringItem index="25" value="Klinik Umum"/>
+                        <StringItem index="26" value="Klinik Jantung dan Pembuluh Darah"/>
+                        <StringItem index="27" value="Kilink Orthopedi dan Traumatologi"/>
+                        <StringItem index="28" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="TAsal" noResource="true"/>

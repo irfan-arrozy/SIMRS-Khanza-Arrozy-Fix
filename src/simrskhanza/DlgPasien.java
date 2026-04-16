@@ -2481,7 +2481,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2026" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2026" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2598,10 +2598,11 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel15);
         jLabel15.setBounds(10, 10, 30, 23);
 
-        TKtp.setBackground(new java.awt.Color(255, 255, 153));
-        TKtp.setForeground(new java.awt.Color(255, 255, 255));
+        TKtp.setBackground(new java.awt.Color(0, 0, 0));
+        TKtp.setForeground(new java.awt.Color(0, 0, 0));
         TKtp.setComponentPopupMenu(jPopupMenu2);
         TKtp.setName("TKtp"); // NOI18N
+        TKtp.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         TKtp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TKtpKeyPressed(evt);
@@ -2610,7 +2611,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(50, 10, 140, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2026" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2026" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);

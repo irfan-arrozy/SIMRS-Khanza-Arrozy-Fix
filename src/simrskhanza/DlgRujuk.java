@@ -783,7 +783,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 10, 72, 23);
 
-        TAsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AL AQSHA (Bedah)", "AROFAH (Dalam)", "ICU", "INTERMEDIET", "MARWAH (Obgyn)", "MINA (Isolasi)", "NICU", "OK", "PERINATOLOGI", "PICU", "RAUDLAH (VVIP)", "SOFA (Anak)", "ZAM-ZAM (VIP)", "IGD", "Kamar Bersalin/VK", "Klinik  Geriatri", "Klinik Anak", "Klinik Anastesi ", "Klinik Bedah Umum", "Klinik Fisioterapi", "Klinik Gigi", "Klinik Gizi", "Klinik Kebidanan dan Kandungan", "Klinik Paru", "Klinik Penyakit Dalam", "Klinik Umum" }));
+        TAsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AL AQSHA (Bedah)", "AROFAH (Dalam)", "ICU", "INTERMEDIET", "MARWAH (Obgyn)", "MINA (Isolasi)", "NICU", "OK", "PERINATOLOGI", "PICU", "RAUDLAH (VVIP)", "SOFA (Anak)", "ZAM-ZAM (VIP)", "IGD", "Kamar Bersalin/VK", "Klinik  Geriatri", "Klinik Anak", "Klinik Anastesi ", "Klinik Bedah Umum", "Klinik Fisioterapi", "Klinik Gigi", "Klinik Gizi", "Klinik Kebidanan dan Kandungan", "Klinik Paru", "Klinik Penyakit Dalam", "Klinik Umum", "Klinik Jantung dan Pembuluh Darah", "Kilink Orthopedi dan Traumatologi", " " }));
         TAsal.setName("TAsal"); // NOI18N
         FormInput.add(TAsal);
         TAsal.setBounds(80, 40, 210, 20);

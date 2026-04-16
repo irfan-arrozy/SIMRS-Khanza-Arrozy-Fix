@@ -140,7 +140,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="13-04-2026 16:37:43"/>
+                    <StringItem index="0" value="14-04-2026 14:05:36"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -184,7 +184,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="widget.TextArea" name="JawabanKonsultasiMedik">
+                <Component class="widget.TextArea" name="JawabanKonsultasiPasien">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -194,10 +194,10 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="9"/>
                     <Property name="tabSize" type="int" value="20"/>
-                    <Property name="name" type="java.lang.String" value="JawabanKonsultasiMedik" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="JawabanKonsultasiPasien" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JawabanKonsultasiMedikKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JawabanKonsultasiPasienKeyPressed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -213,12 +213,12 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="JawabanDiagnosaKerjaKonsulMedik">
+            <Component class="widget.TextBox" name="JawabanDiagnosaKerjaKonsulPasien">
               <Properties>
-                <Property name="name" type="java.lang.String" value="JawabanDiagnosaKerjaKonsulMedik" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="JawabanDiagnosaKerjaKonsulPasien" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JawabanDiagnosaKerjaKonsulMedikKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JawabanDiagnosaKerjaKonsulPasienKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -272,7 +272,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-87,0,0,3,-120"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-87,0,0,2,-97"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -281,7 +281,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Permintaan Konsultasi Medik ]::">
+            <TitledBorder title="::[ Permintaan Konsultasi Pasien ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -629,7 +629,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-04-2026"/>
+                        <StringItem index="0" value="14-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -657,7 +657,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-04-2026"/>
+                        <StringItem index="0" value="14-04-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -847,7 +847,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-04-2026 16:37:43"/>
+                        <StringItem index="0" value="14-04-2026 14:05:36"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -925,7 +925,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="widget.TextArea" name="UraianKonsultasiMedik">
+                    <Component class="widget.TextArea" name="UraianKonsultasiPasien">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -934,10 +934,10 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="UraianKonsultasiMedik" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="UraianKonsultasiPasien" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UraianKonsultasiMedikKeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UraianKonsultasiPasienKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -956,10 +956,10 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="KdDokter">
+                <Component class="widget.TextBox" name="KdPegawai">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="KdDokter" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="KdPegawai" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 23]"/>
                     </Property>
@@ -970,10 +970,10 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="NmDokter">
+                <Component class="widget.TextBox" name="NmPegawai">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="NmDokter" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="NmPegawai" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[207, 23]"/>
                     </Property>
@@ -1083,15 +1083,15 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="DiagnosaKerjaKonsulMedik">
+                <Component class="widget.TextBox" name="DiagnosaKerjaPasien">
                   <Properties>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="null"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="DiagnosaKerjaKonsulMedik" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="DiagnosaKerjaPasien" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DiagnosaKerjaKonsulMedikKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DiagnosaKerjaPasienKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1140,7 +1140,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="widget.TextArea" name="TJawabanKonsultasiMedik1">
+                    <Component class="widget.TextArea" name="TJawabanKonsultasiPasien">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1150,10 +1150,10 @@
                         </Property>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="TJawabanKonsultasiMedik1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="TJawabanKonsultasiPasien" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TJawabanKonsultasiMedik1KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TJawabanKonsultasiPasienKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>

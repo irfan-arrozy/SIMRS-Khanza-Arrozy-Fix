@@ -679,6 +679,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoFaktur.getText().trim().equals("")){
+            //autoNomor(); // kalau kosong baru auto
             Valid.textKosong(NoFaktur,"No.Faktur");
         }else if(nmsup.getText().trim().equals("")){
             Valid.textKosong(kdsup,"Supplier");
@@ -695,6 +696,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pembelian...!!!!");
             tbDokter.requestFocus();
         }else{
+                // 🔴 VALIDASI DUPLICATE DI SINI
+    int cek = Sequel.cariInteger(
+        "select count(*) from dapurpemesanan where no_faktur='"+NoFaktur.getText()+"'"
+    );
+
+    if(cek > 0){
+        JOptionPane.showMessageDialog(null,"No Faktur sudah digunakan, silakan ganti!");
+        NoFaktur.requestFocus();
+        return;
+    }
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();

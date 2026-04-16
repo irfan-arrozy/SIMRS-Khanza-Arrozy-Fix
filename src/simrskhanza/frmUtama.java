@@ -844,6 +844,7 @@ import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
 import permintaan.DlgCariPermintaanLabPA;
 import permintaan.DlgPermintaanKonsultasiMedik;
+import permintaan.DlgPermintaanKonsultasiPasien;
 import permintaan.DlgCariPermintaanLayananProgramKFR;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRanap;
@@ -21586,6 +21587,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnKonsultasiPasienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPermintaanKonsultasiPasien form=new DlgPermintaanKonsultasiPasien(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     private void btnDataSasaranUsiaProduktifActionPerformed(java.awt.event.ActionEvent evt) {                                                        
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -23880,7 +23893,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
             btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani,btnLabKeslingPengujianSampelDapatDilayani,btnLabKeslingPenugasanPengujianSampel,btnLabKeslingHasilPengujianSampel,
             btnLabKeslingVerifikasiPengujianSampel,btnLabKeslingValidasiPengujianSampel,btnLabKeslingRekapPelayanan,btnLabKeslingPembyaranPengujianSampel,btnLabKeslingRekapPembayaran,
-            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek;
+            btnSkriningCURB65,btnBPJSPotensiPRB,btnBPJSRiwayatPelayananObatApotek,btnSkriningGiziKehamilan,btnBPJSRekapPesertaPRBObatApotek,btnKonsultasiPasien;
     
     public void isWall(){
         try{            
@@ -28419,6 +28432,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnKonsultasiMedik);
                 jmlmenu++;
             }
+            
+             //           if(akses.getkonsultasi_pasien()==true){
+             //   Panelmenu.add(btnKonsultasiPasien);
+              //  jmlmenu++;
+           // }
             
             if(akses.gettransfer_pasien_antar_ruang()==true){
                 Panelmenu.add(btnTransferPasienAntarRuang);
@@ -34246,6 +34264,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnKonsultasiMedik);
             jmlmenu++;
         }
+        
+         //       if(akses.getkonsultasi_pasien()==true){
+          //  Panelmenu.add(btnKonsultasiPasien);
+         //  jmlmenu++;
+       // }
+        
         
         if(akses.gettransfer_pasien_antar_ruang()==true){
             Panelmenu.add(btnTransferPasienAntarRuang);
@@ -41824,6 +41848,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+           //     if(akses.getkonsultasi_pasien()==true){
+           // if(btnKonsultasiPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            //    Panelmenu.add(btnKonsultasiPasien);
+            //    jmlmenu++;
+          //  }                
+       // }
+        
         if(akses.gettransfer_pasien_antar_ruang()==true){
             if(btnTransferPasienAntarRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTransferPasienAntarRuang);
@@ -48676,6 +48707,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKonsultasiMedik.setName("btnKonsultasiMedik"); 
         btnKonsultasiMedik.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKonsultasiMedik.addActionListener(this::btnKonsultasiMedikActionPerformed);
+        
+         //btnKonsultasiPasien = new widget.ButtonBig();
+        //btnKonsultasiPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6071860_freelance_freelancer_job_occupation_worker_icon.png"))); 
+        //btnKonsultasiPasien.setText("Konsultasi Pasien");
+       // btnKonsultasiPasien.setIconTextGap(0);
+       // btnKonsultasiPasien.setName("btnKonsultasiPasien"); 
+       // btnKonsultasiPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+       // btnKonsultasiPasien.addActionListener(this::btnKonsultasiPasienActionPerformed);
         
         btnDataSasaranUsiaProduktif = new widget.ButtonBig();
         btnDataSasaranUsiaProduktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/49607_product_report_sales_icon.png"))); 

@@ -283,8 +283,12 @@ public class DlgUser extends javax.swing.JDialog {
                 "[B]Data Verifikasi Pengujian Sampel Lab Kesling","[B]Data Validasi Pengujian Sampel Lab Kesling","[B]Rekap Pelayanan Lab Kesling","[B]Pembayaran Pengujian Sampel Lab Kesling",
                 "[M]Skrining CURB-65","[L]Potensi PRB di VClaim","[L]Riwayat Pelayanan Obat Apotek BPJS","[M]Skrining Gizi Kehamilan","[L]Rekap Peserta PRB Apotek BPJS","[P]Serah Terima Anggota Tubuh/Barang",
                 "[R]Jenis Aktivitas Proyek PCRA","[R]Lokasi & Kelompok Risiko Area PCRA","[R]Kelas Risiko/Kelas Pencegahan PCRA","[R]Tindakan Pengendalian PCRA","[R]Identifikasi Risiko Infeksi PCRA",
-                "[R]Identifikasi Risiko Keselamatan PCRA","[R]Identifikasi Risiko Kebakaran PCRA","[R]Identifikasi Risiko Utilitas PCRA","[L]Daftar Resep Apotek BPJS","[L]Permintaan Resep Iterasi Apotek BPJS",
-                "[R]Pengkajian Risiko Pra Konstruksi/PCRA"
+                "[R]Identifikasi Risiko Keselamatan PCRA","[R]Identifikasi Risiko Kebakaran PCRA","[R]Identifikasi Risiko Utilitas PCRA",
+                
+//"[L]Daftar Resep Apotek BPJS",
+                //"[L]Permintaan Resep Iterasi Apotek BPJS",
+                "[R]Pengkajian Risiko Pra Konstruksi/PCRA",
+                "[M]Konsultasi Pasien","[M]Jawaban Konsultasi Pasien"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -5327,9 +5331,11 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(i,1182).toString()+"',"+
                     "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(i,1183).toString()+"',"+
                     "pcra_icra_identifkasi_risiko_utilitas='"+tbUser.getValueAt(i,1184).toString()+"',"+
-                    "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(i,1185).toString()+"',"+
-                    "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(i,1186).toString()+"',"+
-                    "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(i,1187).toString()+"'")==true){
+                   // "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(i,1185).toString()+"',"+
+                   // "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(i,1186).toString()+"',"+
+                    "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(i,1187).toString()+"',"+
+                    "konsultasi_pasien='"+tbUser.getValueAt(i,1188).toString()+"',"+       
+                    "jawaban_konsultasi_pasien='"+tbUser.getValueAt(i,1189).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6799,9 +6805,11 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(barisdicopy,1182).toString()+"',"+
                                         "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(barisdicopy,1183).toString()+"',"+
                                         "pcra_icra_identifkasi_risiko_utilitas='"+tbUser.getValueAt(barisdicopy,1184).toString()+"',"+
-                                        "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(barisdicopy,1185).toString()+"',"+
-                                        "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(barisdicopy,1186).toString()+"',"+
-                                        "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(barisdicopy,1187).toString()+"'");
+                                       // "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(barisdicopy,1185).toString()+"',"+
+                                       // "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(barisdicopy,1186).toString()+"',"+
+                                        "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(barisdicopy,1187).toString()+"'"+
+                                        "konsultasi_pasien='"+tbUser.getValueAt(i,1188).toString()+"',"+       
+                                        "jawaban_konsultasi_pasien='"+tbUser.getValueAt(i,1189).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -7136,7 +7144,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang,user.pcra_icra_jenis_aktivitas_proyek,user.pcra_icra_lokasi_kelompok_risiko_area,"+
                             "user.pcra_icra_kelas_risiko_pencegahan,user.pcra_icra_tindakan_pengendalian,user.pcra_icra_identifkasi_risiko_infeksi,user.pcra_icra_identifkasi_risiko_keselamatan,"+
                             "user.pcra_icra_identifkasi_risiko_kebakaran,user.pcra_icra_identifkasi_risiko_utilitas,user.bpjs_daftar_resep_apotek,user.daftar_permintaan_resep_iterasi_bpjs,"+
-                            "user.pcra_icra_pengkajian_risiko_prakonstruksi from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.pcra_icra_pengkajian_risiko_prakonstruksi,user.konsultasi_pasien,user.jawaban_konsultasi_pasien from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -8336,9 +8344,11 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan"),
                                            rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran"),
                                            rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas"),
-                                           rs.getBoolean("bpjs_daftar_resep_apotek"),
-                                           rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
-                                           rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi")
+                                           //rs.getBoolean("bpjs_daftar_resep_apotek"),
+                                          // rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
+                                           rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi"),
+                                           rs.getBoolean("konsultasi_pasien"),
+                                           rs.getBoolean("jawaban_konsultasi_pasien")
                                         });
                                     }   
                                 } catch (Exception e) {
@@ -9526,9 +9536,11 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan"),
                                        rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran"),
                                        rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas"),
-                                       rs.getBoolean("bpjs_daftar_resep_apotek"),
-                                       rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
-                                       rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi")
+                                      // rs.getBoolean("bpjs_daftar_resep_apotek"),
+                                      // rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
+                                       rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi"),
+                                       rs.getBoolean("konsultasi_pasien"),
+                                       rs.getBoolean("jawaban_konsultasi_pasien")
                                     });
                                 }                                             
                              }
