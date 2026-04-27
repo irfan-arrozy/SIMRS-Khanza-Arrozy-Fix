@@ -59,7 +59,7 @@ import laporan.DlgBerkasRawat;
 import laporan.DlgDiagnosaPenyakit;
 import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanKonsultasiMedik;
-import permintaan.DlgPermintaanKonsultasiPasien;
+import permintaan.DlgPermintaanKonsultasiPerawat;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanPelayananInformasiObat;
 import permintaan.DlgPermintaanRadiologi;
@@ -1864,7 +1864,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         lblInfoVerifikasi.setText("");
         lblInfoVerifikasi.setName("lblInfoVerifikasi"); // NOI18N
         panelGlass12.add(lblInfoVerifikasi);
-        lblInfoVerifikasi.setBounds(550, 2, 300, 50);
+        lblInfoVerifikasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblInfoVerifikasi.setBounds(700, 2, 400, 50);
         
         TAlergi.setHighlighter(null);
         TAlergi.setName("TAlergi"); // NOI18N
@@ -1876,7 +1877,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass12.add(TAlergi);
         TAlergi.setBounds(540, 10, 120, 23);
         
-           BtnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Select.png"))); // NOI18N
+           BtnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept_page.png"))); // NOI18N
         //BtnVer.setMnemonic('V');
         BtnVer.setText("Verifikasi SOAPIE");
        // BtnVer.setToolTipText("Alt+S");
@@ -1896,7 +1897,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass12.add(BtnVer);
         BtnVer.setBounds(900, 35, 180, 25);
         
-           BtnVisite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Stethoscope.png"))); // NOI18N
+           BtnVisite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Doctor1.png"))); // NOI18N
             BtnVisite.setText("Konfirmasi Visite Dokter");
             BtnVisite.setIconTextGap(3);
         BtnVisite.setName("BtnVisite"); // NOI18N
@@ -8579,13 +8580,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
-       private void BtnPermintaanKonsultasiPasienActionPerformed(java.awt.event.ActionEvent evt) {
+       private void BtnPermintaanKonsultasiPerawatActionPerformed(java.awt.event.ActionEvent evt) {
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPermintaanKonsultasiPasien form=new DlgPermintaanKonsultasiPasien(null,false);
+            DlgPermintaanKonsultasiPerawat form=new DlgPermintaanKonsultasiPerawat(null,false);
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
@@ -9414,7 +9415,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     // End of variables declaration//GEN-END:variables
     private widget.Button BtnSkorBromagePascaAnestesi,BtnPenilaianPreInduksi,BtnHasilPemeriksaanUSGUrologi,BtnHasilPemeriksaanUSGGynecologi,BtnHasilPemeriksaanEKG,BtnHasilPemeriksaanUSGNeonatus,BtnHasilEndoskopiFaringLaring,BtnHasilEndoskopiHidung,BtnHasilEndoskopiTelinga,
-                          BtnAwalKeperawatanNeonatus,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnPermintaanKonsultasiPasien,BtnAwalKeperawatanBayiAnak,BtnCatatanObservasiRestrainNonfarmakologi,
+                          BtnAwalKeperawatanNeonatus,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnPermintaanKonsultasiPerawat,BtnAwalKeperawatanBayiAnak,BtnCatatanObservasiRestrainNonfarmakologi,
                           BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnLaporanTindakan,
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU,BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnAwalMedisJantung,
@@ -10270,10 +10271,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tinggi=tinggi+24;
         }
         
-                BtnPermintaanKonsultasiPasien.setVisible(akses.getkonsultasi_pasien());   
-        if(akses.getkonsultasi_pasien()==true){
-            tinggi=tinggi+24;
-        }
+       //         BtnPermintaanKonsultasiPerawat.setVisible(akses.getkonsultasi_pasien());   
+       // if(akses.getkonsultasi_pasien()==true){
+       //     tinggi=tinggi+24;
+       // }
         
         BtnAwalKeperawatanBayiAnak.setVisible(akses.getpenilaian_awal_keperawatan_ranap_bayi());   
         if(akses.getpenilaian_awal_keperawatan_ranap_bayi()==true){
@@ -11022,18 +11023,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnPermintaanKonsultasiMedik.setRoundRect(false);
         BtnPermintaanKonsultasiMedik.addActionListener(this::BtnPermintaanKonsultasiMedikActionPerformed);
         
-                BtnPermintaanKonsultasiPasien = new widget.Button();
-        BtnPermintaanKonsultasiPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPermintaanKonsultasiPasien.setText("Konsultasi Pasien");
-        BtnPermintaanKonsultasiPasien.setFocusPainted(false);
-        BtnPermintaanKonsultasiPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); 
-        BtnPermintaanKonsultasiPasien.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnPermintaanKonsultasiPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnPermintaanKonsultasiPasien.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnPermintaanKonsultasiPasien.setName("BtnPermintaanKonsultasiMedik"); 
-        BtnPermintaanKonsultasiPasien.setPreferredSize(new java.awt.Dimension(190, 23));
-        BtnPermintaanKonsultasiPasien.setRoundRect(false);
-        BtnPermintaanKonsultasiPasien.addActionListener(this::BtnPermintaanKonsultasiPasienActionPerformed);
+                BtnPermintaanKonsultasiPerawat = new widget.Button();
+        BtnPermintaanKonsultasiPerawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnPermintaanKonsultasiPerawat.setText("Konsultasi Perawat");
+        BtnPermintaanKonsultasiPerawat.setFocusPainted(false);
+        BtnPermintaanKonsultasiPerawat.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnPermintaanKonsultasiPerawat.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPermintaanKonsultasiPerawat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPermintaanKonsultasiPerawat.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPermintaanKonsultasiPerawat.setName("BtnPermintaanKonsultasiPerawat"); 
+        BtnPermintaanKonsultasiPerawat.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPermintaanKonsultasiPerawat.setRoundRect(false);
+        BtnPermintaanKonsultasiPerawat.addActionListener(this::BtnPermintaanKonsultasiPerawatActionPerformed);
         
         BtnAwalMedisNeonatus = new widget.Button();
         BtnAwalMedisNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
@@ -11284,7 +11285,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnPermintaanLab);
         FormMenu.add(BtnPermintaanRad);
         FormMenu.add(BtnPermintaanKonsultasiMedik);
-        FormMenu.add(BtnPermintaanKonsultasiPasien);
+        FormMenu.add(BtnPermintaanKonsultasiPerawat);
         FormMenu.add(BtnJadwalOperasi);
         FormMenu.add(BtnSKDP);
         FormMenu.add(BtnRujukKeluar);
@@ -12355,8 +12356,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         String user   = tbPemeriksaan.getModel().getValueAt(row,27).toString();
 
         if(status.equals("Terverifikasi")){
+                String namaPetugas = Sequel.cariIsi(
+        "select nama from pegawai where nik=?", user
+    );
             lblInfoVerifikasi.setText(
-                "<html>Telah Diverifikasi oleh : " + user + "<br>pada : " + waktu + "</html>"
+                "<html>Telah Diverifikasi oleh : " + namaPetugas + "<br>pada : " + waktu + "</html>"
             );
             lblInfoVerifikasi.setVisible(true);
         }else{
@@ -12367,9 +12371,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 }
     
+    
     private void simpanTindakanVerifikasi(){
-        
+
     try{
+        // =========================
+        // 1. VALIDASI DOKTER
+        // =========================
         String kdDokter = Sequel.cariIsi(
             "select kd_dokter from dokter where kd_dokter='"+KdPeg.getText()+"'"
         );
@@ -12378,15 +12386,46 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             JOptionPane.showMessageDialog(null,"Kode dokter tidak ditemukan!");
             return;
         }
-String tgl = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
 
+        String tgl = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
 
- // ✅ CEK DUPLIKAT
+        // =========================
+        // 2. AMBIL KD_KAMAR TERAKHIR
+        // =========================
+        String kdKamar = Sequel.cariIsi(
+            "select kd_kamar from kamar_inap " +
+            "where no_rawat='"+TNoRw.getText()+"' " +
+            "order by tgl_masuk desc limit 1"
+        );
+
+        if(kdKamar.equals("")){
+            JOptionPane.showMessageDialog(null,
+                "Kamar pasien tidak ditemukan!");
+            return;
+        }
+
+        // =========================
+        // 3. MAPPING JENIS + TARIF
+        // =========================
+        String[] mapping = getMappingTindakan(kdKamar);
+
+        String kdJenis = mapping[0];
+        String tarif   = mapping[1];
+
+        if(kdJenis.equals("") || tarif.equals("0")){
+            JOptionPane.showMessageDialog(null,
+                "Mapping tindakan/tarif tidak ditemukan untuk kamar: " + kdKamar);
+            return;
+        }
+
+        // =========================
+        // 4. CEK DUPLIKAT
+        // =========================
         String cek = Sequel.cariIsi(
             "select no_rawat from rawat_inap_dr " +
             "where no_rawat='"+TNoRw.getText()+"' " +
             "and kd_dokter='"+kdDokter+"' " +
-            "and kd_jenis_prw='RI01016' " +
+            "and kd_jenis_prw='"+kdJenis+"' " +
             "and tgl_perawatan='"+tgl+"' limit 1"
         );
 
@@ -12396,7 +12435,9 @@ String tgl = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
             return;
         }
 
-        // ✅ INSERT
+        // =========================
+        // 5. INSERT DATA
+        // =========================
         Sequel.menyimpantf(
             "rawat_inap_dr",
             "?,?,?,?,?,?,?,?,?,?,?",
@@ -12404,20 +12445,102 @@ String tgl = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
             11,
             new String[]{
                 TNoRw.getText(),
-                "RI01016",
+                kdJenis,
                 kdDokter,
                 tgl,
                 cmbJam.getSelectedItem()+":"+
                 cmbMnt.getSelectedItem()+":"+
                 cmbDtk.getSelectedItem(),
-                "0","0","0","0","0","0"
+                "0","0","0","0","0", tarif
             }
         );
-JOptionPane.showMessageDialog(null,"Anda sudah berhasil konfirmasi visite!");
+
+        JOptionPane.showMessageDialog(null,
+            "Anda sudah berhasil konfirmasi visite!");
+
     }catch(Exception e){
         System.out.println("Error tindakan verifikasi : "+e);
     }
 }
+    
+    
+private String[] getMappingTindakan(String kdKamar){
+
+    Map<String, String[]> mapping = new HashMap<>();
+
+    mapping.put("AQS", new String[]{"RI01121","100000"});
+    mapping.put("ARF", new String[]{"RI01121","100000"});
+    mapping.put("MAR", new String[]{"RI01121","100000"});
+    mapping.put("SOF", new String[]{"RI01121","100000"});
+    mapping.put("MIN", new String[]{"RI01126","120000"});
+    mapping.put("ICU", new String[]{"RI01065","150000"});
+    mapping.put("NICU", new String[]{"RI01065","150000"});
+    mapping.put("PICU", new String[]{"RI01065","150000"});
+    mapping.put("PERIN", new String[]{"RI01065","150000"});
+    mapping.put("ZAM", new String[]{"RI01124","140000"});
+    mapping.put("RAUD", new String[]{"RI01124","140000"});
+    
+    
+
+    for(String key : mapping.keySet()){
+        if(kdKamar.startsWith(key)){
+            return mapping.get(key);
+        }
+    }
+
+    return new String[]{"","0"};
+}
+  //  private void simpanTindakanVerifikasi(){
+        
+  //  try{
+  //      String kdDokter = Sequel.cariIsi(
+   //         "select kd_dokter from dokter where kd_dokter='"+KdPeg.getText()+"'"
+   ///     );
+
+    //    if(kdDokter.equals("")){
+    //        JOptionPane.showMessageDialog(null,"Kode dokter tidak ditemukan!");
+     //       return;
+      //  }
+//String tgl = Valid.SetTgl(DTPTgl.getSelectedItem()+"");
+
+
+ // ✅ CEK DUPLIKAT
+     //   String cek = Sequel.cariIsi(
+     //       "select no_rawat from rawat_inap_dr " +
+     //       "where no_rawat='"+TNoRw.getText()+"' " +
+     //       "and kd_dokter='"+kdDokter+"' " +
+      //      "and kd_jenis_prw='RI01016' " +
+      //      "and tgl_perawatan='"+tgl+"' limit 1"
+      //  );
+
+     //   if(!cek.equals("")){
+     //       JOptionPane.showMessageDialog(null,
+     //           "Anda sudah visite untuk pasien ini pada hari ini!");
+     //       return;
+     //   }
+
+        // ✅ INSERT
+      //  Sequel.menyimpantf(
+      //      "rawat_inap_dr",
+      //      "?,?,?,?,?,?,?,?,?,?,?",
+      //      "Tindakan Verifikasi",
+      //      11,
+       //     new String[]{
+        //        TNoRw.getText(),
+        //        "RI01121",
+         //       kdDokter,
+         //       tgl,
+         //       cmbJam.getSelectedItem()+":"+
+          //      cmbMnt.getSelectedItem()+":"+
+          //      cmbDtk.getSelectedItem(),
+          //      "0","0","0","0","0","100000"
+          //  }
+       // );
+//JOptionPane.showMessageDialog(null,"Anda sudah berhasil konfirmasi visite!");
+  //  }catch(Exception e){
+  //      System.out.println("Error tindakan verifikasi : "+e);
+  //  }
+//}
     
     
     public void emptTeks(){

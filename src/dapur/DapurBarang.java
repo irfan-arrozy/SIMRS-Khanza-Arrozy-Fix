@@ -514,7 +514,7 @@ public final class DapurBarang extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(549, 10, 85, 23);
 
-        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kering", "Basah" }));
+        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kering", "Basah", "Non Makanan" }));
         Jenis.setName("Jenis"); // NOI18N
         Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

@@ -78,7 +78,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.","No.Rawat","Nama Pasien","Umur","J.K.","Tanggal","Mulai",
+                "No.","No.Rawat","No. RM","Nama Pasien","Umur","J.K.","Tanggal","Mulai",
                 "Selesai","Status","Rujukan Dari","Diagnosa","Kode Operasi","Operasi",
                 "Kode Operator","Operator","Order","Kode OK","Nama Ruang Operasi"
             }){
@@ -90,46 +90,48 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(28);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
+                            }else if(i==3){
                 column.setPreferredWidth(170);
-            }else if(i==3){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(170);
             }else if(i==4){
-                column.setPreferredWidth(30);
-            }else if(i==5){
-                column.setPreferredWidth(65);
-            }else if(i==6){
                 column.setPreferredWidth(50);
+            }else if(i==5){
+                column.setPreferredWidth(30);
+            }else if(i==6){
+                column.setPreferredWidth(65);
             }else if(i==7){
                 column.setPreferredWidth(50);
             }else if(i==8){
-                column.setPreferredWidth(60);
-            }else if(i==9){
-                column.setPreferredWidth(120);
-            }else if(i==10){
-                column.setPreferredWidth(150);
-            }else if(i==11){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==14){
-                column.setPreferredWidth(150);
-            }else if(i==15){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==16){
                 column.setPreferredWidth(50);
+            }else if(i==9){
+                column.setPreferredWidth(60);
+            }else if(i==10){
+                column.setPreferredWidth(120);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==13){
+                column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==17){
+                column.setPreferredWidth(50);
+            }else if(i==18){
                 column.setPreferredWidth(130);
             }
         }
@@ -2318,6 +2320,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
+            
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             JamMulai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(0,2));
             MenitMulai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(3,5));

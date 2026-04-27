@@ -1,5 +1,7 @@
 package permintaan;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -255,12 +257,12 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         jLabel34 = new widget.Label();
         scrollPane5 = new widget.ScrollPane();
         Recommendation = new widget.TextArea();
+        BtnJawabanDikonsuli = new widget.Button();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
         FormMenu = new widget.PanelBiasa();
         BtnRiwayatPasien = new widget.Button();
-        BtnJawabanDikonsuli = new widget.Button();
         BtnDokumentasiKonsul = new widget.Button();
 
         WindowInput.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -342,7 +344,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         label1.setBounds(210, 20, 55, 23);
 
         TanggalJawab.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2026 06:43:14" }));
+        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026 17:38:36" }));
         TanggalJawab.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalJawab.setName("TanggalJawab"); // NOI18N
         TanggalJawab.setOpaque(false);
@@ -665,7 +667,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(170, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -683,7 +685,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -773,7 +775,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         NoPermintaan.setBounds(92, 40, 120, 23);
 
         TanggalPermintaan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2026 06:43:13" }));
+        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026 17:38:36" }));
         TanggalPermintaan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPermintaan.setName("TanggalPermintaan"); // NOI18N
         TanggalPermintaan.setOpaque(false);
@@ -984,6 +986,24 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(332, 205, 295, 58);
 
+        BtnJawabanDikonsuli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnJawabanDikonsuli.setText("Jawab Konsul");
+        BtnJawabanDikonsuli.setFocusPainted(false);
+        BtnJawabanDikonsuli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnJawabanDikonsuli.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnJawabanDikonsuli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnJawabanDikonsuli.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnJawabanDikonsuli.setName("BtnJawabanDikonsuli"); // NOI18N
+        BtnJawabanDikonsuli.setPreferredSize(new java.awt.Dimension(130, 23));
+        BtnJawabanDikonsuli.setRoundRect(false);
+        BtnJawabanDikonsuli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJawabanDikonsuliActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnJawabanDikonsuli);
+        BtnJawabanDikonsuli.setBounds(640, 180, 130, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1037,23 +1057,6 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnRiwayatPasien);
-
-        BtnJawabanDikonsuli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnJawabanDikonsuli.setText("Jawaban Konsul");
-        BtnJawabanDikonsuli.setFocusPainted(false);
-        BtnJawabanDikonsuli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnJawabanDikonsuli.setGlassColor(new java.awt.Color(255, 255, 255));
-        BtnJawabanDikonsuli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnJawabanDikonsuli.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnJawabanDikonsuli.setName("BtnJawabanDikonsuli"); // NOI18N
-        BtnJawabanDikonsuli.setPreferredSize(new java.awt.Dimension(130, 23));
-        BtnJawabanDikonsuli.setRoundRect(false);
-        BtnJawabanDikonsuli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnJawabanDikonsuliActionPerformed(evt);
-            }
-        });
-        FormMenu.add(BtnJawabanDikonsuli);
 
         BtnDokumentasiKonsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnDokumentasiKonsul.setText("Dokumentasi Konsul");
@@ -1539,6 +1542,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 },"no_permintaan=?","tanggal=?,respon=?,instruksi=?,rencana=?",5,new String[]{
                     Valid.SetTgl(TanggalJawab.getSelectedItem()+"")+" "+TanggalJawab.getSelectedItem().toString().substring(11,19),Respon.getText(),Instruksi.getText(),Rencana.getText(),NoPermintaan.getText()
                 })==true){
+                simpanTindakanKonsul();
                     R2.setSelected(true);
                     runBackground(() ->tampil());
                     emptTeks();
@@ -1550,7 +1554,86 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }
     }//GEN-LAST:event_BtnSimpanJawabanActionPerformed
+    private void simpanTindakanKonsul(){
+    
+    try{
+        // =========================
+        // 1. AMBIL KAMAR TERAKHIR
+        // =========================
+        String kdKamar = Sequel.cariIsi(
+            "select kd_kamar from kamar_inap " +
+            "where no_rawat='"+NoRw.getText()+"' " +
+            "order by tgl_masuk desc limit 1"
+        );
 
+        if(kdKamar.equals("")){
+            JOptionPane.showMessageDialog(null,"Kamar pasien tidak ditemukan!");
+            return;
+        }
+
+        // =========================
+        // 2. AMBIL MAPPING
+        // =========================
+        String[] mapping = getMappingTindakan(kdKamar);
+
+        String kdJenis = mapping[0];
+        String tarif   = mapping[1];
+
+        if(kdJenis.equals("") || tarif.equals("0")){
+            JOptionPane.showMessageDialog(null,
+                "Mapping tindakan tidak ditemukan untuk kamar: " + kdKamar);
+            return;
+        }
+
+        // =========================
+        // 3. INSERT
+        // =========================
+        Sequel.menyimpantf(
+            "rawat_inap_dr",
+            "?,?,?,?,?,?,?,?,?,?,?",
+            "Tindakan Konsul",
+            11,
+            new String[]{
+                NoRw.getText(),
+                kdJenis,
+                KdDokterDikonsuli.getText(),
+                Valid.SetTgl(TanggalJawab.getSelectedItem()+""),
+                TanggalJawab.getSelectedItem().toString().substring(11,19),
+                "0","0","0","0","0", tarif
+            }
+        );
+
+    }catch(Exception e){
+        System.out.println("Error tindakan konsul : "+e);
+    }
+
+}
+    private String[] getMappingTindakan(String kdKamar){
+
+    Map<String, String[]> mapping = new LinkedHashMap<>();
+
+    // ⚠️ URUTAN PENTING (yang spesifik dulu)
+    mapping.put("NICU", new String[]{"RI01069","100000"});
+    mapping.put("PICU", new String[]{"RI01069","100000"});
+    mapping.put("PERIN", new String[]{"RI01069","100000"});
+    mapping.put("ICU", new String[]{"RI01069","100000"});
+mapping.put("MIN", new String[]{"RI01069","100000"});
+    mapping.put("AQS", new String[]{"RI01135","80000"});
+    mapping.put("ARF", new String[]{"RI01135","80000"});
+    mapping.put("MAR", new String[]{"RI01135","80000"});
+    mapping.put("SOF", new String[]{"RI01135","80000"});
+
+    mapping.put("ZAM", new String[]{"RI01136","120000"});
+    mapping.put("RAUD", new String[]{"RI01137","120000"});
+
+    for(String key : mapping.keySet()){
+        if(kdKamar.startsWith(key)){
+            return mapping.get(key);
+        }
+    }
+
+    return new String[]{"","0"};
+}
     private void BtnSimpanJawabanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanJawabanKeyPressed
         Valid.pindah(evt,Rencana,BtnBatal);
     }//GEN-LAST:event_BtnSimpanJawabanKeyPressed

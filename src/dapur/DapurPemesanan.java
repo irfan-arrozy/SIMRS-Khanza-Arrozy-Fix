@@ -680,7 +680,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoFaktur.getText().trim().equals("")){
             //autoNomor(); // kalau kosong baru auto
-            Valid.textKosong(NoFaktur,"No.Faktur");
+            //Valid.textKosong(NoFaktur,"No.Faktur");
         }else if(nmsup.getText().trim().equals("")){
             Valid.textKosong(kdsup,"Supplier");
         }else if(nmptg.getText().trim().equals("")){
@@ -708,6 +708,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
+                
+                System.out.println("PARAMETER INSERT:");
+System.out.println("1. NoFaktur: [" + NoFaktur.getText() + "]");
+System.out.println("2. NoOrder: [" + NoOrder.getText() + "]");
+System.out.println("3. kdsup: [" + kdsup.getText() + "]");
+System.out.println("4. kdptg: [" + kdptg.getText() + "]");
+System.out.println("5. TglPesan: [" + Valid.SetTgl(TglPesan.getSelectedItem()+"") + "]");
+System.out.println("6. TglFaktur: [" + Valid.SetTgl(TglFaktur.getSelectedItem()+"") + "]");
+System.out.println("7. TglTempo: [" + Valid.SetTgl(TglTempo.getSelectedItem()+"") + "]");
+System.out.println("8. sbttl: [" + sbttl + "]");
+System.out.println("9. ttldisk: [" + ttldisk + "]");
+System.out.println("10. ttl: [" + ttl + "]");
+System.out.println("11. ppn: [" + ppn + "]");
+System.out.println("12. meterai: [" + meterai + "]");
+System.out.println("13. total: [" + (ttl+ppn+meterai) + "]");
+System.out.println("14. status: [Belum Dibayar]");
+                System.out.println("NO FAKTUR: [" + NoFaktur.getText() + "]");
+System.out.println("NIP DIKIRIM: [" + kdptg.getText() + "]");
+
+String cekNip = Sequel.cariIsi(
+    "select nip from petugas where nip='"+kdptg.getText()+"'"
+);
+
+System.out.println("ADA DI DB: [" + cekNip + "]");
+
+if(cekNip.equals("")){
+    JOptionPane.showMessageDialog(null,"NIP tidak ditemukan!");
+    return;
+}
                 Sequel.AutoComitFalse();
                 sukses=true;
                 if(Sequel.menyimpantf2("dapurpemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",14,new String[]{
@@ -778,7 +807,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();  
-                autoNomor();
+                //autoNomor();
             }
         }        
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1063,7 +1092,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void TglPesanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglPesanItemStateChanged
         try {
-            autoNomor();
+          //  autoNomor();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_TglPesanItemStateChanged
@@ -1352,7 +1381,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     public void isCek(){
-        autoNomor();
+        //autoNomor();
         TCari.requestFocus();
         tppn.setText("11");
         Meterai.setText("0");
@@ -1366,9 +1395,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }        
     }
     
-    private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapurpemesanan.no_faktur,3),signed)),0) from dapurpemesanan where dapurpemesanan.tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PD"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
-    }
+    //private void autoNomor() {
+    //    Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapurpemesanan.no_faktur,3),signed)),0) from dapurpemesanan where dapurpemesanan.tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PD"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+   // }
 
     public void tampil(String noorder) {
         NoOrder.setText(noorder);

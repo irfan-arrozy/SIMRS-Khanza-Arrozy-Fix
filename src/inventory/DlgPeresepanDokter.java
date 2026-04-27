@@ -33,6 +33,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -85,6 +87,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private String TANGGALMUNDUR="yes";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private boolean popupAntibiotikSedangTampil = false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -276,6 +279,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         jam();
         
+  
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
             STOKKOSONGRESEP = koneksiDB.STOKKOSONGRESEP();
@@ -937,11 +941,134 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         if(tbResep.getRowCount()!=0){
             try {
                 getCekStok();
+                int row = tbResep.getSelectedRow(); // 🔴 WAJIB ADA
+
+    if (row != -1) {
+        cekResepAntibiotik(row); // 🔴 kirim row ke method
+    }
+                
             } catch (java.lang.NullPointerException e) {
             }
         }
 }//GEN-LAST:event_tbResepMouseClicked
 
+    private void tampilkanPopupAntibiotik(String noRawat) {
+    java.sql.PreparedStatement ps = null;
+    java.sql.ResultSet rs = null;
+
+    try {
+        String sql =
+   "SELECT dpo.tgl_perawatan, dpo.jam, db.nama_brng, dpo.jml, " +
+    "IFNULL(kb.nama, '-') AS kategori " +
+    "FROM detail_pemberian_obat dpo " +
+    "INNER JOIN databarang db ON dpo.kode_brng = db.kode_brng " +
+    "LEFT JOIN kategori_barang kb ON db.kode_kategori = kb.kode " +
+    "WHERE dpo.no_rawat=? " +
+    "AND db.nama_brng LIKE '%*AM%' " +
+    "ORDER BY dpo.tgl_perawatan DESC, dpo.jam DESC";
+        
+        
+
+        ps = koneksi.prepareStatement(sql);
+        ps.setString(1, noRawat);
+        rs = ps.executeQuery();
+
+        // 🔴 Table model
+        String[] kolom = {"Tanggal", "Jam", "Nama Obat", "Kategori", "Jumlah"};
+        javax.swing.table.DefaultTableModel model =
+            new javax.swing.table.DefaultTableModel(null, kolom) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // read only
+                }
+            };
+
+        boolean adaData = false;
+
+        while (rs.next()) {
+            adaData = true;
+            
+                String kategori = rs.getString("kategori");
+    if (kategori == null) kategori = "-";
+            model.addRow(new Object[]{
+                rs.getString("tgl_perawatan"),
+                rs.getString("jam"),
+                rs.getString("nama_brng"),
+                rs.getString("kategori"),
+                rs.getString("jml")
+            });
+        }
+
+        // ❌ kalau tidak ada → tidak usah tampil
+        if (!adaData) return;
+
+        // 🔴 JTable
+        javax.swing.JTable table = new javax.swing.JTable(model);
+        table.setRowHeight(22);
+        table.getColumnModel().getColumn(0).setPreferredWidth(70);  // tanggal
+table.getColumnModel().getColumn(1).setPreferredWidth(50);  // jam
+table.getColumnModel().getColumn(2).setPreferredWidth(180); // nama obat
+table.getColumnModel().getColumn(3).setPreferredWidth(150); // kategori
+table.getColumnModel().getColumn(4).setPreferredWidth(40);  // jumlah
+        
+
+        javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(table);
+        scroll.setPreferredSize(new java.awt.Dimension(550, 220));
+
+        // 🔴 Panel
+        javax.swing.JPanel panel = new javax.swing.JPanel(new java.awt.BorderLayout(5,5));
+        panel.add(new javax.swing.JLabel("Riwayat Pemberian Antibiotik Pasien"), java.awt.BorderLayout.NORTH);
+        panel.add(scroll, java.awt.BorderLayout.CENTER);
+
+        // 🔥 Popup hanya OK
+        javax.swing.JOptionPane.showMessageDialog(
+            null,
+            panel,
+            "Informasi Antibiotik",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+    
+private void cekResepAntibiotik(int row) {
+    try {
+        if (row < 0) return;
+        if (TNoRw.getText().trim().isEmpty()) return;
+
+        Object nmObj = tbResep.getValueAt(row, 4);
+        if (nmObj == null) return;
+
+        String namaObat = nmObj.toString();
+        // 🔴 CEK SUDAH PERNAH MUNCUL ATAU BELUM
+if (popupAntibiotikSedangTampil) return;
+
+if (!namaObat.toUpperCase().contains("*AM")) return;
+
+// 🔒 kunci supaya tidak dobel
+popupAntibiotikSedangTampil = true;
+
+// 🔴 TAMPILKAN POPUP RIWAYAT
+tampilkanPopupAntibiotik(TNoRw.getText());
+
+    
+
+        tampilkanPopupAntibiotik(TNoRw.getText());
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+    
     private void tbResepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbResepKeyPressed
         if(tbResep.getRowCount()!=0){
             try {
@@ -1030,7 +1157,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan terlebih dahulu obat yang mau diberikan...!!!");
             TCari.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"<html><b>- PERIKSA KEMBALI NAMA DOKTER ! ! !</b><br>PASTIKAN DOKTER PERESEP ADALAH DOKTER YANG LOG IN SAAT INI</b><br>- PASTIKAN KEMBALI BAHWA JENIS OBAT SESUAI UNTUK PASIEN INI ! ! !</html>","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"<html><b>- PERIKSA KEMBALI NAMA DOKTER PERESEP ! ! !</b><br>PASTIKAN NAMA DOKTER ADALAH DOKTER PERESEP</b><br>- APAKAH ANDA YAKIN RESEP OBAT INI TEPAT UNTUK PASIEN INI ?</html>","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {                 
                 ChkJln.setSelected(false);    
                 Sequel.AutoComitFalse();
@@ -2079,7 +2206,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     public void emptTeksobat() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"'",
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' or resep_obat.tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"'",
                 DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);        
         } 
     }
@@ -2133,6 +2260,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void setNoRm(String norwt,Date tanggal, String jam,String menit,String detik,String KodeDokter,String NamaDokter,String status) {        
         TNoRw.setText(norwt);
+        popupAntibiotikSedangTampil = false;
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien,' (',pasien.umur,')') from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where no_rawat=? ",TPasien,TNoRw.getText());
         
         DTPBeri.setDate(tanggal);
@@ -2151,6 +2279,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void setNoRm(String norwt,String KodeDokter,String NamaDokter,String Pasien,String kodepj,String status) {        
         TNoRw.setText(norwt);
+        popupAntibiotikSedangTampil = false;
         TPasien.setText(Pasien);
         KdDokter.setText(KodeDokter);
         NmDokter.setText(NamaDokter);
@@ -2164,6 +2293,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void setNoRm(String norwt,Date tanggal,String status) {        
         TNoRw.setText(norwt);
+        popupAntibiotikSedangTampil = false;
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien) from reg_periksa inner join pasien "+
                     " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where no_rawat=? ",TPasien,TNoRw.getText());
         
