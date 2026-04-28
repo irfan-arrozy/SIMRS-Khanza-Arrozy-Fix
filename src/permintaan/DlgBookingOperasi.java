@@ -2275,7 +2275,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     diagnosa=Sequel.cariIsi("select concat(diagnosa_pasien.kd_penyakit,' ',penyakit.nm_penyakit) from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where diagnosa_pasien.no_rawat=? limit 1",rs.getString("no_rawat"));
                     
                     tabMode.addRow(new Object[]{
-                        i+".",rs.getString("no_rawat"),rs.getString("nm_pasien"),rs.getString("umur"),
+                        i+".",rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umur"),
                         rs.getString("jk"),rs.getString("tanggal"),rs.getString("jam_mulai"),rs.getString("jam_selesai"),
                         rs.getString("status"),kamar,diagnosa,rs.getString("kode_paket"),rs.getString("nm_perawatan"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),order,rs.getString("kd_ruang_ok"),
@@ -2320,23 +2320,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
-            
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JamMulai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(0,2));
             MenitMulai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(3,5));
             DetikMulai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(6,8));
             JamSelesai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             DetikSelesai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             DetikSelesai.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            Status.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Kamar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            KdOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            NmOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            KdRuangOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NmRuangOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Valid.SetTgl(DTPTgl,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Status.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Kamar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KdOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NmOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            KdRuangOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            NmRuangOperasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Valid.SetTgl(DTPTgl,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
     
