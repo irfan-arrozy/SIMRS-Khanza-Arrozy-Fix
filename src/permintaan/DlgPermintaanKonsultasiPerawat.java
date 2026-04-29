@@ -2062,11 +2062,11 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
             BtnPerawat.setEnabled(false);
             KdPerawat.setText(akses.getkode());
             NmPerawat.setText(Sequel.CariPetugas(KdPerawat.getText()));
-            if(NmPerawat.getText().equals("")){
-                KdPerawat.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
-                dispose();
-            }
+          //  if(NmPerawat.getText().equals("")){
+           //     KdPerawat.setText("");
+            //    JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+            //    dispose();
+           // }
         }
     }
     
