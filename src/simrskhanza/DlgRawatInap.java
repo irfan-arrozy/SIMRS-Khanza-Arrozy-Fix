@@ -1877,12 +1877,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass12.add(TAlergi);
         TAlergi.setBounds(540, 10, 120, 23);
         
-           BtnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept_page.png"))); // NOI18N
+           BtnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/check-document-16.png"))); // NOI18N
         //BtnVer.setMnemonic('V');
-        BtnVer.setText("Verifikasi SOAPIE");
+        BtnVer.setText("Verifikasi DPJP");
        // BtnVer.setToolTipText("Alt+S");
         BtnVer.setIconTextGap(3);
-        BtnVer.setName("BtnVer"); // NOI18N
+
         BtnVer.setPreferredSize(new java.awt.Dimension(50, 23));
         BtnVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1895,13 +1895,13 @@ public final class DlgRawatInap extends javax.swing.JDialog {
            // }
         });
         panelGlass12.add(BtnVer);
-        BtnVer.setBounds(900, 35, 180, 25);
+        BtnVer.setBounds(700, 10, 150, 23);
         
-           BtnVisite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Doctor1.png"))); // NOI18N
+           BtnVisite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/doctor-16.png"))); // NOI18N
             BtnVisite.setText("Konfirmasi Visite Dokter");
             BtnVisite.setIconTextGap(3);
         BtnVisite.setName("BtnVisite"); // NOI18N
-        BtnVisite.setPreferredSize(new java.awt.Dimension(80, 30));
+        BtnVisite.setPreferredSize(new java.awt.Dimension(80, 23));
         BtnVisite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnVisiteActionPerformed(evt);
@@ -1913,7 +1913,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
            // }
         });
         panelGlass12.add(BtnVisite);
-        BtnVisite.setBounds(860, 70, 300, 25);
+        BtnVisite.setBounds(920, 50, 190, 25);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -3119,7 +3119,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRiwayat.setText("Riwayat Pasien");
         BtnRiwayat.setFocusPainted(false);
-        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BtnRiwayat.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnRiwayat.setMargin(new java.awt.Insets(1, 1, 1, 1));
@@ -3533,7 +3533,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianPreOperasi.setText("Pengkajian Pre Operasi");
+        BtnPenilaianPreOperasi.setText("Kajian Pre Operasi");
         BtnPenilaianPreOperasi.setFocusPainted(false);
         BtnPenilaianPreOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianPreOperasi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3549,7 +3549,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianPreAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianPreAnestesi.setText("Pengkajian Pre Anestesi");
+        BtnPenilaianPreAnestesi.setText("Kajian Pre Anestesi");
         BtnPenilaianPreAnestesi.setFocusPainted(false);
         BtnPenilaianPreAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianPreAnestesi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3597,7 +3597,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianPsikolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianPsikolog.setText("Pengkajian Psikologi");
+        BtnPenilaianPsikolog.setText("Kajian Psikologi");
         BtnPenilaianPsikolog.setFocusPainted(false);
         BtnPenilaianPsikolog.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianPsikolog.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3629,7 +3629,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhDewasa.setText("Lanjutan Risiko Jatuh Dewasa");
+        BtnPenilaianLanjutanResikoJatuhDewasa.setText("Kajian Ljt. Risiko Jatuh Dewasa");
         BtnPenilaianLanjutanResikoJatuhDewasa.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhDewasa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhDewasa.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3645,7 +3645,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhAnak.setText("Lanjutan Risiko Jatuh Anak");
+        BtnPenilaianLanjutanResikoJatuhAnak.setText("Kajian Ljt. Risiko Jatuh Anak");
         BtnPenilaianLanjutanResikoJatuhAnak.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhAnak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhAnak.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3661,7 +3661,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhLansia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhLansia.setText("Lanjutan Risiko Jatuh Lansia");
+        BtnPenilaianLanjutanResikoJatuhLansia.setText("Kajian Ljt. Risiko Jatuh Lansia");
         BtnPenilaianLanjutanResikoJatuhLansia.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhLansia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhLansia.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3677,7 +3677,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhNeonatus.setText("Lanjutan Risiko Jatuh Neonatus");
+        BtnPenilaianLanjutanResikoJatuhNeonatus.setText("Kajian Ljt. Risiko Jatuh Neonatus");
         BtnPenilaianLanjutanResikoJatuhNeonatus.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhNeonatus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhNeonatus.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3693,7 +3693,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhGeriatri.setText("Lanjutan Risiko Jatuh Geriatri");
+        BtnPenilaianLanjutanResikoJatuhGeriatri.setText("Kajian Ljt. Risiko Jatuh Geriatri");
         BtnPenilaianLanjutanResikoJatuhGeriatri.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhGeriatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhGeriatri.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3709,7 +3709,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanResikoJatuhPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanResikoJatuhPsikiatri.setText("Lanjutan Risiko Jatuh Psikiatri");
+        BtnPenilaianLanjutanResikoJatuhPsikiatri.setText("Kajian Ljt. Risiko Jatuh Psikiatri");
         BtnPenilaianLanjutanResikoJatuhPsikiatri.setFocusPainted(false);
         BtnPenilaianLanjutanResikoJatuhPsikiatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanResikoJatuhPsikiatri.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3725,7 +3725,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianLanjutanSkriningFungsional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianLanjutanSkriningFungsional.setText("Lanjutan Skrining Fungsional");
+        BtnPenilaianLanjutanSkriningFungsional.setText("Kajian Ljt. Skrining Fungsional");
         BtnPenilaianLanjutanSkriningFungsional.setFocusPainted(false);
         BtnPenilaianLanjutanSkriningFungsional.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianLanjutanSkriningFungsional.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3741,7 +3741,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianResikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianResikoDekubitus.setText("Risiko Dekubitus");
+        BtnPenilaianResikoDekubitus.setText("Kajian Risiko Dekubitus");
         BtnPenilaianResikoDekubitus.setFocusPainted(false);
         BtnPenilaianResikoDekubitus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianResikoDekubitus.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3789,7 +3789,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanPersalinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanPersalinan.setText("Catatan Persalinan");
+        BtnCatatanPersalinan.setText("Cttn. Persalinan");
         BtnCatatanPersalinan.setFocusPainted(false);
         BtnCatatanPersalinan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanPersalinan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3805,7 +3805,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatan.setText("Catatan Pasien");
+        BtnCatatan.setText("Cttn. Pasien");
         BtnCatatan.setFocusPainted(false);
         BtnCatatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3821,7 +3821,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanObservasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanObservasiRanap.setText("Observasi Ranap");
+        BtnCatatanObservasiRanap.setText("Cttn. Observasi Ranap");
         BtnCatatanObservasiRanap.setFocusPainted(false);
         BtnCatatanObservasiRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanObservasiRanap.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3837,7 +3837,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanObservasiRanapKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanObservasiRanapKebidanan.setText("Observasi Kebidanan");
+        BtnCatatanObservasiRanapKebidanan.setText("Cttn. Observasi Kebidanan");
         BtnCatatanObservasiRanapKebidanan.setFocusPainted(false);
         BtnCatatanObservasiRanapKebidanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanObservasiRanapKebidanan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3853,7 +3853,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanObservasiRanapPostPartum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanObservasiRanapPostPartum.setText("Observasi Post Partum");
+        BtnCatatanObservasiRanapPostPartum.setText("Cttn. Observasi Post Partum");
         BtnCatatanObservasiRanapPostPartum.setFocusPainted(false);
         BtnCatatanObservasiRanapPostPartum.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanObservasiRanapPostPartum.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3885,7 +3885,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanKeperawatan.setText("Catatan Keperawatan");
+        BtnCatatanKeperawatan.setText("Cttn. Keperawatan");
         BtnCatatanKeperawatan.setFocusPainted(false);
         BtnCatatanKeperawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanKeperawatan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3901,7 +3901,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanCekGDS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanCekGDS.setText("Catatan Cek GDS");
+        BtnCatatanCekGDS.setText("Cttn. Cek GDS");
         BtnCatatanCekGDS.setFocusPainted(false);
         BtnCatatanCekGDS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanCekGDS.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3917,7 +3917,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianUlangNyeri.setText("Pengkajian Ulang Nyeri");
+        BtnPenilaianUlangNyeri.setText("Kajian Ulang Nyeri");
         BtnPenilaianUlangNyeri.setFocusPainted(false);
         BtnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianUlangNyeri.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4173,7 +4173,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnCatatanADIMEGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnCatatanADIMEGizi.setText("Catatan ADIME Gizi");
+        BtnCatatanADIMEGizi.setText("Cttn. ADIME Gizi");
         BtnCatatanADIMEGizi.setFocusPainted(false);
         BtnCatatanADIMEGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatanADIMEGizi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4253,7 +4253,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPengkajianRestrain.setText("Pengkajian Restrain");
+        BtnPengkajianRestrain.setText("Kajian Restrain");
         BtnPengkajianRestrain.setFocusPainted(false);
         BtnPengkajianRestrain.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPengkajianRestrain.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4269,7 +4269,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianPasienTerminal.setText("Pengkajian Pasien Terminal");
+        BtnPenilaianPasienTerminal.setText("Kajian Pasien Terminal");
         BtnPenilaianPasienTerminal.setFocusPainted(false);
         BtnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianPasienTerminal.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4285,7 +4285,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianKorbanKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianKorbanKekerasan.setText("Pengkajian Korban Kekerasan");
+        BtnPenilaianKorbanKekerasan.setText("Kajian Korban Kekerasan");
         BtnPenilaianKorbanKekerasan.setFocusPainted(false);
         BtnPenilaianKorbanKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianKorbanKekerasan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4301,7 +4301,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianKecemasanAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianKecemasanAnak.setText("Pengkajian Kecemasan Anak");
+        BtnPenilaianKecemasanAnak.setText("Kajian Kecemasan Anak");
         BtnPenilaianKecemasanAnak.setFocusPainted(false);
         BtnPenilaianKecemasanAnak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianKecemasanAnak.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4317,7 +4317,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
 
         BtnPenilaianPasienPenyakitMenular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnPenilaianPasienPenyakitMenular.setText("Pasien Penyakit Menular");
+        BtnPenilaianPasienPenyakitMenular.setText("Kajian Pasien Penyakit Menular");
         BtnPenilaianPasienPenyakitMenular.setFocusPainted(false);
         BtnPenilaianPasienPenyakitMenular.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPenilaianPasienPenyakitMenular.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10687,6 +10687,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(205,HEIGHT));
+            //PanelAccor.setPreferredSize(new Dimension(205, PanelAccor.getHeight()));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  
@@ -10713,13 +10714,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPreInduksi = new widget.Button();
         BtnPenilaianPreInduksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPreInduksi.setText("Pengkajian Pre Induksi");
+        BtnPenilaianPreInduksi.setText("Kajian Pre Induksi");
         BtnPenilaianPreInduksi.setFocusPainted(false);
         BtnPenilaianPreInduksi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPreInduksi.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnPenilaianPreInduksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnPenilaianPreInduksi.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnPenilaianPreInduksi.setName("Pengkajian Pre Induksi"); 
+        BtnPenilaianPreInduksi.setName("Kajian Pre Induksi"); 
         BtnPenilaianPreInduksi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnPenilaianPreInduksi.setRoundRect(false);
         BtnPenilaianPreInduksi.addActionListener(this::BtnPenilaianPreInduksiActionPerformed);
@@ -10882,7 +10883,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPasienImunitasRendah = new widget.Button();
         BtnPenilaianPasienImunitasRendah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPasienImunitasRendah.setText("Pasien Imunitas Rendah");
+        BtnPenilaianPasienImunitasRendah.setText("Kajian Pasien Imunitas Rendah");
         BtnPenilaianPasienImunitasRendah.setFocusPainted(false);
         BtnPenilaianPasienImunitasRendah.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPasienImunitasRendah.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10895,7 +10896,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanKeseimbanganCairan = new widget.Button();
         BtnCatatanKeseimbanganCairan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanKeseimbanganCairan.setText("Keseimbangan Cairan");
+        BtnCatatanKeseimbanganCairan.setText("Cttn. Keseimbangan Cairan");
         BtnCatatanKeseimbanganCairan.setFocusPainted(false);
         BtnCatatanKeseimbanganCairan.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanKeseimbanganCairan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10908,7 +10909,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiCHBP = new widget.Button();
         BtnCatatanObservasiCHBP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiCHBP.setText("Observasi CHBP");
+        BtnCatatanObservasiCHBP.setText("Cttn. Observasi CHBP");
         BtnCatatanObservasiCHBP.setFocusPainted(false);
         BtnCatatanObservasiCHBP.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiCHBP.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10921,7 +10922,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanPengkajianPaskaOperasi = new widget.Button();
         BtnCatatanPengkajianPaskaOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanPengkajianPaskaOperasi.setText("Pengkajian Paska Operasi");
+        BtnCatatanPengkajianPaskaOperasi.setText("Cttn. Kajian Paska Operasi");
         BtnCatatanPengkajianPaskaOperasi.setFocusPainted(false);
         BtnCatatanPengkajianPaskaOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanPengkajianPaskaOperasi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10934,7 +10935,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiInduksiPersalinan = new widget.Button();
         BtnCatatanObservasiInduksiPersalinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiInduksiPersalinan.setText("Observasi Induksi Persalinan");
+        BtnCatatanObservasiInduksiPersalinan.setText("Cttn. Observasi Induksi Persalinan");
         BtnCatatanObservasiInduksiPersalinan.setFocusPainted(false);
         BtnCatatanObservasiInduksiPersalinan.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiInduksiPersalinan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10947,7 +10948,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiHemodialisa = new widget.Button();
         BtnCatatanObservasiHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiHemodialisa.setText("Observasi Hemodialisa");
+        BtnCatatanObservasiHemodialisa.setText("Cttn. Observasi Hemodialisa");
         BtnCatatanObservasiHemodialisa.setFocusPainted(false);
         BtnCatatanObservasiHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiHemodialisa.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10960,7 +10961,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanCairanHemodialisa = new widget.Button();
         BtnCatatanCairanHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanCairanHemodialisa.setText("Cairan Hemodialisa");
+        BtnCatatanCairanHemodialisa.setText("Cttn. Cairan Hemodialisa");
         BtnCatatanCairanHemodialisa.setFocusPainted(false);
         BtnCatatanCairanHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanCairanHemodialisa.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10986,7 +10987,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiRestrainNonfarmakologi = new widget.Button();
         BtnCatatanObservasiRestrainNonfarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiRestrainNonfarmakologi.setText("Observasi Restrain Nonfarma");
+        BtnCatatanObservasiRestrainNonfarmakologi.setText("Cttn. Observasi Restrain Nonfarma");
         BtnCatatanObservasiRestrainNonfarmakologi.setFocusPainted(false);
         BtnCatatanObservasiRestrainNonfarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiRestrainNonfarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -10999,7 +11000,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiVentilator = new widget.Button();
         BtnCatatanObservasiVentilator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiVentilator.setText("Observasi Ventilator");
+        BtnCatatanObservasiVentilator.setText("Cttn. Observasi Ventilator");
         BtnCatatanObservasiVentilator.setFocusPainted(false);
         BtnCatatanObservasiVentilator.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiVentilator.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11077,7 +11078,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPsikologKlinis = new widget.Button();
         BtnPenilaianPsikologKlinis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPsikologKlinis.setText("Pengkajian Psikologi Klinis");
+        BtnPenilaianPsikologKlinis.setText("Kajian Psikologi Klinis");
         BtnPenilaianPsikologKlinis.setFocusPainted(false);
         BtnPenilaianPsikologKlinis.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPsikologKlinis.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11090,7 +11091,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianDerajatDehidrasi = new widget.Button();
         BtnPenilaianDerajatDehidrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianDerajatDehidrasi.setText("Pengkajian Derajat Dehidrasi");
+        BtnPenilaianDerajatDehidrasi.setText("Kajian Derajat Dehidrasi");
         BtnPenilaianDerajatDehidrasi.setFocusPainted(false);
         BtnPenilaianDerajatDehidrasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianDerajatDehidrasi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11103,7 +11104,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanAnastesiSedasi = new widget.Button();
         BtnCatatanAnastesiSedasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanAnastesiSedasi.setText("Catatan Anestesi-Sedasi");
+        BtnCatatanAnastesiSedasi.setText("Cttn. Anestesi-Sedasi");
         BtnCatatanAnastesiSedasi.setFocusPainted(false);
         BtnCatatanAnastesiSedasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanAnastesiSedasi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11116,7 +11117,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianBayiBaruLahir = new widget.Button();
         BtnPenilaianBayiBaruLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianBayiBaruLahir.setText("Pengkajian Bayi Baru Lahir");
+        BtnPenilaianBayiBaruLahir.setText("Kajian Bayi Baru Lahir");
         BtnPenilaianBayiBaruLahir.setFocusPainted(false);
         BtnPenilaianBayiBaruLahir.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianBayiBaruLahir.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11155,7 +11156,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnCatatanObservasiBayi = new widget.Button();
         BtnCatatanObservasiBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnCatatanObservasiBayi.setText("Observasi Bayi");
+        BtnCatatanObservasiBayi.setText("Cttn. Observasi Bayi");
         BtnCatatanObservasiBayi.setFocusPainted(false);
         BtnCatatanObservasiBayi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnCatatanObservasiBayi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -11277,127 +11278,127 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnRiwayat);
         FormMenu.add(BtnResepObat);
         FormMenu.add(BtnCopyResep);
-        FormMenu.add(BtnPermintaanStok);
-        FormMenu.add(BtnPermintaanResepPulang);
-        FormMenu.add(BtnInputObat);
-        FormMenu.add(BtnObatBhp);
-        FormMenu.add(BtnBerkasDigital);
-        FormMenu.add(BtnPermintaanLab);
-        FormMenu.add(BtnPermintaanRad);
-        FormMenu.add(BtnPermintaanKonsultasiMedik);
-        FormMenu.add(BtnPermintaanKonsultasiPerawat);
-        FormMenu.add(BtnJadwalOperasi);
-        FormMenu.add(BtnSKDP);
-        FormMenu.add(BtnRujukKeluar);
-        FormMenu.add(BtnDiagnosa);
-        FormMenu.add(BtnResume);
-        FormMenu.add(BtnAwalKeperawatanUmum);
-        FormMenu.add(BtnAwalKeperawatanKandungan);
-        FormMenu.add(BtnAwalKeperawatanNeonatus);
-        FormMenu.add(BtnAwalKeperawatanBayiAnak);
-        FormMenu.add(BtnAwalFisioterapi);
-        FormMenu.add(BtnAwalMedis);
-        FormMenu.add(BtnAwalMedisKandungan);
-        FormMenu.add(BtnAwalMedisNeonatus);
-        FormMenu.add(BtnAwalMedisPsikiatri);
-        FormMenu.add(BtnAwalMedisHemodialisa);
-        FormMenu.add(BtnAwalMedisJantung);
-        FormMenu.add(BtnPenilaianPreInduksi);
-        FormMenu.add(BtnChecklistPreOperasi);
-        FormMenu.add(BtnSignInSebelumAnestesi);
-        FormMenu.add(BtnTimeOutSebelumInsisi);
-        FormMenu.add(BtnSignOutSebelumMenutupLuka);
-        FormMenu.add(BtnChecklistPostOperasi);
-        FormMenu.add(BtnPenilaianPreOperasi);
-        FormMenu.add(BtnCatatanAnastesiSedasi);
-        FormMenu.add(BtnPenilaianPreAnestesi);
-        FormMenu.add(BtnChecklistKesiapanAnestesi);
-        FormMenu.add(BtnSkorAldrettePascaAnestesi);
-        FormMenu.add(BtnSkorStewardPascaAnestesi);
-        FormMenu.add(BtnSkorBromagePascaAnestesi);
-        FormMenu.add(BtnCatatanPengkajianPaskaOperasi);
-        FormMenu.add(BtnPenilaianPsikolog);
-        FormMenu.add(BtnPenilaianPsikologKlinis);
-        FormMenu.add(BtnPerencanaanPemulangan);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhDewasa);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhAnak);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhLansia);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhNeonatus);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhGeriatri);
-        FormMenu.add(BtnPenilaianLanjutanResikoJatuhPsikiatri);
-        FormMenu.add(BtnPenilaianLanjutanSkriningFungsional);
-        FormMenu.add(BtnPenilaianResikoDekubitus);
-        FormMenu.add(BtnHasilPemeriksaanUSG);
-        FormMenu.add(BtnHasilPemeriksaanUSGUrologi);
-        FormMenu.add(BtnHasilPemeriksaanUSGNeonatus);
-        FormMenu.add(BtnHasilPemeriksaanUSGGynecologi);
-        FormMenu.add(BtnHasilPemeriksaanEKG);
-        FormMenu.add(BtnHasilPemeriksaanECHO);
-        FormMenu.add(BtnHasilPemeriksaanECHOPediatrik);
-        FormMenu.add(BtnHasilPemeriksaanSlitLamp);
-        FormMenu.add(BtnHasilPemeriksaanOCT);
-        FormMenu.add(BtnHasilPemeriksaanTreadmill);
-        FormMenu.add(BtnHasilEndoskopiFaringLaring);
-        FormMenu.add(BtnHasilEndoskopiHidung);
-        FormMenu.add(BtnHasilEndoskopiTelinga);
-        FormMenu.add(BtnDokumentasiESWL);
-        FormMenu.add(BtnCatatanPersalinan);
-        FormMenu.add(BtnLaporanTindakan);
-        FormMenu.add(BtnCatatan);
-        FormMenu.add(BtnCatatanObservasiRanap);
-        FormMenu.add(BtnCatatanObservasiRanapKebidanan);
-        FormMenu.add(BtnCatatanObservasiRanapPostPartum);
-        FormMenu.add(BtnCatatanObservasiCHBP);
-        FormMenu.add(BtnCatatanObservasiInduksiPersalinan);
-        FormMenu.add(BtnCatatanObservasiBayi);
-        FormMenu.add(BtnCatatanObservasiRestrainNonfarmakologi);
-        FormMenu.add(BtnCatatanObservasiVentilator);
-        FormMenu.add(BtnCatatanObservasiHemodialisa);
-        FormMenu.add(BtnCatatanKeseimbanganCairan);
-        FormMenu.add(BtnCatatanCairanHemodialisa);
-        FormMenu.add(BtnChecklistPemberianFibrinolitik);
-        FormMenu.add(BtnFollowUpDBD);
         FormMenu.add(BtnCatatanKeperawatan);
-        FormMenu.add(BtnCatatanCekGDS);
-        FormMenu.add(BtnPenilaianUlangNyeri);
-        FormMenu.add(BtnPemantauanPEWSAnak);
-        FormMenu.add(BtnPemantauanPEWSDewasa);
-        FormMenu.add(BtnPemantauanMEOWS);
-        FormMenu.add(BtnPemantauanEWSNeonatus);
-        FormMenu.add(BtnChecklistKriteriaMasukHCU);
-        FormMenu.add(BtnChecklistKriteriaKeluarHCU);
-        FormMenu.add(BtnChecklistKriteriaMasukICU);
-        FormMenu.add(BtnChecklistKriteriaKeluarICU);
-        FormMenu.add(BtnChecklistKriteriaMasukNICU);
-        FormMenu.add(BtnChecklistKriteriaKeluarNICU);
-        FormMenu.add(BtnChecklistKriteriaMasukPICU);
-        FormMenu.add(BtnChecklistKriteriaKeluarPICU);
-        FormMenu.add(BtnMonitoringReaksiTranfusi);
-        FormMenu.add(BtnSkriningNutrisiDewasa);
-        FormMenu.add(BtnSkriningNutrisiLansia);
-        FormMenu.add(BtnSkriningNutrisiAnak);
-        FormMenu.add(BtnSkriningGiziKehamilan);
-        FormMenu.add(BtnSkriningGiziLanjut);
-        FormMenu.add(BtnAsuhanGizi);
-        FormMenu.add(BtnMonitoringAsuhanGizi);
-        FormMenu.add(BtnCatatanADIMEGizi);
-        FormMenu.add(BtnKonselingFarmasi);
-        FormMenu.add(BtnInformasiObat);
-        FormMenu.add(BtnRekonsiliasiObat);
-        FormMenu.add(BtnTransferAntarRuang);
-        FormMenu.add(BtnPelaksanaanInformasiEdukasi);
-        FormMenu.add(BtnPengkajianRestrain);
-        FormMenu.add(BtnPenilaianBayiBaruLahir);
-        FormMenu.add(BtnPenilaianPasienTerminal);
-        FormMenu.add(BtnPenilaianKorbanKekerasan);
-        FormMenu.add(BtnPenilaianKecemasanAnak);
-        FormMenu.add(BtnPenilaianPasienPenyakitMenular);
-        FormMenu.add(BtnPenilaianPasienImunitasRendah);
-        FormMenu.add(BtnPenilaianTambahanGeriatri);
-        FormMenu.add(BtnPenilaianTambahanBunuhDiri);
-        FormMenu.add(BtnPenilaianTambahanPerilakuKekerasan);
-        FormMenu.add(BtnPenilaianTambahanMelarikanDiri);
-        FormMenu.add(BtnPenilaianDerajatDehidrasi);
+        FormMenu.add(BtnPermintaanLab);
+FormMenu.add(BtnPermintaanRad);
+FormMenu.add(BtnPermintaanResepPulang);
+FormMenu.add(BtnPermintaanStok);
+FormMenu.add(BtnRekonsiliasiObat);
+FormMenu.add(BtnPermintaanKonsultasiMedik);
+FormMenu.add(BtnPermintaanKonsultasiPerawat);
+FormMenu.add(BtnLaporanTindakan);
+FormMenu.add(BtnResume);
+FormMenu.add(BtnRujukKeluar);
+FormMenu.add(BtnTransferAntarRuang);
+FormMenu.add(BtnInformasiObat);
+FormMenu.add(BtnInputObat);
+FormMenu.add(BtnJadwalOperasi);
+FormMenu.add(BtnObatBhp);
+FormMenu.add(BtnDiagnosa);
+        FormMenu.add(BtnCatatan);
+FormMenu.add(BtnAsuhanGizi);
+FormMenu.add(BtnAwalFisioterapi);
+FormMenu.add(BtnAwalKeperawatanBayiAnak);
+FormMenu.add(BtnAwalKeperawatanKandungan);
+FormMenu.add(BtnAwalKeperawatanNeonatus);
+FormMenu.add(BtnAwalKeperawatanUmum);
+FormMenu.add(BtnAwalMedis);
+FormMenu.add(BtnAwalMedisHemodialisa);
+FormMenu.add(BtnAwalMedisJantung);
+FormMenu.add(BtnAwalMedisKandungan);
+FormMenu.add(BtnAwalMedisNeonatus);
+FormMenu.add(BtnAwalMedisPsikiatri);
+FormMenu.add(BtnBerkasDigital);
+FormMenu.add(BtnCatatanADIMEGizi);
+FormMenu.add(BtnCatatanAnastesiSedasi);
+FormMenu.add(BtnCatatanCairanHemodialisa);
+FormMenu.add(BtnCatatanCekGDS);
+FormMenu.add(BtnCatatanKeseimbanganCairan);
+FormMenu.add(BtnCatatanObservasiBayi);
+FormMenu.add(BtnCatatanObservasiCHBP);
+FormMenu.add(BtnCatatanObservasiHemodialisa);
+FormMenu.add(BtnCatatanObservasiInduksiPersalinan);
+FormMenu.add(BtnCatatanObservasiRanap);
+FormMenu.add(BtnCatatanObservasiRanapKebidanan);
+FormMenu.add(BtnCatatanObservasiRanapPostPartum);
+FormMenu.add(BtnCatatanObservasiRestrainNonfarmakologi);
+FormMenu.add(BtnCatatanObservasiVentilator);
+FormMenu.add(BtnCatatanPengkajianPaskaOperasi);
+FormMenu.add(BtnCatatanPersalinan);
+FormMenu.add(BtnChecklistKesiapanAnestesi);
+FormMenu.add(BtnChecklistKriteriaKeluarHCU);
+FormMenu.add(BtnChecklistKriteriaKeluarICU);
+FormMenu.add(BtnChecklistKriteriaKeluarNICU);
+FormMenu.add(BtnChecklistKriteriaKeluarPICU);
+FormMenu.add(BtnChecklistKriteriaMasukHCU);
+FormMenu.add(BtnChecklistKriteriaMasukICU);
+FormMenu.add(BtnChecklistKriteriaMasukNICU);
+FormMenu.add(BtnChecklistKriteriaMasukPICU);
+FormMenu.add(BtnChecklistPemberianFibrinolitik);
+FormMenu.add(BtnChecklistPostOperasi);
+FormMenu.add(BtnChecklistPreOperasi);
+FormMenu.add(BtnDokumentasiESWL);
+FormMenu.add(BtnFollowUpDBD);
+FormMenu.add(BtnHasilEndoskopiFaringLaring);
+FormMenu.add(BtnHasilEndoskopiHidung);
+FormMenu.add(BtnHasilEndoskopiTelinga);
+FormMenu.add(BtnHasilPemeriksaanECHO);
+FormMenu.add(BtnHasilPemeriksaanECHOPediatrik);
+FormMenu.add(BtnHasilPemeriksaanEKG);
+FormMenu.add(BtnHasilPemeriksaanOCT);
+FormMenu.add(BtnHasilPemeriksaanSlitLamp);
+FormMenu.add(BtnHasilPemeriksaanTreadmill);
+FormMenu.add(BtnHasilPemeriksaanUSG);
+FormMenu.add(BtnHasilPemeriksaanUSGGynecologi);
+FormMenu.add(BtnHasilPemeriksaanUSGNeonatus);
+FormMenu.add(BtnHasilPemeriksaanUSGUrologi);
+FormMenu.add(BtnPengkajianRestrain);
+FormMenu.add(BtnPenilaianBayiBaruLahir);
+FormMenu.add(BtnPenilaianDerajatDehidrasi);
+FormMenu.add(BtnPenilaianKecemasanAnak);
+FormMenu.add(BtnPenilaianKorbanKekerasan);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhAnak);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhDewasa);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhGeriatri);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhLansia);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhNeonatus);
+FormMenu.add(BtnPenilaianLanjutanResikoJatuhPsikiatri);
+FormMenu.add(BtnPenilaianLanjutanSkriningFungsional);
+FormMenu.add(BtnPenilaianPasienImunitasRendah);
+FormMenu.add(BtnPenilaianPasienPenyakitMenular);
+FormMenu.add(BtnPenilaianPasienTerminal);
+FormMenu.add(BtnPenilaianPreAnestesi);
+FormMenu.add(BtnPenilaianPreInduksi);
+FormMenu.add(BtnPenilaianPreOperasi);
+FormMenu.add(BtnPenilaianPsikolog);
+FormMenu.add(BtnPenilaianPsikologKlinis);
+FormMenu.add(BtnPenilaianResikoDekubitus);
+FormMenu.add(BtnPenilaianUlangNyeri);
+FormMenu.add(BtnKonselingFarmasi);
+FormMenu.add(BtnMonitoringAsuhanGizi);
+FormMenu.add(BtnMonitoringReaksiTranfusi);
+FormMenu.add(BtnPelaksanaanInformasiEdukasi);
+FormMenu.add(BtnPemantauanEWSNeonatus);
+FormMenu.add(BtnPemantauanMEOWS);
+FormMenu.add(BtnPemantauanPEWSAnak);
+FormMenu.add(BtnPemantauanPEWSDewasa);
+FormMenu.add(BtnPerencanaanPemulangan);
+FormMenu.add(BtnSignInSebelumAnestesi);
+FormMenu.add(BtnSignOutSebelumMenutupLuka);
+FormMenu.add(BtnSkorAldrettePascaAnestesi);
+FormMenu.add(BtnSkorBromagePascaAnestesi);
+FormMenu.add(BtnSkorStewardPascaAnestesi);
+FormMenu.add(BtnSKDP);
+FormMenu.add(BtnSkriningGiziKehamilan);
+FormMenu.add(BtnSkriningGiziLanjut);
+FormMenu.add(BtnSkriningNutrisiAnak);
+FormMenu.add(BtnSkriningNutrisiDewasa);
+FormMenu.add(BtnSkriningNutrisiLansia);
+FormMenu.add(BtnTimeOutSebelumInsisi);
+FormMenu.add(BtnPenilaianTambahanBunuhDiri);
+FormMenu.add(BtnPenilaianTambahanGeriatri);
+FormMenu.add(BtnPenilaianTambahanMelarikanDiri);
+FormMenu.add(BtnPenilaianTambahanPerilakuKekerasan);
     }
 
     private void simpan() {

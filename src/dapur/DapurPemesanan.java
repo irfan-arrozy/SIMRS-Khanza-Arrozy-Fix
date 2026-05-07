@@ -709,37 +709,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 
-                System.out.println("PARAMETER INSERT:");
-System.out.println("1. NoFaktur: [" + NoFaktur.getText() + "]");
-System.out.println("2. NoOrder: [" + NoOrder.getText() + "]");
-System.out.println("3. kdsup: [" + kdsup.getText() + "]");
-System.out.println("4. kdptg: [" + kdptg.getText() + "]");
-System.out.println("5. TglPesan: [" + Valid.SetTgl(TglPesan.getSelectedItem()+"") + "]");
-System.out.println("6. TglFaktur: [" + Valid.SetTgl(TglFaktur.getSelectedItem()+"") + "]");
-System.out.println("7. TglTempo: [" + Valid.SetTgl(TglTempo.getSelectedItem()+"") + "]");
-System.out.println("8. sbttl: [" + sbttl + "]");
-System.out.println("9. ttldisk: [" + ttldisk + "]");
-System.out.println("10. ttl: [" + ttl + "]");
-System.out.println("11. ppn: [" + ppn + "]");
-System.out.println("12. meterai: [" + meterai + "]");
-System.out.println("13. total: [" + (ttl+ppn+meterai) + "]");
-System.out.println("14. status: [Belum Dibayar]");
-                System.out.println("NO FAKTUR: [" + NoFaktur.getText() + "]");
-System.out.println("NIP DIKIRIM: [" + kdptg.getText() + "]");
-
-String cekNip = Sequel.cariIsi(
-    "select nip from petugas where nip='"+kdptg.getText()+"'"
-);
-
-System.out.println("ADA DI DB: [" + cekNip + "]");
-
-if(cekNip.equals("")){
-    JOptionPane.showMessageDialog(null,"NIP tidak ditemukan!");
-    return;
-}
+ 
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("dapurpemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",14,new String[]{
+                if(Sequel.menyimpantf2("dapurpemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No. Faktur",14,new String[]{
                     NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
                     Valid.SetTgl(TglFaktur.getSelectedItem()+""),Valid.SetTgl(TglTempo.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
                     ""+ppn,""+meterai,""+(ttl+ppn+meterai),"Belum Dibayar"

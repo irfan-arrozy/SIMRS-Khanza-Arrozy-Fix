@@ -41,6 +41,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import fungsi.akseskamarinapralan;
 import fungsi.akuntindakanralan;
+import fungsi.cacherawatjalan;
 import fungsi.catatanpasien;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
@@ -58,6 +59,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -278,8 +280,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private DlgRawatJalan formrawatjalan;
     private DlgPeresepanDokter resepobat;
     private DlgCariPerawatanRalan dlgrwjl;
-    private String aktifkanparsial="no",caripenjab="",filter="no",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
-            tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",variabel="",terbitsep="";
+    //private String aktifkanparsial="no",caripenjab="",filter="no",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
+    private String aktifkanparsial="no",caripenjab="",namadokter="",namapoli="",order="reg_periksa.no_rawat desc",  
+        tampildiagnosa="",finger="",norawatdipilih="",normdipilih="",variabel="",terbitsep="";
+    
     private DlgBilingRalan billing;
     private int i=0,pilihan=0,sudah=0,jmlparsial=0;
     private boolean semua;
@@ -6569,7 +6573,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TCari.setText("");
         caripenjab="";
         tampildiagnosa="";
-        filter="no";
+      //  filter="no";
         terbitsep="";
         TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -8328,7 +8332,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
 
     private void MnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenjabActionPerformed
-        filter="no";
+      //  filter="no";
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -9099,6 +9103,49 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         if(akuntindakanralan.getSuspen_Piutang_Tindakan_Ralan().equals("")){
             akuntindakanralan.SetAkunTindakanRalan();
         }
+        
+                if(cacherawatjalan.getTanggalAwal()!=null){
+            DTPCari1.setDate(cacherawatjalan.getTanggalAwal());
+        }
+        
+        if(cacherawatjalan.getTanggalAkhir()!=null){
+            DTPCari2.setDate(cacherawatjalan.getTanggalAkhir());
+        }
+        
+        if(cacherawatjalan.getKeyWord()!=null){
+            TCari.setText(cacherawatjalan.getKeyWord());
+        }
+        
+        if(cacherawatjalan.getDokter()!=null){
+            CrPtg.setText(cacherawatjalan.getDokter());
+        }
+        
+        if(cacherawatjalan.getPoli()!=null){
+            CrPoli.setText(cacherawatjalan.getPoli());
+        }
+        
+        if(cacherawatjalan.getPenjab()!=null){
+            caripenjab=cacherawatjalan.getPenjab();
+        }
+        
+        if(cacherawatjalan.getStatusBayar()!=null){
+            cmbStatusBayar.setSelectedItem(cacherawatjalan.getStatusBayar());
+        }
+        
+        if(cacherawatjalan.getStatusPelayanan()!=null){
+            cmbStatus.setSelectedItem(cacherawatjalan.getStatusPelayanan());
+        }
+        
+        if(!cacherawatjalan.getDataPasien().isEmpty()){
+            for(Object[] baris : cacherawatjalan.getDataPasien()){
+                tabModekasir.addRow(baris);
+            }
+            LCount.setText(""+tabModekasir.getRowCount());
+            cacherawatjalan.clearDataPasien();
+                    }else{
+            tampilkasir();
+        }
+        
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -17177,6 +17224,34 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         } 
     }
+    
+        @Override
+    public void dispose() {
+        cacherawatjalan.SetTanggalAwal(DTPCari1.getDate());
+        cacherawatjalan.SetTanggalAkhir(DTPCari2.getDate());
+        cacherawatjalan.SetKeyWord(TCari.getText());
+        cacherawatjalan.SetDokter(CrPtg.getText());
+        cacherawatjalan.SetPoli(CrPoli.getText());
+        cacherawatjalan.SetPenjab(caripenjab);
+        cacherawatjalan.SetStatusBayar(cmbStatusBayar.getSelectedItem().toString());
+        cacherawatjalan.SetStatusPelayanan(cmbStatus.getSelectedItem().toString());
+        
+        ArrayList<Object[]> temp = new ArrayList<>();
+
+        for (int i = 0; i < tabModekasir.getRowCount(); i++) {
+            Object[] baris = new Object[tabModekasir.getColumnCount()];
+            for (int j = 0; j < tabModekasir.getColumnCount(); j++) {
+                baris[j] = tabModekasir.getValueAt(i, j);
+            }
+            temp.add(baris);
+        }
+
+        cacherawatjalan.clearDataPasien();
+        cacherawatjalan.SetDataPasien(temp);
+        
+        super.dispose();
+    }
+    
     
     private void initKasirRalan() {
         MnPenilaianPreInduksi = new javax.swing.JMenuItem();

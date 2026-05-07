@@ -40,6 +40,7 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import rekammedis.RMRiwayatPerawatan;
+import rekammedis.RMCari5SOAPTerakhir;
 
 /**
  *
@@ -145,8 +146,8 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();        
-        ChkAccor.setSelected(false);
-        isMenu();
+        //ChkAccor.setSelected(false);
+        //isMenu();
         
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
@@ -258,10 +259,6 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         scrollPane5 = new widget.ScrollPane();
         Recommendation = new widget.TextArea();
         BtnJawabanDikonsuli = new widget.Button();
-        PanelAccor = new widget.PanelBiasa();
-        ChkAccor = new widget.CekBox();
-        ScrollMenu = new widget.ScrollPane();
-        FormMenu = new widget.PanelBiasa();
         BtnRiwayatPasien = new widget.Button();
         BtnDokumentasiKonsul = new widget.Button();
 
@@ -344,7 +341,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         label1.setBounds(210, 20, 55, 23);
 
         TanggalJawab.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026 17:38:36" }));
+        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2026 14:16:11" }));
         TanggalJawab.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalJawab.setName("TanggalJawab"); // NOI18N
         TanggalJawab.setOpaque(false);
@@ -667,7 +664,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(170, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -685,7 +682,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -775,7 +772,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         NoPermintaan.setBounds(92, 40, 120, 23);
 
         TanggalPermintaan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2026 17:38:36" }));
+        TanggalPermintaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2026 14:16:10" }));
         TanggalPermintaan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPermintaan.setName("TanggalPermintaan"); // NOI18N
         TanggalPermintaan.setOpaque(false);
@@ -986,7 +983,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(332, 205, 295, 58);
 
-        BtnJawabanDikonsuli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnJawabanDikonsuli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/doctor_male.png"))); // NOI18N
         BtnJawabanDikonsuli.setText("Jawab Konsul");
         BtnJawabanDikonsuli.setFocusPainted(false);
         BtnJawabanDikonsuli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1002,44 +999,7 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnJawabanDikonsuli);
-        BtnJawabanDikonsuli.setBounds(640, 180, 130, 23);
-
-        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
-
-        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
-        PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(145, 43));
-        PanelAccor.setLayout(new java.awt.BorderLayout());
-
-        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
-        ChkAccor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 255, 248)));
-        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.setFocusable(false);
-        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setName("ChkAccor"); // NOI18N
-        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
-        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkAccorActionPerformed(evt);
-            }
-        });
-        PanelAccor.add(ChkAccor, java.awt.BorderLayout.EAST);
-
-        ScrollMenu.setBorder(null);
-        ScrollMenu.setName("ScrollMenu"); // NOI18N
-        ScrollMenu.setOpaque(true);
-
-        FormMenu.setBackground(new java.awt.Color(255, 255, 255));
-        FormMenu.setBorder(null);
-        FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(115, 43));
-        FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+        BtnJawabanDikonsuli.setBounds(640, 220, 130, 23);
 
         BtnRiwayatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRiwayatPasien.setText("Riwayat Perawatan");
@@ -1056,7 +1016,8 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                 BtnRiwayatPasienActionPerformed(evt);
             }
         });
-        FormMenu.add(BtnRiwayatPasien);
+        FormInput.add(BtnRiwayatPasien);
+        BtnRiwayatPasien.setBounds(630, 130, 130, 23);
 
         BtnDokumentasiKonsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnDokumentasiKonsul.setText("Dokumentasi Konsul");
@@ -1073,13 +1034,12 @@ public class DlgPermintaanKonsultasiPerawat extends javax.swing.JDialog {
                 BtnDokumentasiKonsulActionPerformed(evt);
             }
         });
-        FormMenu.add(BtnDokumentasiKonsul);
+        FormInput.add(BtnDokumentasiKonsul);
+        BtnDokumentasiKonsul.setBounds(630, 160, 130, 23);
 
-        ScrollMenu.setViewportView(FormMenu);
+        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
-        PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(PanelAccor, java.awt.BorderLayout.WEST);
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -1398,31 +1358,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         R2.setSelected(true);
     }//GEN-LAST:event_DTPCari1ItemStateChanged
 
-    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        isMenu();
-    }//GEN-LAST:event_ChkAccorActionPerformed
-
     private void BtnJawabanDikonsuliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabanDikonsuliActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()!= -1){
-                if(akses.getkode().equals("Admin Utama")){
-                    NoPermintaanJawaban.setText(NoPermintaan.getText());
-                    WindowInput.setAlwaysOnTop(false);
-                    WindowInput.setVisible(true);
-                    Respon.requestFocus();
-                }else{
-                    if(KdDokterDikonsuli.getText().equals(akses.getkode())){
+         
                         NoPermintaanJawaban.setText(NoPermintaan.getText());
                         WindowInput.setAlwaysOnTop(false);
                         WindowInput.setVisible(true);
                         Respon.requestFocus();
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, hanya bisa dijawab oleh dokter yang dikonsuli...!!!!");
-                    }
-                }
+                  
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
             }
@@ -1471,22 +1418,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnDokumentasiKonsulActionPerformed
 
     private void BtnRiwayatPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatPasienActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TCari.requestFocus();
-        }else{
-            if(tbObat.getSelectedRow()!= -1){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
-                resume.setNoRm(NoRM.getText(),NmPasien.getText());
-                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                resume.setLocationRelativeTo(internalFrame1);
-                resume.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");
-            }
-        }
+    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+    RMRiwayatPerawatan resume = new RMRiwayatPerawatan(null,true);
+    resume.setNoRm(NoRM.getText(), NmPasien.getText());
+    resume.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+    resume.setLocationRelativeTo(internalFrame1);
+    resume.setVisible(true);
+
+    this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnRiwayatPasienActionPerformed
 
     private void TanggalPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPermintaanKeyPressed
@@ -1554,7 +1494,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }
     }//GEN-LAST:event_BtnSimpanJawabanActionPerformed
-    private void simpanTindakanKonsul(){
+private void simpanTindakanKonsul(){
     
     try{
         // =========================
@@ -1586,7 +1526,31 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
 
         // =========================
-        // 3. INSERT
+        // 3. CEK DUPLIKAT (LEBIH AKURAT)
+        // =========================
+        String tgl = Valid.SetTgl(TanggalJawab.getSelectedItem()+"");
+
+        String cek = Sequel.cariIsi(
+            "select count(*) from rawat_inap_dr " +
+            "where no_rawat='"+NoRw.getText()+"' " +
+            "and kd_dokter='"+KdDokterDikonsuli.getText()+"' " +
+            "and kd_jenis_prw='"+kdJenis+"' " +
+            "and tgl_perawatan='"+tgl+"'"
+        );
+
+        // =========================
+        // 🔥 JIKA DUPLIKAT → STOP (TIDAK INSERT)
+        // =========================
+        if(!cek.equals("0")){
+            JOptionPane.showMessageDialog(null,
+                "<html>Dokter sudah melakukan tindakan konsul ini hari ini.<br>" +
+                "Tindakan tidak akan disimpan.</html>"
+            );
+            return;
+        }
+
+        // =========================
+        // 4. INSERT
         // =========================
         Sequel.menyimpantf(
             "rawat_inap_dr",
@@ -1606,25 +1570,24 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }catch(Exception e){
         System.out.println("Error tindakan konsul : "+e);
     }
-
 }
     private String[] getMappingTindakan(String kdKamar){
 
     Map<String, String[]> mapping = new LinkedHashMap<>();
 
     // ⚠️ URUTAN PENTING (yang spesifik dulu)
-    mapping.put("NICU", new String[]{"RI01069","100000"});
-    mapping.put("PICU", new String[]{"RI01069","100000"});
-    mapping.put("PERIN", new String[]{"RI01069","100000"});
-    mapping.put("ICU", new String[]{"RI01069","100000"});
-mapping.put("MIN", new String[]{"RI01069","100000"});
-    mapping.put("AQS", new String[]{"RI01135","80000"});
-    mapping.put("ARF", new String[]{"RI01135","80000"});
-    mapping.put("MAR", new String[]{"RI01135","80000"});
-    mapping.put("SOF", new String[]{"RI01135","80000"});
+    mapping.put("NICU", new String[]{"RI01502","100000"});
+    mapping.put("PICU", new String[]{"RI01502","100000"});
+    mapping.put("PERIN", new String[]{"RI01502","100000"});
+    mapping.put("ICU", new String[]{"RI01502","100000"});
+mapping.put("MIN", new String[]{"RI01503","100000"});
+    mapping.put("AQS", new String[]{"RI01501","80000"});
+    mapping.put("ARF", new String[]{"RI01501","80000"});
+    mapping.put("MAR", new String[]{"RI01501","80000"});
+    mapping.put("SOF", new String[]{"RI01501","80000"});
 
-    mapping.put("ZAM", new String[]{"RI01136","120000"});
-    mapping.put("RAUD", new String[]{"RI01137","120000"});
+    mapping.put("ZAM", new String[]{"RI01504","120000"});
+    mapping.put("RAUD", new String[]{"RI01504","120000"});
 
     for(String key : mapping.keySet()){
         if(kdKamar.startsWith(key)){
@@ -1699,34 +1662,105 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
     }//GEN-LAST:event_BtnPerawatKeyPressed
 
     private void BtnDokterDIkonsuliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterDIkonsuliActionPerformed
-        if (dokter == null || !dokter.isDisplayable()) {
-            dokter=new DlgCariDokter(null,false);
-            dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            dokter.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    if(dokter.getTable().getSelectedRow()!= -1){
-                        KdDokterDikonsuli.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                        NmDokterDikonsuli.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                        BtnDokterDIkonsuli.requestFocus();
-                    }  
-                    dokter=null;
-                }
-            });
-            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            dokter.setLocationRelativeTo(internalFrame1);
-        }
-            
-        if (dokter == null) return;
-        if (!dokter.isVisible()) {
-            dokter.isCek();    
-            dokter.emptTeks();
-        }  
-        if (dokter.isVisible()) {
-            dokter.toFront();
-            return;
-        }    
-        dokter.setVisible(true);
+                                                 
+     if (dokter == null || !dokter.isDisplayable()) {
+        dokter=new DlgCariDokter(null,false);
+        dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dokter.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){
+
+                    String kdDokter = dokter.getTable().getValueAt(
+                        dokter.getTable().getSelectedRow(),0).toString();
+
+                    String nmDokter = dokter.getTable().getValueAt(
+                        dokter.getTable().getSelectedRow(),1).toString();
+
+                    // =========================
+                    // 🔥 AMBIL KAMAR TERAKHIR
+                    // =========================
+                    String kdKamar = Sequel.cariIsi(
+                        "select kd_kamar from kamar_inap " +
+                        "where no_rawat='"+NoRw.getText()+"' " +
+                        "order by tgl_masuk desc limit 1"
+                    );
+
+                    if(kdKamar.equals("")){
+                        JOptionPane.showMessageDialog(null,"Kamar pasien tidak ditemukan!");
+                        return;
+                    }
+
+                    // =========================
+                    // 🔥 AMBIL MAPPING TINDAKAN
+                    // =========================
+                    String[] mapping = getMappingTindakan(kdKamar);
+                    String kdJenis = mapping[0];
+
+                    if(kdJenis.equals("")){
+                        JOptionPane.showMessageDialog(null,
+                            "Mapping tindakan tidak ditemukan untuk kamar: " + kdKamar);
+                        return;
+                    }
+
+                    // =========================
+                    // 🔥 CEK DUPLIKAT
+                    // =========================
+                    String tgl = Valid.SetTgl(TanggalJawab.getSelectedItem()+"");
+
+                    String cek = Sequel.cariIsi(
+                        "select count(*) from (" +
+                        "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_inap_dr " +
+                        "union all " +
+                        "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_jl_dr" +
+                        ") as a " +
+                        "where no_rawat='"+NoRw.getText()+"' " +
+                        "and kd_dokter='"+kdDokter+"' " +
+                        "and kd_jenis_prw='"+kdJenis+"' " +
+                        "and tgl_perawatan='"+tgl+"'"
+                    );
+
+                    if(!cek.equals("0")){
+                        int jawab = JOptionPane.showConfirmDialog(
+                            null,
+                            "<html>Dokter ini sudah memberikan konsul untuk pasien ini hari ini.<br>" +
+                            "Apakah anda tetap ingin mengirim konsul?</html>",
+                            "Konfirmasi",
+                            JOptionPane.YES_NO_OPTION
+                        );
+
+                        if(jawab == JOptionPane.YES_OPTION){
+                            KdDokterDikonsuli.setText(kdDokter);
+                            NmDokterDikonsuli.setText(nmDokter);
+                        }else{
+                            KdDokterDikonsuli.setText("");
+                            NmDokterDikonsuli.setText("");
+                        }
+
+                    }else{
+                        KdDokterDikonsuli.setText(kdDokter);
+                        NmDokterDikonsuli.setText(nmDokter);
+                    }
+
+                    BtnDokterDIkonsuli.requestFocus();
+                }  
+                dokter=null;
+            }
+        });
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+    }
+        
+    if (dokter == null) return;
+    if (!dokter.isVisible()) {
+        dokter.isCek();    
+        dokter.emptTeks();
+    }  
+    if (dokter.isVisible()) {
+        dokter.toFront();
+        return;
+    }    
+    dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterDIkonsuliActionPerformed
 
     private void BtnDokterDIkonsuliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterDIkonsuliKeyPressed
@@ -1817,12 +1851,10 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
     private widget.Button BtnRiwayatPasien;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpanJawaban;
-    private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
-    private widget.PanelBiasa FormMenu;
     private widget.TextArea Instruksi;
     private widget.TextBox KdDokterDikonsuli;
     private widget.TextBox KdPerawat;
@@ -1835,7 +1867,6 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
     private widget.TextBox NoPermintaanJawaban;
     private widget.TextBox NoRM;
     private widget.TextBox NoRw;
-    private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
@@ -1843,7 +1874,6 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
     private widget.TextArea Rencana;
     private widget.TextBox Respon;
     private widget.ScrollPane Scroll;
-    private widget.ScrollPane ScrollMenu;
     private widget.TextArea Situation;
     private widget.TextBox TCari;
     private widget.Tanggal TanggalJawab;
@@ -2070,19 +2100,19 @@ mapping.put("MIN", new String[]{"RI01069","100000"});
         }
     }
     
-    private void isMenu(){
-        if(ChkAccor.isSelected()==true){
-            ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(145,HEIGHT));
-            FormMenu.setVisible(true); 
-            ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){  
-            ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-            FormMenu.setVisible(false);    
-            ChkAccor.setVisible(true);
-        }
-    }
+   // private void isMenu(){
+  //      if(ChkAccor.isSelected()==true){
+   //         ChkAccor.setVisible(false);
+   //         PanelAccor.setPreferredSize(new Dimension(145,HEIGHT));
+   ///         FormMenu.setVisible(true); 
+   //         ChkAccor.setVisible(true);
+    //    }else if(ChkAccor.isSelected()==false){  
+     //       ChkAccor.setVisible(false);
+     //       PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
+     //       FormMenu.setVisible(false);    
+     //       ChkAccor.setVisible(true);
+     //   }
+   // }
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(konsultasi_perawat.no_permintaan,4),signed)),0) from konsultasi_perawat where left(konsultasi_perawat.tanggal,10)='"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"")+"' ","KM"+Valid.SetTgl(TanggalPermintaan.getSelectedItem()+"").replaceAll("-",""),4,NoPermintaan);           

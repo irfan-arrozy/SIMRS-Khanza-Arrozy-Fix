@@ -1737,7 +1737,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getpenolakan_anjuran_medis()); 
         if(akses.getjml2()>=1){
             KodePetugas.setEditable(false);
-            btnPetugas.setEnabled(false);
+            btnPetugas.setEnabled(true);
             KodePetugas.setText(akses.getkode());
             NamaPetugas.setText(Sequel.CariPetugas(KodePetugas.getText()));
         }            
