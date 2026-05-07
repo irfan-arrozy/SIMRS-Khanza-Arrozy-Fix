@@ -9330,6 +9330,9 @@
       <SubComponents>
         <Component class="widget.ButtonBig" name="BtnMenu">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/menu.png"/>
             </Property>
@@ -9352,6 +9355,28 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnMenuActionPerformed"/>
           </Events>
         </Component>
+        <Component class="widget.ButtonBig" name="BtnDashboard">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/dashboard.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Dashboard"/>
+            <Property name="toolTipText" type="java.lang.String" value="Alt+U"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="2"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="BtnDashboard" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[100, 38]"/>
+            </Property>
+            <Property name="verticalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDashboardActionPerformed"/>
+          </Events>
+        </Component>
         <Component class="widget.ButtonBig" name="BtnToolReg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -9368,7 +9393,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolReg" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 38]"/>
+              <Dimension value="[100, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
@@ -9385,19 +9410,70 @@
             <Property name="text" type="java.lang.String" value="IGD"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="enabled" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="2"/>
+            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
               <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolIGD" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[110, 38]"/>
+              <Dimension value="[90, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnToolIGDActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="widget.ButtonBig" name="BtnToolKamnap">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/ranap.png"/>
+            </Property>
+            <Property name="mnemonic" type="int" value="75"/>
+            <Property name="text" type="java.lang.String" value="Rawat Inap"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="2"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="BtnToolKamnap" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 38]"/>
+            </Property>
+            <Property name="verticalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnToolKamnapActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="widget.ButtonBig" name="BtnToolKasir">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/cast-25.png"/>
+            </Property>
+            <Property name="mnemonic" type="int" value="83"/>
+            <Property name="text" type="java.lang.String" value="Rawat Jalan"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="2"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="BtnToolKasir" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 38]"/>
+            </Property>
+            <Property name="verticalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnToolKasirActionPerformed"/>
           </Events>
         </Component>
         <Component class="widget.ButtonBig" name="btnToolLab">
@@ -9438,7 +9514,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolRad" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[110, 38]"/>
+              <Dimension value="[100, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
@@ -9461,60 +9537,12 @@
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolJualObat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[110, 38]"/>
+              <Dimension value="[100, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnToolJualObatActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="widget.ButtonBig" name="BtnToolKamnap">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/picture/ranap.png"/>
-            </Property>
-            <Property name="mnemonic" type="int" value="75"/>
-            <Property name="text" type="java.lang.String" value="Rawat Inap"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="enabled" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="2"/>
-            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="BtnToolKamnap" noResource="true"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[110, 38]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="0"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnToolKamnapActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="widget.ButtonBig" name="BtnToolKasir">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/picture/cast-25.png"/>
-            </Property>
-            <Property name="mnemonic" type="int" value="83"/>
-            <Property name="text" type="java.lang.String" value="Rawat Jalan"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="enabled" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="2"/>
-            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="BtnToolKasir" noResource="true"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[110, 38]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="0"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnToolKasirActionPerformed"/>
           </Events>
         </Component>
         <Component class="widget.ButtonBig" name="BtnLog">
@@ -9532,7 +9560,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="BtnLog" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[78, 38]"/>
+              <Dimension value="[100, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
@@ -9555,34 +9583,12 @@
             </Property>
             <Property name="name" type="java.lang.String" value="BtnClose" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 38]"/>
+              <Dimension value="[100, 38]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCloseActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="widget.ButtonBig" name="BtnDashboard">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/picture/dashboard.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Buka Dashboard"/>
-            <Property name="toolTipText" type="java.lang.String" value="Alt+U"/>
-            <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="2"/>
-            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="BtnDashboard" noResource="true"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 38]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="0"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDashboardActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
