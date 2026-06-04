@@ -1039,6 +1039,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         requestEntity = new HttpEntity(requestJson, headers);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metaData");
+                        System.out.println("CODE : "+nameNode.path("code").asText());
+System.out.println("MESSAGE : "+nameNode.path("message").asText());
                         if (nameNode.path("code").asText().equals("200")) {
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc));
                             System.out.println("Response JSON : "+response);
@@ -1068,6 +1070,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             requestEntity = new HttpEntity(requestJson, headers);
                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             nameNode = root.path("metaData");
+                                            System.out.println("CODE : "+nameNode.path("code").asText());
+System.out.println("MESSAGE : "+nameNode.path("message").asText());
                                             System.out.println("Respon JSON : "+nameNode);
                                             if(nameNode.path("code").asText().equals("200")) {
                                                 if(Sequel.menyimpantf("bridging_resep_apotek_bpjs_nonracikan","?,?,?,?,?,?,?","Obat Non Racikan BPJS",7,new String[]{
@@ -1111,6 +1115,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             requestEntity = new HttpEntity(requestJson, headers);
                                             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                             nameNode = root.path("metaData");
+                                            System.out.println("CODE : "+nameNode.path("code").asText());
+System.out.println("MESSAGE : "+nameNode.path("message").asText());
                                             System.out.println("Respon JSON : "+nameNode);
                                             if(nameNode.path("code").asText().equals("200")) {
                                                 if(Sequel.menyimpantf("bridging_resep_apotek_bpjs_racikan","?,?,?,?,?,?,?,?,?","Obat Racikan",9,new String[]{
@@ -1168,10 +1174,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 Sequel.menyimpan("gudangbarang","'"+tabModeobat.getValueAt(r,11).toString()+"','"+kdgudang.getText()+"','-"+piutang+"','',''","stok=stok-'"+piutang+"'","kode_brng='"+tabModeobat.getValueAt(r,11).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
                                         }else{
                                            sukses=false;
+                                           System.out.println("Gagal simpan tabel piutang");
                                         } 
                                     }  
                                 } catch (Exception e) {
                                     sukses=false;
+                                    e.printStackTrace();
                                 }                           
                             }
                             
@@ -1189,15 +1197,19 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 Sequel.menyimpan("gudangbarang","'"+tabModeDetailObatRacikan.getValueAt(r,11).toString()+"','"+kdgudang.getText()+"','-"+piutang+"','',''","stok=stok-'"+piutang+"'","kode_brng='"+tabModeDetailObatRacikan.getValueAt(r,11).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
                                             }else{
                                                sukses=false;
+                                               System.out.println("Gagal simpan detailpiutang");
                                             }
                                         }
                                     } catch (Exception e) {
                                         sukses=false;
+                                        e.printStackTrace();
+                                       
                                     }    
                                 }
                             }
                         }else{
                             sukses=false;
+                      
                         }
                     }
                 }

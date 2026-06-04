@@ -1621,12 +1621,14 @@ mapping.put("MIN", new String[]{"RI01138","100000"});
 
     
     private void BtnDokterDIkonsuliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterDIkonsuliActionPerformed
-    if (dokter == null || !dokter.isDisplayable()) {
+       if (dokter == null || !dokter.isDisplayable()) {
         dokter=new DlgCariDokter(null,false);
         dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
         dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
+
                 if(dokter.getTable().getSelectedRow()!= -1){
 
                     String kdDokter = dokter.getTable().getValueAt(
@@ -1636,49 +1638,87 @@ mapping.put("MIN", new String[]{"RI01138","100000"});
                         dokter.getTable().getSelectedRow(),1).toString();
 
                     // =========================
-                    // 🔥 AMBIL KAMAR TERAKHIR
+                    // 🔥 CEK STATUS PASIEN
                     // =========================
-                    String kdKamar = Sequel.cariIsi(
-                        "select kd_kamar from kamar_inap " +
-                        "where no_rawat='"+NoRw.getText()+"' " +
-                        "order by tgl_masuk desc limit 1"
+                    String status = Sequel.cariIsi(
+                        "select status_lanjut from reg_periksa " +
+                        "where no_rawat='"+NoRw.getText()+"' limit 1"
                     );
 
-                    if(kdKamar.equals("")){
-                        JOptionPane.showMessageDialog(null,"Kamar pasien tidak ditemukan!");
-                        return;
-                    }
-
-                    // =========================
-                    // 🔥 AMBIL MAPPING TINDAKAN
-                    // =========================
-                    String[] mapping = getMappingTindakan(kdKamar);
-                    String kdJenis = mapping[0];
-
-                    if(kdJenis.equals("")){
+                    if(status.equals("")){
                         JOptionPane.showMessageDialog(null,
-                            "Mapping tindakan tidak ditemukan untuk kamar: " + kdKamar);
+                            "Status rawat tidak ditemukan!");
                         return;
                     }
 
-                    // =========================
-                    // 🔥 CEK DUPLIKAT
-                    // =========================
                     String tgl = Valid.SetTgl(TanggalJawab.getSelectedItem()+"");
 
-                    String cek = Sequel.cariIsi(
-                        "select count(*) from (" +
-                        "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_inap_dr " +
-                        "union all " +
-                        "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_jl_dr" +
-                        ") as a " +
-                        "where no_rawat='"+NoRw.getText()+"' " +
-                        "and kd_dokter='"+kdDokter+"' " +
-                        "and kd_jenis_prw='"+kdJenis+"' " +
-                        "and tgl_perawatan='"+tgl+"'"
-                    );
+                    String cek="";
 
+                    // =====================================================
+                    // 🔥 RANAP → CEK MAPPING KAMAR + KD JENIS
+                    // =====================================================
+                    if(status.equalsIgnoreCase("Ranap")){
+
+                        // AMBIL KAMAR TERAKHIR
+                        String kdKamar = Sequel.cariIsi(
+                            "select kd_kamar from kamar_inap " +
+                            "where no_rawat='"+NoRw.getText()+"' " +
+                            "order by tgl_masuk desc limit 1"
+                        );
+
+                        if(kdKamar.equals("")){
+                            JOptionPane.showMessageDialog(null,
+                                "Kamar pasien tidak ditemukan!");
+                            return;
+                        }
+
+                        // AMBIL MAPPING
+                        String[] mapping = getMappingTindakan(kdKamar);
+                        String kdJenis = mapping[0];
+
+                        if(kdJenis.equals("")){
+                            JOptionPane.showMessageDialog(null,
+                                "Mapping tindakan tidak ditemukan untuk kamar: " + kdKamar);
+                            return;
+                        }
+
+                        // CEK DUPLIKAT RANAP
+                        cek = Sequel.cariIsi(
+                            "select count(*) from (" +
+                            "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_inap_dr " +
+                            "union all " +
+                            "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_jl_dr" +
+                            ") as a " +
+                            "where no_rawat='"+NoRw.getText()+"' " +
+                            "and kd_dokter='"+kdDokter+"' " +
+                            "and kd_jenis_prw='"+kdJenis+"' " +
+                            "and tgl_perawatan='"+tgl+"'"
+                        );
+
+                    // =====================================================
+                    // 🔥 RALAN → TIDAK PERLU CEK MAPPING KAMAR
+                    // =====================================================
+                    }else if(status.equalsIgnoreCase("Ralan")){
+
+                        cek = Sequel.cariIsi(
+                            "select count(*) from (" +
+                            "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_inap_dr " +
+                            "union all " +
+                            "select no_rawat,kd_dokter,kd_jenis_prw,tgl_perawatan from rawat_jl_dr" +
+                            ") as a " +
+                            "where no_rawat='"+NoRw.getText()+"' " +
+                            "and kd_dokter='"+kdDokter+"' " +
+                            "and kd_jenis_prw='RJ01044' " +
+                            "and tgl_perawatan='"+tgl+"'"
+                        );
+                    }
+
+                    // =========================
+                    // 🔥 HASIL CEK DUPLIKAT
+                    // =========================
                     if(!cek.equals("0")){
+
                         int jawab = JOptionPane.showConfirmDialog(
                             null,
                             "<html>Dokter ini sudah memberikan konsul untuk pasien ini hari ini.<br>" +
@@ -1701,23 +1741,28 @@ mapping.put("MIN", new String[]{"RI01138","100000"});
                     }
 
                     BtnDokterDIkonsuli.requestFocus();
-                }  
+                }
+
                 dokter=null;
             }
         });
+
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
     }
-        
+
     if (dokter == null) return;
+
     if (!dokter.isVisible()) {
         dokter.isCek();    
         dokter.emptTeks();
-    }  
+    }
+
     if (dokter.isVisible()) {
         dokter.toFront();
         return;
-    }    
+    }
+
     dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterDIkonsuliActionPerformed
 

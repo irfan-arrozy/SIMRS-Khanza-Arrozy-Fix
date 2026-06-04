@@ -1017,6 +1017,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
+      //  PanelProfil = new widget.PanelBiasa();
         FormMenu = new widget.PanelBiasa();
         BtnRiwayat = new widget.Button();
         BtnResepObat = new widget.Button();
@@ -3087,6 +3088,11 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         PanelAccor.setName("PanelAccor"); // NOI18N
         PanelAccor.setPreferredSize(new java.awt.Dimension(205, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
+        
+        //PanelProfil.setBackground(java.awt.Color.RED);
+        //PanelProfil.setName("Profil"); // NOI18N
+        //PanelProfil.setPreferredSize(new java.awt.Dimension(205, 43));
+        //PanelProfil.setLayout(new java.awt.BorderLayout());
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 255, 248)));
@@ -3110,6 +3116,11 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         ScrollMenu.setName("ScrollMenu"); // NOI18N
         ScrollMenu.setOpaque(true);
 
+//lblProfil = new widget.Label();
+//lblProfil.setText("Profil Pasien");
+//lblProfil.setFont(new java.awt.Font("Tahoma", 1, 16));
+
+//PanelProfil.add(lblProfil);
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
@@ -4401,6 +4412,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.WEST);
+     //   internalFrame1.add(PanelProfil);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -9215,6 +9227,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label LCount;
     private javax.swing.JTextField Menejemen;
     private widget.PanelBiasa PanelAccor;
+   // private widget.PanelBiasa PanelProfil;
+   // private widget.Label lblProfil;
     private javax.swing.JPanel PanelInput1;
     private javax.swing.JPanel PanelInput2;
     private javax.swing.JPanel PanelInput3;

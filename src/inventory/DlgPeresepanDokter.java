@@ -2267,8 +2267,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         cmbJam.setSelectedItem(jam);
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik); 
-        KdDokter.setText(KodeDokter);
-        NmDokter.setText(NamaDokter);
+KdDokter.setText(akses.getkode());
+
+NmDokter.setText(
+    Sequel.cariIsi(
+        "select nm_dokter from dokter where kd_dokter=?",
+        akses.getkode()
+    )
+);
+       // KdDokter.setText(KodeDokter);
+        //NmDokter.setText(NamaDokter);
         KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         TCari.requestFocus();
         this.status=status;
@@ -2281,8 +2289,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         TNoRw.setText(norwt);
         popupAntibiotikSedangTampil = false;
         TPasien.setText(Pasien);
-        KdDokter.setText(KodeDokter);
-        NmDokter.setText(NamaDokter);
+KdDokter.setText(akses.getkode());
+
+NmDokter.setText(
+    Sequel.cariIsi(
+        "select nm_dokter from dokter where kd_dokter=?",
+        akses.getkode()
+    )
+);
+      //  KdDokter.setText(KodeDokter);
+       // NmDokter.setText(NamaDokter);
         KdPj.setText(kodepj);
         TCari.requestFocus();
         this.status=status;
@@ -2298,11 +2314,19 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where no_rawat=? ",TPasien,TNoRw.getText());
         
         DTPBeri.setDate(tanggal);
-        KdDokter.setText(Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",norwt));
-        if(KdDokter.getText().equals("")){
-            KdDokter.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt));
-        }
-        NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
+KdDokter.setText(akses.getkode());
+
+NmDokter.setText(
+    Sequel.cariIsi(
+        "select nm_dokter from dokter where kd_dokter=?",
+        akses.getkode()
+    )
+);
+       // KdDokter.setText(Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",norwt));
+       // if(KdDokter.getText().equals("")){
+        //    KdDokter.setText(Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",norwt));
+        //}
+        //NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
         
         KdPj.setText(Sequel.cariIsi("select reg_periksa.kd_pj from reg_periksa where reg_periksa.no_rawat=?",norwt));
         TCari.requestFocus();
